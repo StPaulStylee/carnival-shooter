@@ -1,0 +1,14 @@
+VisualElement {
+}
+
+.menu-button {
+    transition-property: background-color;
+    transition-duration: 0.25s;
+}
+
+.menu-button:hover {
+    background-color: rgb(241, 237, 237);
+    transition-property: background-color;
+    transition-duration: 0.25s;
+    transition-timing-function: ease;
+}

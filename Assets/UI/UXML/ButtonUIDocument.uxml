@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/ButtonUIStyles.uss?fileID=7433441132597879392&amp;guid=d10ec89ac4e6b414196c82b8bad2f6fe&amp;type=3#ButtonUIStyles" />
+    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; overflow: visible; visibility: visible; justify-content: flex-start; align-items: auto; white-space: normal; opacity: 1;">
+        <ui:Button text="Button" display-tooltip-when-elided="true" name="TestButton" class="my-button" style="display: flex; opacity: 1; align-items: flex-start; visibility: visible; width: auto; flex-basis: auto; margin-left: 20px; margin-right: 20px; margin-top: 20px; margin-bottom: 20px; flex-grow: 1;" />
+        <ui:Button text="Button" display-tooltip-when-elided="true" class="my-button low-opacity" style="flex-basis: auto; margin-left: 20px; margin-right: 20px; margin-top: 20px; margin-bottom: 20px; flex-wrap: nowrap; flex-shrink: 0; overflow: hidden; flex-grow: 1;" />
+    </ui:VisualElement>
+</ui:UXML>

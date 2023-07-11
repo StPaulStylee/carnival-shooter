@@ -1,0 +1,12 @@
+.my-button {
+    background-color: rgb(171, 24, 24);
+    transition: background-color 0.25;
+}
+
+.my-button:hover {
+    background-color: rgb(30, 171, 24);
+}
+
+.low-opacity {
+    opacity: 0.58;
+}
