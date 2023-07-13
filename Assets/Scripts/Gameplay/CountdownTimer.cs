@@ -16,7 +16,7 @@ public class CountdownTimer : MonoBehaviour {
   }
 
   private void Start() {
-    //TimerChanged?.Invoke(m_timeRemaining.ToString());
+    //TimerChanged?.Invoke(timeRemaining.ToString());
     StartCoroutine(StartCountdown());
   }
 
@@ -27,21 +27,21 @@ public class CountdownTimer : MonoBehaviour {
   }
 
   private IEnumerator StartCountdown() {
-    float m_timeRemaining = m_totalTime;
+    float timeRemaining = m_totalTime;
     m_isRunning = true;
 
-    if (m_timeRemaining > 0 && !m_isRunning) {
+    if (timeRemaining > 0 && !m_isRunning) {
       yield return null;
     }
 
-    while (m_timeRemaining > 0f && m_isRunning) {
+    while (timeRemaining > 0f && m_isRunning) {
       yield return new WaitForSeconds(1f); // Wait for 1 second
 
-      m_timeRemaining--;
+      timeRemaining--;
 
       // Update UI or perform other actions based on the remaining time
-      TimerChanged?.Invoke(m_timeRemaining);
-      //Debug.Log("Remaining Time: " + m_timeRemaining);
+      TimerChanged?.Invoke(timeRemaining);
+      //Debug.Log("Remaining Time: " + timeRemaining);
     }
 
     // Countdown has reached zero, perform actions or end the game

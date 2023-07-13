@@ -1,34 +1,46 @@
-using System;
+using CarnivalShooter.Gameplay.Behavior;
+using CarnivalShooter.Managers;
+using CarnivalShooter.Managers.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace CarnivalShooter.Gameplay {
-  public abstract class Target : MonoBehaviour {
-    public static event Action<int> PointsScored;
+  public class Target : ShotAnimatable {
+    public bool IsStanding => m_isStanding;
+    private readonly string TAKE_SHOT_TRIGGER = "Hit";
+    private readonly string RESET_TRIGGER = "Reset";
 
-    [SerializeField] private Transform m_hitEffectPrefab;
-    [SerializeField] private AudioClip[] m_hitSfxClips;
-    [SerializeField] private AudioSource m_hitSfx;
-    private Animator m_animator;
+    private bool m_isStanding = false;
 
     private void Awake() {
-      m_animator = GetComponentInParent<Animator>();
-      if (m_animator == null) {
-        Debug.LogError($"No Animator component found in {name}'s parent");
-      }
-    }
-    public virtual void TakeShot(RaycastHit hitInfo) {
-      Transform hitEffect = Instantiate(m_hitEffectPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal), transform.parent);
-      hitEffect.GetComponent<ParticleSystem>().Play();
-      AudioClip audioClip = m_hitSfxClips[UnityEngine.Random.Range(0, m_hitSfxClips.Length)];
-      m_hitSfx.PlayOneShot(audioClip, 1f);
-      m_animator.SetTrigger("Hit");
-      Destroy(hitEffect.gameObject, 5f);
+      m_Animator = GetComponent<Animator>();
+      GameManager.InitializationCompleted += SetRoundStartAnimationState;
     }
 
-    protected void OnPointsScored(int points) {
-      PointsScored?.Invoke(points);
+    public override void PlayTakeShot() {
+      m_isStanding = false;
+      m_Animator.SetTrigger(TAKE_SHOT_TRIGGER);
+    }
+
+    public override void ResetToDefault() {
+      m_isStanding = true;
+      m_Animator.SetTrigger(RESET_TRIGGER);
+    }
+
+    private void SetRoundStartAnimationState(GameType gameType) {
+      switch (gameType) {
+        case GameType.AllStanding:
+          // Fire ready event to start countdown
+          break;
+        case GameType.WhackAMole:
+          PlayTakeShot();
+          // Fire ready event to start countdown
+          break;
+        default:
+          // Fire ready event to start countdown
+          break;
+      }
     }
   }
 }

@@ -1,4 +1,4 @@
-using CarnivalShooter.Gameplay;
+using CarnivalShooter.Gameplay.Behavior;
 using CarnivalShooter.Managers;
 using System;
 using System.Collections;
@@ -48,11 +48,11 @@ namespace CarnivalShooter.Gameplay {
       m_animator.SetTrigger("Shoot");
       AmmoChanged?.Invoke(m_totalAmmo);
       bool hasHit = Physics.Raycast(m_povCamera.transform.position, m_povCamera.transform.forward, out RaycastHit hit, m_shotDistance);
-      if (hasHit && hit.transform.TryGetComponent(out Target target)) {
-        target.TakeShot(hit);
+      if (hasHit && hit.transform.TryGetComponent(out Scoreable scoreable)) {
+        hit.transform.GetComponent<Shootable>().TakeShot(hit);
+        scoreable.OnPointsScored();
         return;
       }
-        Debug.Log("Shot Missed!");
     }
 
     private bool CanShoot() {

@@ -41,7 +41,6 @@ namespace CarnivalShooter.UI.Manager {
     }
 
     private void SetScoreLabel(int label) {
-      print("SetScoreLabel");
       m_ScoreLabel.text = label.ToString();
     }
 

@@ -1,7 +1,6 @@
-using CarnivalShooter.Gameplay;
+using CarnivalShooter.Gameplay.Behavior;
+using CarnivalShooter.Managers.Data;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CarnivalShooter.Managers {
@@ -10,6 +9,7 @@ namespace CarnivalShooter.Managers {
     public static event Action<float> RoundDurationInitializing;
     public static event Action<int> ScoreInitializing;
     public static event Action<int> ScoreUpdated;
+    public static event Action<GameType> InitializationCompleted;
 
     private int m_TotalScore;
     public int TotalScore => m_TotalScore;
@@ -23,18 +23,25 @@ namespace CarnivalShooter.Managers {
     [SerializeField] private int m_InitialScore = 0;
 
     private void Awake() {
-      Target.PointsScored += SetPointsScored;
+      Scoreable.PointsScored += SetPointsScored;
     }
 
     private void OnEnable() {
       OnInitializeRound();
     }
 
+    private void Start() {
+      OnInitializationComplete();
+    }
+
     private void OnInitializeRound() {
-      print("Initializing");
       AmmoInitializing?.Invoke(m_StartingAmmo);
       RoundDurationInitializing?.Invoke(m_RoundDuration);
       ScoreInitializing?.Invoke(m_InitialScore);
+    }
+
+    private void OnInitializationComplete() {
+      InitializationCompleted?.Invoke(GameType.WhackAMole);
     }
 
     private void SetPointsScored(int points) {
