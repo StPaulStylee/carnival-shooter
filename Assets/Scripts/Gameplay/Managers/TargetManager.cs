@@ -1,6 +1,7 @@
 using CarnivalShooter.Gameplay;
 using CarnivalShooter.Managers;
 using CarnivalShooter.Managers.Data;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ using UnityEngine;
 namespace CarnivalShooter.Gameplay.Managers {
   public class TargetManager : MonoBehaviour {
     private List<Target> targetsInScene = new();
-    private Target m_CurrentActiveTarget;
+    private List<Target> m_CurrentActiveTargets = new();
 
     [SerializeField] private float targetStandingTime = 2f;
     private bool m_isRoundActive;
@@ -18,13 +19,19 @@ namespace CarnivalShooter.Gameplay.Managers {
     }
 
     private Target GetTargetToActivate() {
-      int indexToActivate = Random.Range(0, targetsInScene.Count);
+      int indexToActivate = UnityEngine.Random.Range(0, targetsInScene.Count);
       Target targetToActivate = targetsInScene[indexToActivate];
       if (targetToActivate.IsStanding) {
         print("Recursion! Look for weirdness.");
         GetTargetToActivate();
       }
       return targetToActivate;
+    }
+
+    private void GetTargetsToActivate(int amount) {
+      for (int i = 0; i < amount; i++) {
+        m_CurrentActiveTargets.Add(GetTargetToActivate());
+      }
     }
 
     private void OnInitializationCompleted(GameType gametype) {
@@ -35,15 +42,25 @@ namespace CarnivalShooter.Gameplay.Managers {
       StartCoroutine(StartGame(gametype));
     }
 
+    private bool HasActiveTargetsRemaining() {
+      bool hasTargetRemaining = m_CurrentActiveTargets.Find(target => target.IsStanding);
+      return hasTargetRemaining;
+    }
+
     private IEnumerator StartGame(GameType gametype) {
       m_isRoundActive = true;
       while (m_isRoundActive) {
-        if (m_CurrentActiveTarget != null) {
-          m_CurrentActiveTarget.PlayTakeShot();
+        if (HasActiveTargetsRemaining()) {
+          foreach(Target target in m_CurrentActiveTargets) {
+            target.PlayTakeShot();
+          }
         }
         float standingTimeRemaining = targetStandingTime;
-        m_CurrentActiveTarget = GetTargetToActivate();
-        m_CurrentActiveTarget.ResetToDefault();
+        m_CurrentActiveTargets.Clear();
+        GetTargetsToActivate(3);
+        foreach (Target target in m_CurrentActiveTargets) {
+          target.ResetToDefault();
+        }
         yield return new WaitForSeconds(targetStandingTime);
       }
 
