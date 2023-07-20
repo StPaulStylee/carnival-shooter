@@ -245,12 +245,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_refireRate: 0.2
   m_shotDistance: 10
-  m_totalAmmo: 30
+  m_startingAmmo: 30
   m_shotParticle: {fileID: 1233408705322548680}
   m_bulletEjectionParticle: {fileID: 6467270980254182237}
   m_animator: {fileID: 4081580121219079927}
   m_shotSfx: {fileID: 2502834424191166407}
   m_shotSfxClip: {fileID: 8300000, guid: 74fd653a1d94a7e4aa7a7a9d03082146, type: 3}
+  m_reloadSfxClip: {fileID: 8300000, guid: 72b05b9fc2241d649b30a89d087ee5a6, type: 3}
 --- !u!1 &1504444984545858
 GameObject:
   m_ObjectHideFlags: 0

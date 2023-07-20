@@ -12,20 +12,36 @@ namespace CarnivalShooter.Gameplay {
     private readonly string RESET_TRIGGER = "Reset";
 
     private bool m_isStanding = false;
+    private MeshCollider[] m_meshColliders;
 
     private void Awake() {
       m_Animator = GetComponent<Animator>();
+      m_meshColliders = GetComponentsInChildren<MeshCollider>();
       GameManager.InitializationCompleted += SetRoundStartAnimationState;
     }
 
     public override void PlayTakeShot() {
+      DisableMeshColliders();
       m_isStanding = false;
       m_Animator.SetTrigger(TAKE_SHOT_TRIGGER);
     }
 
     public override void ResetToDefault() {
+      EnableMeshColliders();
       m_isStanding = true;
       m_Animator.SetTrigger(RESET_TRIGGER);
+    }
+
+    private void DisableMeshColliders() {
+      foreach (var collider in m_meshColliders) {
+        collider.enabled = false;
+      }
+    }
+
+    private void EnableMeshColliders() {
+      foreach (var collider in m_meshColliders) {
+        collider.enabled = true;
+      }
     }
 
     private void SetRoundStartAnimationState(GameType gameType) {

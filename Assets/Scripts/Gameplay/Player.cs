@@ -57,7 +57,7 @@ namespace CarnivalShooter.Gameplay {
     }
 
     private void OnReloadPerformed(InputAction.CallbackContext ctx) {
-      print("Reloading!");
+      weapon.Reload();
     }
 
     private void SetupInputActions() {

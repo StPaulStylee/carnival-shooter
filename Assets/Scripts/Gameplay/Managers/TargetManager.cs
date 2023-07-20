@@ -47,11 +47,17 @@ namespace CarnivalShooter.Gameplay.Managers {
       return hasTargetRemaining;
     }
 
+    private List<Target> GetAllActiveTargets() {
+      var targets = m_CurrentActiveTargets.FindAll(target => target.IsStanding);
+      return targets;
+    }
+
     private IEnumerator StartGame(GameType gametype) {
       m_isRoundActive = true;
       while (m_isRoundActive) {
         if (HasActiveTargetsRemaining()) {
-          foreach(Target target in m_CurrentActiveTargets) {
+          Debug.Log("Still standing");
+          foreach(Target target in GetAllActiveTargets()) {
             target.PlayTakeShot();
           }
         }
