@@ -41,7 +41,7 @@ namespace CarnivalShooter.Gameplay {
 
     public void Reload() {
       m_remainingAmmo = m_startingAmmo;
-      m_shotSfx.PlayOneShot(m_reloadSfxClip, 0.8f);
+      //m_shotSfx.PlayOneShot(m_reloadSfxClip, 0.8f);
       m_animator.SetTrigger("Reload");
       AmmoChanged?.Invoke(m_remainingAmmo);
     }

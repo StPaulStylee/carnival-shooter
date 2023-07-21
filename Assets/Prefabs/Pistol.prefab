@@ -40,7 +40,7 @@ Transform:
   - {fileID: 6561711412884334781}
   - {fileID: 1428468979468553350}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33375836090157086
 MeshFilter:
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_animator: {fileID: 4081580121219079927}
   m_shotSfx: {fileID: 2502834424191166407}
   m_shotSfxClip: {fileID: 8300000, guid: 74fd653a1d94a7e4aa7a7a9d03082146, type: 3}
-  m_reloadSfxClip: {fileID: 8300000, guid: 72b05b9fc2241d649b30a89d087ee5a6, type: 3}
+  m_reloadSfxClip: {fileID: 8300000, guid: f1b4f9a548f164a4eb6d53fc885fddcf, type: 3}
 --- !u!1 &1504444984545858
 GameObject:
   m_ObjectHideFlags: 0

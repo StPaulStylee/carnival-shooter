@@ -31,7 +31,7 @@ Transform:
   - {fileID: 8593713435797084477}
   - {fileID: 4424890778283865690}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0.7, y: 178.356, z: -0.299}
 --- !u!1001 &4424567269452302124
 PrefabInstance:
@@ -111,6 +111,11 @@ PrefabInstance:
       propertyPath: totalAmmo
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2195630589026208897, guid: a62a50b2925bc2a4e94284532b133994,
+        type: 3}
+      propertyPath: m_reloadSfxClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f1b4f9a548f164a4eb6d53fc885fddcf, type: 3}
     - target: {fileID: 3596263299599835993, guid: a62a50b2925bc2a4e94284532b133994,
         type: 3}
       propertyPath: m_LocalPosition.y
