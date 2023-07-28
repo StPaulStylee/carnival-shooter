@@ -12,12 +12,16 @@ namespace CarnivalShooter.Gameplay {
     [SerializeField] private float m_refireRate = 0.2f;
     [SerializeField] private float m_shotDistance = 10f;
     [SerializeField] private int m_startingAmmo = 30;
+    [Header("Particle Effects")]
     [SerializeField] private ParticleSystem m_shotParticle;
     [SerializeField] private ParticleSystem m_bulletEjectionParticle;
-    [SerializeField] private Animator m_animator;
-    [SerializeField] private AudioSource m_shotSfx;
+    [Header("Audio Configuration")]
+    [SerializeField] private AudioSource m_weaponSfx;
     [SerializeField] private AudioClip m_shotSfxClip;
-    [SerializeField] private AudioClip m_reloadSfxClip;
+    [SerializeField] private AudioClip m_reloadMagOutSfxClip;
+    [SerializeField] private AudioClip m_reloadMagInSfxClip;
+    [SerializeField] private AudioClip m_reloadSlideInSfxClip;
+    [SerializeField] private Animator m_animator;
     private float m_fireTimer;
     private Camera m_povCamera;
     private int m_remainingAmmo;
@@ -54,7 +58,7 @@ namespace CarnivalShooter.Gameplay {
     private void Shoot() {
       m_remainingAmmo--;
       m_shotParticle.Play();
-      m_shotSfx.PlayOneShot(m_shotSfxClip, 0.8f);
+      m_weaponSfx.PlayOneShot(m_shotSfxClip, 0.8f);
       m_animator.SetTrigger("Shoot");
       AmmoChanged?.Invoke(m_remainingAmmo);
       bool hasHit = Physics.Raycast(m_povCamera.transform.position, m_povCamera.transform.forward, out RaycastHit hit, m_shotDistance);
@@ -78,6 +82,18 @@ namespace CarnivalShooter.Gameplay {
     // Animation Events
     private void PlayBulletEjection() {
       m_bulletEjectionParticle.Play();
+    }
+
+    private void PlayReloadMagOutSfx() {
+      m_weaponSfx.PlayOneShot(m_reloadMagOutSfxClip);
+    }
+
+    private void PlayReloadMagInSfx() {
+      m_weaponSfx.PlayOneShot(m_reloadMagInSfxClip);
+    }
+
+    private void PlayReloadSlideInSfx() {
+      m_weaponSfx.PlayOneShot(m_reloadSlideInSfxClip, 0.8f);
     }
   }
 }
