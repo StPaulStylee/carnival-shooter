@@ -56,7 +56,6 @@ namespace CarnivalShooter.Gameplay.Managers {
       m_isRoundActive = true;
       while (m_isRoundActive) {
         if (HasActiveTargetsRemaining()) {
-          Debug.Log("Still standing");
           foreach(Target target in GetAllActiveTargets()) {
             target.PlayTakeShot();
           }

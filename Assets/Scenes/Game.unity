@@ -1169,6 +1169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIDocument: {fileID: 102131204}
+  m_ammoTemplate: {fileID: 9197481963319205126, guid: c963dcc2c0527af4cbffd4477300aa53,
+    type: 3}
 --- !u!1 &102858441
 GameObject:
   m_ObjectHideFlags: 0
@@ -12187,7 +12189,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29472
+  m_Name: pb_Mesh29474
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -13217,7 +13219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4adbfa970ced247a6ef2fbc9c3a46b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_StartingAmmo: 30
+  m_StartingAmmo: 5
   m_RoundDuration: 60
   m_InitialScore: 0
 --- !u!114 &1700695876

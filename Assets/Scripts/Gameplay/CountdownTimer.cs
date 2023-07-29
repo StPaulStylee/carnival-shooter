@@ -41,7 +41,6 @@ public class CountdownTimer : MonoBehaviour {
 
       // Update UI or perform other actions based on the remaining time
       TimerChanged?.Invoke(timeRemaining);
-      //Debug.Log("Remaining Time: " + timeRemaining);
     }
 
     // Countdown has reached zero, perform actions or end the game

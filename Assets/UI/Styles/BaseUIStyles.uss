@@ -1,3 +1,49 @@
-.header {
-  color: #FEA897
+.ammo-disabled {
+    flex-grow: 1;
+    background-color: rgba(253, 253, 253, 0);
+    background-image: url('project://database/Assets/UI/Assets/bullet_filled.png?fileID=21300000&guid=dbcffba7e6aba1d46ab187efaeb3164d&type=3#bullet_filled');
+    flex-basis: auto;
+    flex-direction: row;
+    min-height: auto;
+    min-width: auto;
+    align-items: auto;
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgba(209, 209, 209, 0.2);
+    flex-shrink: 0;
+    align-self: auto;
+    justify-content: flex-start;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    position: relative;
+    height: 36px;
+    width: 33px;
+    left: 0;
+    bottom: 0;
+}
+
+.ammo-enabled {
+    flex-grow: 1;
+    background-color: rgba(253, 253, 253, 0);
+    background-image: url('project://database/Assets/UI/Assets/bullet_filled.png?fileID=21300000&guid=dbcffba7e6aba1d46ab187efaeb3164d&type=3#bullet_filled');
+    flex-basis: auto;
+    flex-direction: row;
+    min-height: auto;
+    min-width: auto;
+    align-items: auto;
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgb(209, 209, 209);
+    flex-shrink: 0;
+    align-self: auto;
+    justify-content: flex-start;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    position: relative;
+    height: 36px;
+    width: 33px;
+    left: 0;
+    bottom: 0;
 }

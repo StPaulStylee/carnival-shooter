@@ -7,7 +7,8 @@ using UnityEngine;
 
 namespace CarnivalShooter.Gameplay {
   public class Weapon : MonoBehaviour {
-    public static event Action<int> AmmoChanged;
+    public static event Action AmmoChanged;
+    public static event Action<int> AmmoReloaded;
     [Header("Weapon Configuration")]
     [SerializeField] private float m_refireRate = 0.2f;
     [SerializeField] private float m_shotDistance = 10f;
@@ -47,7 +48,7 @@ namespace CarnivalShooter.Gameplay {
       m_remainingAmmo = m_startingAmmo;
       //m_shotSfx.PlayOneShot(m_reloadSfxClip, 0.8f);
       m_animator.SetTrigger("Reload");
-      AmmoChanged?.Invoke(m_remainingAmmo);
+      AmmoReloaded?.Invoke(m_startingAmmo);
     }
 
     private void SetStartingAmmo(int amount) {
@@ -60,10 +61,9 @@ namespace CarnivalShooter.Gameplay {
       m_shotParticle.Play();
       m_weaponSfx.PlayOneShot(m_shotSfxClip, 0.8f);
       m_animator.SetTrigger("Shoot");
-      AmmoChanged?.Invoke(m_remainingAmmo);
+      AmmoChanged?.Invoke();
       bool hasHit = Physics.Raycast(m_povCamera.transform.position, m_povCamera.transform.forward, out RaycastHit hit, m_shotDistance);
       if (hasHit && hit.transform.TryGetComponent(out Scoreable scoreable)) {
-        hit.transform.parent.GetComponent<ChangeMaterial>().SwapMaterial(); // TODO: Remove this when no longer necessary
         hit.transform.GetComponent<Shootable>().TakeShot(hit);
         scoreable.OnPointsScored();
         return;
