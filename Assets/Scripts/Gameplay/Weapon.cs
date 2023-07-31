@@ -26,7 +26,7 @@ namespace CarnivalShooter.Gameplay {
     private float m_fireTimer;
     private Camera m_povCamera;
     private int m_remainingAmmo;
-
+    private bool m_isReloading;
     private void Awake() {
       m_povCamera = Camera.main;
       GameManager.AmmoInitializing += SetStartingAmmo;
@@ -45,10 +45,15 @@ namespace CarnivalShooter.Gameplay {
     }
 
     public void Reload() {
+      SetIsReloading(true);
       m_remainingAmmo = m_startingAmmo;
       //m_shotSfx.PlayOneShot(m_reloadSfxClip, 0.8f);
       m_animator.SetTrigger("Reload");
       AmmoReloaded?.Invoke(m_startingAmmo);
+    }
+
+    private void SetIsReloading(bool isReloading) {
+      m_isReloading = isReloading;
     }
 
     private void SetStartingAmmo(int amount) {
@@ -72,6 +77,10 @@ namespace CarnivalShooter.Gameplay {
 
 
     private bool CanShoot() {
+      Debug.Log(m_isReloading);
+      if (m_isReloading) {
+        return false;
+      }
       if (m_fireTimer >= m_refireRate && m_remainingAmmo > 0) {
         m_fireTimer = 0;
         return true;
@@ -94,6 +103,11 @@ namespace CarnivalShooter.Gameplay {
 
     private void PlayReloadSlideInSfx() {
       m_weaponSfx.PlayOneShot(m_reloadSlideInSfxClip, 0.8f);
+    }
+
+    private void SetIsReloadingToFalse() {
+      Debug.Log("Setting it to false");
+      SetIsReloading(false);
     }
   }
 }
