@@ -61,7 +61,6 @@ namespace CarnivalShooter.Gameplay {
     }
 
     private void SetupInputActions() {
-      print("Setup");
       gameControls.GameController.Fire.performed += OnFirePerformed;
       gameControls.GameController.Reload.performed += OnReloadPerformed;
       gameControls.GameController.Enable();

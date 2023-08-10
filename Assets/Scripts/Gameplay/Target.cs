@@ -1,6 +1,7 @@
 using CarnivalShooter.Gameplay.Behavior;
 using CarnivalShooter.Managers;
 using CarnivalShooter.Managers.Data;
+using CarnivalShooter.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -19,6 +19,7 @@ namespace CarnivalShooter.Gameplay {
     [Header("Audio Configuration")]
     [SerializeField] private AudioSource m_weaponSfx;
     [SerializeField] private AudioClip m_shotSfxClip;
+    [SerializeField] private AudioClip m_magEmptySfxClip;
     [SerializeField] private AudioClip m_reloadMagOutSfxClip;
     [SerializeField] private AudioClip m_reloadMagInSfxClip;
     [SerializeField] private AudioClip m_reloadSlideInSfxClip;
@@ -46,6 +47,7 @@ namespace CarnivalShooter.Gameplay {
 
     public void Reload() {
       SetIsReloading(true);
+      m_animator.SetBool("IsEmpty", false);
       m_remainingAmmo = m_startingAmmo;
       //m_shotSfx.PlayOneShot(m_reloadSfxClip, 0.8f);
       m_animator.SetTrigger("Reload");
@@ -62,7 +64,7 @@ namespace CarnivalShooter.Gameplay {
     }
 
     private void Shoot() {
-      m_remainingAmmo--;
+      HandleRemainingAmmoDuringShot();
       m_shotParticle.Play();
       m_weaponSfx.PlayOneShot(m_shotSfxClip, 0.8f);
       m_animator.SetTrigger("Shoot");
@@ -70,14 +72,13 @@ namespace CarnivalShooter.Gameplay {
       bool hasHit = Physics.Raycast(m_povCamera.transform.position, m_povCamera.transform.forward, out RaycastHit hit, m_shotDistance);
       if (hasHit && hit.transform.TryGetComponent(out Scoreable scoreable)) {
         hit.transform.GetComponent<Shootable>().TakeShot(hit);
-        scoreable.OnPointsScored();
+        scoreable.OnPointsScored(hit.transform.position);
         return;
       }
     }
 
 
     private bool CanShoot() {
-      Debug.Log(m_isReloading);
       if (m_isReloading) {
         return false;
       }
@@ -85,7 +86,17 @@ namespace CarnivalShooter.Gameplay {
         m_fireTimer = 0;
         return true;
       }
+      if (m_remainingAmmo == 0) {
+        m_weaponSfx.PlayOneShot(m_magEmptySfxClip, 0.8f);
+      }
       return false;
+    }
+
+    private void HandleRemainingAmmoDuringShot() {
+      m_remainingAmmo--;
+      if (m_remainingAmmo == 0) {
+        m_animator.SetBool("IsEmpty", true);
+      }
     }
 
     // Animation Events
@@ -106,7 +117,6 @@ namespace CarnivalShooter.Gameplay {
     }
 
     private void SetIsReloadingToFalse() {
-      Debug.Log("Setting it to false");
       SetIsReloading(false);
     }
   }

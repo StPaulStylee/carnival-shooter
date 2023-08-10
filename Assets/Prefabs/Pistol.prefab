@@ -250,6 +250,7 @@ MonoBehaviour:
   m_bulletEjectionParticle: {fileID: 6467270980254182237}
   m_weaponSfx: {fileID: 2502834424191166407}
   m_shotSfxClip: {fileID: 8300000, guid: 74fd653a1d94a7e4aa7a7a9d03082146, type: 3}
+  m_magEmptySfxClip: {fileID: 8300000, guid: a72923358d97bdc408fbe9d051b18ead, type: 3}
   m_reloadMagOutSfxClip: {fileID: 8300000, guid: e2c2a0ae8ed12784a966b6969efef340,
     type: 3}
   m_reloadMagInSfxClip: {fileID: 8300000, guid: 2966fbeece35b2b4bb72bbb1afe214d5,
