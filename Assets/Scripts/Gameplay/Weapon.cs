@@ -1,8 +1,6 @@
 using CarnivalShooter.Gameplay.Behavior;
 using CarnivalShooter.Managers;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CarnivalShooter.Gameplay {
@@ -32,7 +30,6 @@ namespace CarnivalShooter.Gameplay {
       m_povCamera = Camera.main;
       GameManager.AmmoInitializing += SetStartingAmmo;
     }
-
 
     private void Update() {
       m_fireTimer += Time.deltaTime;

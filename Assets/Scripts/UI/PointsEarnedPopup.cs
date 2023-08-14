@@ -1,6 +1,4 @@
 using CarnivalShooter.Utilities;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -15,6 +13,7 @@ namespace CarnivalShooter.UI {
     [SerializeField] private float m_Lifetime = 2f;
     [Tooltip("The speed at which the popup fades away after it's lifetime as expired")]
     [SerializeField] private float m_FadeawaySpeed = 2f;
+
     private void Awake() {
       m_PointsEarnedText = GetComponent<TextMeshPro>();
     }
@@ -22,7 +21,7 @@ namespace CarnivalShooter.UI {
     private void Update() {
       transform.position += new Vector3(0, m_MoveYSpeed, 0) * Time.deltaTime;
       m_Lifetime -= Time.deltaTime;
-      if (m_Lifetime < 0 ) {
+      if (m_Lifetime < 0) {
         m_textColor.a -= m_FadeawaySpeed * Time.deltaTime;
         m_PointsEarnedText.color = m_textColor;
       }
@@ -31,16 +30,17 @@ namespace CarnivalShooter.UI {
       }
     }
 
-    public static PointsEarnedPopup Create(Vector3 position, int pointsEarned) {
+    public static PointsEarnedPopup Create(Vector3 position, int pointsEarned, Color color) {
       Transform pointsEarnedTransform = Instantiate(GameAssets.i.m_PointsEarnedPopupPrefab, position, Quaternion.AngleAxis(180f, Vector3.up));
       PointsEarnedPopup popup = pointsEarnedTransform.GetComponent<PointsEarnedPopup>();
-      popup.Setup(pointsEarned);
+      popup.Setup(pointsEarned, color);
       return popup;
     }
 
-    public void Setup(int pointsAmount) {
+    private void Setup(int pointsAmount, Color color) {
       m_PointsEarnedText.text = pointsAmount.ToString();
-      m_textColor = m_PointsEarnedText.color;
+      m_textColor = color;
+      m_PointsEarnedText.color = m_textColor;
     }
   }
 }

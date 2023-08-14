@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Score: 15
+  m_ColorHex: '#085405'
 --- !u!114 &7309576015341891615
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13317,7 +13317,6 @@ GameObject:
   - component: {fileID: 1700695875}
   - component: {fileID: 1700695876}
   - component: {fileID: 1700695878}
-  - component: {fileID: 1700695877}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -13380,20 +13379,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetStandingTime: 5
---- !u!114 &1700695877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700695872}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf0a564bc5a64434fbd16d67f72083dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PointsEarnedPrefab: {fileID: 6845142718413117976, guid: 6770f31af4fabb24e8d3f2d05d96b5e9,
-    type: 3}
 --- !u!114 &1700695878
 MonoBehaviour:
   m_ObjectHideFlags: 0

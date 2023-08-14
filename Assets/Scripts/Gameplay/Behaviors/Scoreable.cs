@@ -1,9 +1,6 @@
 using CarnivalShooter.Data;
-using CarnivalShooter.Gameplay;
 using CarnivalShooter.UI;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CarnivalShooter.Gameplay.Behavior {
@@ -15,14 +12,18 @@ namespace CarnivalShooter.Gameplay.Behavior {
     [ScoreValue]
     public int m_Score;
 
+    [ColorValue]
+    public string m_ColorHex;
+    private Color m_Color;
+
     private void Awake() {
+      ColorUtility.TryParseHtmlString(m_ColorHex, out m_Color);
       m_PointsEarnedSpawnTransform = GetComponentInParent<Transform>();
-      Debug.Log(m_PointsEarnedSpawnTransform.name);
     }
 
     public void OnPointsScored(Vector3 popupPosition) {
       PointsScored?.Invoke(m_Score);
-      PointsEarnedPopup.Create(popupPosition, m_Score);
+      PointsEarnedPopup.Create(popupPosition, m_Score, m_Color);
     }
   }
 }
