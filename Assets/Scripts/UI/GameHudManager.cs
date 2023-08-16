@@ -27,8 +27,8 @@ namespace CarnivalShooter.UI.Manager {
     private Stack<VisualElement> m_EnabledAmmoIcons = new();
     private Stack<VisualElement> m_DisabledAmmoIcons = new();
     private void Awake() {
-      GameManager.RoundDurationInitializing += SetTimerLabel;
-      CountdownTimer.TimerChanged += SetTimerLabel;
+      GameManager.CountdownTimerInitializing += SetTimerLabel;
+      CountDownTimer.TimerChanged += SetTimerLabel;
       GameManager.AmmoInitializing += SetAmmoIcons;
       Weapon.AmmoChanged += UpdateAmmoIcons;
       Weapon.AmmoReloaded += SetAmmoIcons;

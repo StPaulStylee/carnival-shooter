@@ -1,63 +1,57 @@
-using Assets.Scripts.Data;
-using CarnivalShooter.Managers;
+﻿using Assets.Scripts.Data;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CountdownTimer : MonoBehaviour {
-  public static event Action<float> TimerChanged;
-
-  //private float m_totalTime = 30f;
-  //private float m_timeRemaining;
-  //private bool m_isRunning;
-
-  private Dictionary<string, CountDownTimer> timerInstances = new();
-
-  private void Awake() {
-    GameManager.RoundDurationInitializing += SetTimer;
-    GameManager.CountdownTimerStarted += StartTimer;
-  }
-
-  private void Start() {
-    //TimerChanged?.Invoke(timeRemaining.ToString());
-    //StartCoroutine(StartCountdown());
-  }
-
-  public void Pause(CountDownTimer timer) { timer.m_IsRunning = false; }
-
-  private void SetTimer(string timerType, float time) {
-    CountDownTimer timer = new CountDownTimer(time);
-    timerInstances.Add(timerType, timer);
-    //m_totalTime = time;
-  }
-
-  private void StartTimer(string timerKey) {
-    bool hasTimer = timerInstances.TryGetValue(timerKey, out CountDownTimer timer);
-    if (hasTimer) {
-      StartCoroutine(StartCountdown(timer));
-    }
-  }
-
-  private IEnumerator StartCountdown(CountDownTimer timer) {
-    float timeRemaining = timer.m_TotalTime;
-    timer.m_IsRunning = true;
-
-    if (timeRemaining > 0 && !timer.m_IsRunning) {
-      yield return null;
+namespace CarnivalShooter.Gameplay {
+  public class CountDownTimer {
+    public static event Action<float> TimerChanged;
+    public static event Action<bool> TimerBlockingExecution;
+    private string m_TimerType;
+    private float m_TotalTime;
+    private float m_TimeRemaining;
+    private bool m_IsRunning;
+    private bool m_IsExecutionBlocking;
+    public CountDownTimer(string timerType, float totalTime) {
+      m_TimerType = timerType;
+      m_TotalTime = totalTime;
+      m_TimeRemaining = totalTime;
+      m_IsRunning = false;
+      m_IsExecutionBlocking = SetIsBlockingExecution(timerType);
     }
 
-    while (timeRemaining > 0f && timer.m_IsRunning) {
-      yield return new WaitForSeconds(1f); // Wait for 1 second
+    public IEnumerator StartCountdown() {
+      //float timeRemaining = timer.m_TotalTime;
+      m_IsRunning = true;
+      if (m_IsExecutionBlocking) {
+        TimerBlockingExecution?.Invoke(true);
+      }
 
-      timeRemaining--;
+      if (m_TimeRemaining > 0 && !m_IsRunning) {
+        yield return null;
+      }
 
-      // Update UI or perform other actions based on the remaining time
-      TimerChanged?.Invoke(timeRemaining);
+      while (m_TimeRemaining > 0f && m_IsRunning) {
+        //Debug.Log($"{m_TimerType}: {m_TimeRemaining}");
+        yield return new WaitForSeconds(1f); // Wait for 1 second
+
+        m_TimeRemaining--;
+
+        // Update UI or perform other actions based on the remaining time
+        TimerChanged?.Invoke(m_TimeRemaining);
+      }
+
+      // Countdown has reached zero, perform actions or end the game
+      Debug.Log($"{m_TimerType}: Countdown Finished!");
+      TimerBlockingExecution?.Invoke(false);
     }
+    public void Pause(CountDownTimer timer) { timer.m_IsRunning = false; }
 
-    // Countdown has reached zero, perform actions or end the game
-    Debug.Log("Countdown Finished!");
+    private bool SetIsBlockingExecution(string timerType) {
+      if (timerType == TimerConstants.RoundStartCountdownKey) {
+        return true;
+      }
+      return false;
+    }
   }
-
 }

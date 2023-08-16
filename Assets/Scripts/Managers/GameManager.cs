@@ -1,13 +1,15 @@
 using Assets.Scripts.Data;
+using CarnivalShooter.Gameplay;
 using CarnivalShooter.Gameplay.Behavior;
 using CarnivalShooter.Managers.Data;
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace CarnivalShooter.Managers {
   public class GameManager : MonoBehaviour {
     public static event Action<int> AmmoInitializing;
-    public static event Action<string, float> RoundDurationInitializing;
+    public static event Action<string, float> CountdownTimerInitializing;
     // RoundStartCountdown
     public static event Action<string> CountdownTimerStarted;
     public static event Action<int> ScoreInitializing;
@@ -15,6 +17,9 @@ namespace CarnivalShooter.Managers {
     public static event Action<GameType> InitializationCompleted;
 
     private int m_TotalScore;
+    // Right now this is completely controller by CountdownTimer. This will need to be changed if
+    // this value depends on more than just the countdown timer sending its ready event
+    private bool m_IsInitialized = false;
     public int TotalScore => m_TotalScore;
 
     [Header("Start of Round Data")]
@@ -27,6 +32,7 @@ namespace CarnivalShooter.Managers {
 
     private void Awake() {
       Scoreable.PointsScored += SetPointsScored;
+      CountDownTimer.TimerBlockingExecution += SetInitialized;
     }
 
     private void OnEnable() {
@@ -34,13 +40,16 @@ namespace CarnivalShooter.Managers {
     }
 
     private void Start() {
-      OnInitializationComplete();
+      StartCoroutine(WaitUntilInitializationComplete());
+      //OnInitializationComplete();
     }
 
     private void OnInitializeRound() {
       AmmoInitializing?.Invoke(m_StartingAmmo);
-      RoundDurationInitializing?.Invoke(TimerConstants.RoundTimerKey, m_RoundDuration);
+      CountdownTimerInitializing?.Invoke(TimerConstants.RoundTimerKey, m_RoundDuration);
+      CountdownTimerInitializing?.Invoke(TimerConstants.RoundStartCountdownKey, 3f); // Remove this constant float
       ScoreInitializing?.Invoke(m_InitialScore);
+      CountdownTimerStarted?.Invoke(TimerConstants.RoundStartCountdownKey);
     }
 
     private void OnInitializationComplete() {
@@ -51,6 +60,19 @@ namespace CarnivalShooter.Managers {
     private void SetPointsScored(int points) {
       m_TotalScore += points;
       ScoreUpdated?.Invoke(m_TotalScore);
+    }
+
+    private void SetInitialized(bool isInitialized) {
+      Debug.Log(isInitialized);
+      m_IsInitialized = !isInitialized;
+    }
+
+    private IEnumerator WaitUntilInitializationComplete() {
+      while (m_IsInitialized == false) {
+        Debug.Log("GameManager in coroutine");
+        yield return null;
+      }
+      OnInitializationComplete();
     }
   }
 }
