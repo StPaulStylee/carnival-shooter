@@ -1,7 +1,5 @@
 using CarnivalShooter.Gameplay;
 using CarnivalShooter.Managers;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -42,7 +40,7 @@ namespace CarnivalShooter.UI.Manager {
       var rootElement = m_UIDocument.rootVisualElement;
       m_AmmoContainer = rootElement.Query<VisualElement>(ammoContainerName);
       m_ScoreLabel = rootElement.Query<Label>(scoreLabelName);
-      m_TimerLabel = rootElement.Query<Label>(timerLabelName);    
+      m_TimerLabel = rootElement.Query<Label>(timerLabelName);
     }
 
     private void SetAmmoIcons(int ammoCount) {
@@ -72,6 +70,10 @@ namespace CarnivalShooter.UI.Manager {
     }
 
     private void SetTimerLabel(float label) {
+      m_TimerLabel.text = label.ToString();
+    }
+
+    private void SetTimerLabel(string _, float label) {
       m_TimerLabel.text = label.ToString();
     }
   }

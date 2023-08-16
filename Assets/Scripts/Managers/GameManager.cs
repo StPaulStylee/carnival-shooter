@@ -1,3 +1,4 @@
+using Assets.Scripts.Data;
 using CarnivalShooter.Gameplay.Behavior;
 using CarnivalShooter.Managers.Data;
 using System;
@@ -6,7 +7,9 @@ using UnityEngine;
 namespace CarnivalShooter.Managers {
   public class GameManager : MonoBehaviour {
     public static event Action<int> AmmoInitializing;
-    public static event Action<float> RoundDurationInitializing;
+    public static event Action<string, float> RoundDurationInitializing;
+    // RoundStartCountdown
+    public static event Action<string> CountdownTimerStarted;
     public static event Action<int> ScoreInitializing;
     public static event Action<int> ScoreUpdated;
     public static event Action<GameType> InitializationCompleted;
@@ -36,12 +39,13 @@ namespace CarnivalShooter.Managers {
 
     private void OnInitializeRound() {
       AmmoInitializing?.Invoke(m_StartingAmmo);
-      RoundDurationInitializing?.Invoke(m_RoundDuration);
+      RoundDurationInitializing?.Invoke(TimerConstants.RoundTimerKey, m_RoundDuration);
       ScoreInitializing?.Invoke(m_InitialScore);
     }
 
     private void OnInitializationComplete() {
       InitializationCompleted?.Invoke(GameType.WhackAMole);
+      CountdownTimerStarted?.Invoke(TimerConstants.RoundTimerKey);
     }
 
     private void SetPointsScored(int points) {
