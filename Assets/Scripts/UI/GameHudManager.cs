@@ -1,3 +1,4 @@
+using Assets.Scripts.Data;
 using CarnivalShooter.Gameplay;
 using CarnivalShooter.Managers;
 using System.Collections.Generic;
@@ -11,9 +12,9 @@ namespace CarnivalShooter.UI.Manager {
     const string ammoEnabledClassName = "ammo-enabled";
     const string ammoDisabledClassName = "ammo-disabled";
     const string scoreLabelName = "game-hud__score-text";
-    const string timerLabelName = "game-hud__game-timer-text";
+    const string roundDurationTimerLabelName = "game-hud__game-timer-text";
+    const string roundStartDurationTimerLabelName = "game-hud__round-start-timer-text";
 
-    //public static event Action<string> TimerChanged;
     [Header("UXML Documents/Templates")]
     [Tooltip("The Root UI Document")]
     [SerializeField] private UIDocument m_UIDocument;
@@ -22,12 +23,15 @@ namespace CarnivalShooter.UI.Manager {
 
     private VisualElement m_AmmoContainer;
     private Label m_ScoreLabel;
-    private Label m_TimerLabel;
+    private Label m_RoundDurationLabel;
+    private Label m_RoundStartDurationLabel;
 
     private Stack<VisualElement> m_EnabledAmmoIcons = new();
     private Stack<VisualElement> m_DisabledAmmoIcons = new();
     private void Awake() {
       GameManager.CountdownTimerInitializing += SetTimerLabel;
+      GameManager.CountdownTimerInitializing += HideTimerLabel;
+      GameManager.CountdownTimerStarted += ShowTimerLabel;
       CountDownTimer.TimerChanged += SetTimerLabel;
       GameManager.AmmoInitializing += SetAmmoIcons;
       Weapon.AmmoChanged += UpdateAmmoIcons;
@@ -40,7 +44,8 @@ namespace CarnivalShooter.UI.Manager {
       var rootElement = m_UIDocument.rootVisualElement;
       m_AmmoContainer = rootElement.Query<VisualElement>(ammoContainerName);
       m_ScoreLabel = rootElement.Query<Label>(scoreLabelName);
-      m_TimerLabel = rootElement.Query<Label>(timerLabelName);
+      m_RoundDurationLabel = rootElement.Query<Label>(roundDurationTimerLabelName);
+      m_RoundStartDurationLabel = rootElement.Query<Label>(roundStartDurationTimerLabelName);
     }
 
     private void SetAmmoIcons(int ammoCount) {
@@ -70,12 +75,34 @@ namespace CarnivalShooter.UI.Manager {
     }
 
     private void SetTimerLabel(float label) {
-      m_TimerLabel.text = label.ToString();
+      m_RoundDurationLabel.text = label.ToString();
     }
 
-    private void SetTimerLabel(string _, float label) {
-      m_TimerLabel.text = label.ToString();
+    private void SetTimerLabel(string timerType, float label) {
+      if (timerType.Equals(TimerConstants.RoundTimerKey)) {
+        m_RoundDurationLabel.text = label.ToString();
+        return;
+      }
+      if (label == 0f) {
+        m_RoundStartDurationLabel.text = "START!";
+        return;
+      }
+      m_RoundStartDurationLabel.text = label.ToString();
+    }
+
+    private void ShowTimerLabel(string timerType) {
+      if (timerType.Equals(TimerConstants.RoundTimerKey)) {
+        m_RoundDurationLabel.style.opacity = 1f;
+        m_RoundStartDurationLabel.style.opacity = 0f;
+        return;
+      }
+      m_RoundStartDurationLabel.style.opacity = 1f;
+      m_RoundDurationLabel.style.opacity = 0f;
+    }
+
+    private void HideTimerLabel(string _, float label) {
+      m_RoundStartDurationLabel.style.opacity = 0f;
+      m_RoundDurationLabel.style.opacity = 0f;
     }
   }
 }
-

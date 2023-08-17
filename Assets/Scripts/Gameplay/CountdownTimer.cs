@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace CarnivalShooter.Gameplay {
   public class CountDownTimer {
-    public static event Action<float> TimerChanged;
+    public static event Action<string, float> TimerChanged;
     public static event Action<bool> TimerBlockingExecution;
     private string m_TimerType;
     private float m_TotalTime;
@@ -31,14 +31,14 @@ namespace CarnivalShooter.Gameplay {
         yield return null;
       }
 
-      while (m_TimeRemaining > 0f && m_IsRunning) {
+      while (m_TimeRemaining >= 0f && m_IsRunning) {
         //Debug.Log($"{m_TimerType}: {m_TimeRemaining}");
         yield return new WaitForSeconds(1f); // Wait for 1 second
 
         m_TimeRemaining--;
 
         // Update UI or perform other actions based on the remaining time
-        TimerChanged?.Invoke(m_TimeRemaining);
+        TimerChanged?.Invoke(m_TimerType, m_TimeRemaining);
       }
 
       // Countdown has reached zero, perform actions or end the game

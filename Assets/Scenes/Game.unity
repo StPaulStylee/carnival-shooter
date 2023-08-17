@@ -13363,6 +13363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4adbfa970ced247a6ef2fbc9c3a46b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_RoundStartCountdownDuration: 3
   m_StartingAmmo: 7
   m_RoundDuration: 60
   m_InitialScore: 0

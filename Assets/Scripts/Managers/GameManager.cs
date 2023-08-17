@@ -23,6 +23,8 @@ namespace CarnivalShooter.Managers {
     public int TotalScore => m_TotalScore;
 
     [Header("Start of Round Data")]
+    [Tooltip("The length of the countdown timer before the round beings")]
+    [SerializeField] private float m_RoundStartCountdownDuration;
     [Tooltip("The amount of Ammo to be given to the weapon")]
     [SerializeField] private int m_StartingAmmo;
     [Tooltip("The amount of time in seconds the round will last")]
@@ -40,14 +42,14 @@ namespace CarnivalShooter.Managers {
     }
 
     private void Start() {
-      StartCoroutine(WaitUntilInitializationComplete());
+      StartCoroutine(CompleteInitialization());
       //OnInitializationComplete();
     }
 
     private void OnInitializeRound() {
       AmmoInitializing?.Invoke(m_StartingAmmo);
       CountdownTimerInitializing?.Invoke(TimerConstants.RoundTimerKey, m_RoundDuration);
-      CountdownTimerInitializing?.Invoke(TimerConstants.RoundStartCountdownKey, 3f); // Remove this constant float
+      CountdownTimerInitializing?.Invoke(TimerConstants.RoundStartCountdownKey, m_RoundStartCountdownDuration); // Remove this constant float
       ScoreInitializing?.Invoke(m_InitialScore);
       CountdownTimerStarted?.Invoke(TimerConstants.RoundStartCountdownKey);
     }
@@ -63,13 +65,11 @@ namespace CarnivalShooter.Managers {
     }
 
     private void SetInitialized(bool isInitialized) {
-      Debug.Log(isInitialized);
       m_IsInitialized = !isInitialized;
     }
 
-    private IEnumerator WaitUntilInitializationComplete() {
+    private IEnumerator CompleteInitialization() {
       while (m_IsInitialized == false) {
-        Debug.Log("GameManager in coroutine");
         yield return null;
       }
       OnInitializationComplete();
