@@ -21,7 +21,6 @@ namespace CarnivalShooter.Gameplay {
     }
 
     public IEnumerator StartCountdown() {
-      //float timeRemaining = timer.m_TotalTime;
       m_IsRunning = true;
       if (m_IsExecutionBlocking) {
         TimerBlockingExecution?.Invoke(true);
@@ -31,14 +30,18 @@ namespace CarnivalShooter.Gameplay {
         yield return null;
       }
 
-      while (m_TimeRemaining >= 0f && m_IsRunning) {
-        //Debug.Log($"{m_TimerType}: {m_TimeRemaining}");
-        yield return new WaitForSeconds(1f); // Wait for 1 second
+      while (m_TimeRemaining > 0f && m_IsRunning) {
+        yield return new WaitForSeconds(1f);
 
         m_TimeRemaining--;
 
-        // Update UI or perform other actions based on the remaining time
         TimerChanged?.Invoke(m_TimerType, m_TimeRemaining);
+      }
+
+      while (m_TimeRemaining == 0f && m_IsRunning) {
+        TimerChanged?.Invoke(m_TimerType, m_TimeRemaining);
+        m_IsRunning = false;
+        yield return new WaitForSeconds(1f);
       }
 
       // Countdown has reached zero, perform actions or end the game

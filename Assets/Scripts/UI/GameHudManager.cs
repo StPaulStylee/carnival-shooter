@@ -79,6 +79,10 @@ namespace CarnivalShooter.UI.Manager {
     }
 
     private void SetTimerLabel(string timerType, float label) {
+      if (timerType.Equals(TimerConstants.RoundTimerKey) && label == 0f) {
+        m_RoundDurationLabel.text = "FINISH!";
+        return;
+      }
       if (timerType.Equals(TimerConstants.RoundTimerKey)) {
         m_RoundDurationLabel.text = label.ToString();
         return;

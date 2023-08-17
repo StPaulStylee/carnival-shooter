@@ -13365,7 +13365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RoundStartCountdownDuration: 3
   m_StartingAmmo: 7
-  m_RoundDuration: 60
+  m_RoundDuration: 5
   m_InitialScore: 0
 --- !u!114 &1700695876
 MonoBehaviour:
