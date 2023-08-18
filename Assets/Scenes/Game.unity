@@ -16750,6 +16750,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1253556823077080729, guid: ffa982ea4ba1df74086521e632549271,
+        type: 3}
+      propertyPath: m_RoundDuration
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1865794942948586606, guid: ffa982ea4ba1df74086521e632549271,
         type: 3}
       propertyPath: m_Player

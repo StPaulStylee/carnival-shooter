@@ -18,7 +18,9 @@ namespace CarnivalShooter.Gameplay {
     }
 
     private void Update() {
-      CameraLook();
+      if (gameControls != null) {
+        CameraLook();
+      }
     }
 
     [Header("Look Configuration")]

@@ -1,4 +1,6 @@
-﻿using CarnivalShooter.Gameplay;
+﻿using Assets.Scripts.Data;
+using CarnivalShooter.Gameplay;
+using CarnivalShooter.Managers.Data;
 using UnityEngine;
 
 namespace CarnivalShooter.Managers {
@@ -10,15 +12,23 @@ namespace CarnivalShooter.Managers {
 
     private void Awake() {
       gameControls = new GameControls();
-      SetupInputActions();
+      // Differentiating here because the player will need to be able to pause before the round actually starts
+      GameManager.InitializationCompleted += SetupGameplayInputActions;
+      CountDownTimer.TimerCompleted += TeardownGameplayInputActions;
     }
 
     private void OnDisable() {
+      GameManager.InitializationCompleted -= SetupGameplayInputActions;
       TearDownInputActions();
     }
 
-    private void SetupInputActions() {
+    private void SetupGameplayInputActions(GameType _) {
       m_Player.SetupInputActions(gameControls);
+    }
+
+    private void TeardownGameplayInputActions(string timerType) {
+      if (timerType.Equals(TimerConstants.RoundTimerKey)) ;
+      m_Player.TearDownInputActions(gameControls);
     }
 
     private void TearDownInputActions() {

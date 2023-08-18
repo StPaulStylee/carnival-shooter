@@ -48,7 +48,6 @@ namespace CarnivalShooter.Managers {
 
     private void Start() {
       StartCoroutine(CompleteInitialization());
-      //OnInitializationComplete();
     }
 
     private void OnInitializeRound() {
