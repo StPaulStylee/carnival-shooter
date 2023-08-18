@@ -1,9 +1,6 @@
 using CarnivalShooter.Gameplay.Behavior;
 using CarnivalShooter.Managers;
 using CarnivalShooter.Managers.Data;
-using CarnivalShooter.UI;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CarnivalShooter.Gameplay {
@@ -19,6 +16,10 @@ namespace CarnivalShooter.Gameplay {
       m_Animator = GetComponent<Animator>();
       m_meshColliders = GetComponentsInChildren<MeshCollider>();
       GameManager.InitializationCompleted += SetRoundStartAnimationState;
+    }
+
+    private void OnDisable() {
+      GameManager.InitializationCompleted -= SetRoundStartAnimationState;
     }
 
     public override void PlayTakeShot() {

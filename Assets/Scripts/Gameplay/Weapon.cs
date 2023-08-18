@@ -31,6 +31,10 @@ namespace CarnivalShooter.Gameplay {
       GameManager.AmmoInitializing += SetStartingAmmo;
     }
 
+    private void OnDisable() {
+      GameManager.AmmoInitializing -= SetStartingAmmo;
+    }
+
     private void Update() {
       m_fireTimer += Time.deltaTime;
 

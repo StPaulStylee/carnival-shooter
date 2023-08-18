@@ -40,6 +40,18 @@ namespace CarnivalShooter.UI.Manager {
       GameManager.ScoreUpdated += SetScoreLabel;
     }
 
+    private void OnDisable() {
+      GameManager.CountdownTimerInitializing -= SetTimerLabel;
+      GameManager.CountdownTimerInitializing -= HideTimerLabel;
+      GameManager.CountdownTimerStarted -= ShowTimerLabel;
+      CountDownTimer.TimerChanged -= SetTimerLabel;
+      GameManager.AmmoInitializing -= SetAmmoIcons;
+      Weapon.AmmoChanged -= UpdateAmmoIcons;
+      Weapon.AmmoReloaded -= SetAmmoIcons;
+      GameManager.ScoreInitializing -= SetScoreLabel;
+      GameManager.ScoreUpdated -= SetScoreLabel;
+    }
+
     private void OnEnable() {
       var rootElement = m_UIDocument.rootVisualElement;
       m_AmmoContainer = rootElement.Query<VisualElement>(ammoContainerName);

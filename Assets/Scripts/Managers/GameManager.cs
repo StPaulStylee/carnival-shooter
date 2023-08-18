@@ -37,6 +37,11 @@ namespace CarnivalShooter.Managers {
       CountDownTimer.TimerBlockingExecution += SetInitialized;
     }
 
+    private void OnDisable() {
+      Scoreable.PointsScored -= SetPointsScored;
+      CountDownTimer.TimerBlockingExecution -= SetInitialized;
+    }
+
     private void OnEnable() {
       OnInitializeRound();
     }

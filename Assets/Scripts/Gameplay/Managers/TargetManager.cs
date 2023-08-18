@@ -1,7 +1,5 @@
-using CarnivalShooter.Gameplay;
 using CarnivalShooter.Managers;
 using CarnivalShooter.Managers.Data;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +14,10 @@ namespace CarnivalShooter.Gameplay.Managers {
 
     private void Awake() {
       GameManager.InitializationCompleted += OnInitializationCompleted;
+    }
+
+    private void OnDisable() {
+      GameManager.InitializationCompleted -= OnInitializationCompleted;
     }
 
     private Target GetTargetToActivate() {
@@ -56,7 +58,7 @@ namespace CarnivalShooter.Gameplay.Managers {
       m_isRoundActive = true;
       while (m_isRoundActive) {
         if (HasActiveTargetsRemaining()) {
-          foreach(Target target in GetAllActiveTargets()) {
+          foreach (Target target in GetAllActiveTargets()) {
             target.PlayTakeShot();
           }
         }

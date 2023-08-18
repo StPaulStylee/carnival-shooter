@@ -13,6 +13,11 @@ namespace CarnivalShooter.Managers {
       GameManager.CountdownTimerStarted += StartTimer;
     }
 
+    private void OnDisable() {
+      GameManager.CountdownTimerInitializing -= SetTimer;
+      GameManager.CountdownTimerStarted -= StartTimer;
+    }
+
     private void SetTimer(string timerType, float time) {
       CountDownTimer timer = new CountDownTimer(timerType, time);
       timerInstances.Add(timerType, timer);
