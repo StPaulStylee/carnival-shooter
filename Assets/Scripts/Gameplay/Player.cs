@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,7 +8,6 @@ namespace CarnivalShooter.Gameplay {
     [SerializeField] private Weapon weapon;
 
     private void Awake() {
-      gameControls = new GameControls();
       mainCamera = Camera.main;
       weapon = GetComponentInChildren<Weapon>(false);
       Cursor.lockState = CursorLockMode.Locked;
@@ -18,20 +15,14 @@ namespace CarnivalShooter.Gameplay {
       if (weapon == null) {
         Debug.LogError($"The {name} component does not have a child Weapon component!");
       }
-      SetupInputActions();
     }
 
     private void Update() {
       CameraLook();
     }
 
-    private void OnDisable() {
-      TearDownInputActions();
-    }
-
-
     [Header("Look Configuration")]
-    [Range(0, 1)]public float LookSensitivity = 0.5f; // mouse look sensitivity
+    [Range(0, 1)] public float LookSensitivity = 0.5f; // mouse look sensitivity
     public float MinLookX = -80f; // Lowest we can look
     public float MaxLookX = 80f; // Highest we can look
     public float MinLookY = -70f;
@@ -60,16 +51,18 @@ namespace CarnivalShooter.Gameplay {
       weapon.Reload();
     }
 
-    private void SetupInputActions() {
-      gameControls.GameController.Fire.performed += OnFirePerformed;
-      gameControls.GameController.Reload.performed += OnReloadPerformed;
-      gameControls.GameController.Enable();
+    public void SetupInputActions(GameControls gameInput) {
+      gameInput.GameController.Fire.performed += OnFirePerformed;
+      gameInput.GameController.Reload.performed += OnReloadPerformed;
+      gameInput.GameController.Enable();
+      gameControls = gameInput;
     }
 
-    private void TearDownInputActions() {
-      gameControls.GameController.Fire.performed -= OnFirePerformed;
-      gameControls.GameController.Reload.performed -= OnReloadPerformed;
-      gameControls.GameController.Disable();
+    public void TearDownInputActions(GameControls gameInput) {
+      gameInput.GameController.Fire.performed -= OnFirePerformed;
+      gameInput.GameController.Reload.performed -= OnReloadPerformed;
+      gameInput.GameController.Disable();
+      gameControls = null;
     }
   }
 }

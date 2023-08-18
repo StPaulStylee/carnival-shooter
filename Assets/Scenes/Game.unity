@@ -13317,6 +13317,7 @@ GameObject:
   - component: {fileID: 1700695875}
   - component: {fileID: 1700695876}
   - component: {fileID: 1700695878}
+  - component: {fileID: 1700695879}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -13394,6 +13395,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PointsEarnedPopupPrefab: {fileID: 6845142718413117976, guid: 6770f31af4fabb24e8d3f2d05d96b5e9,
     type: 3}
+--- !u!114 &1700695879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700695872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2deb2e0ca2b4694eaaf3cbf52939afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Player: {fileID: 1722403124}
 --- !u!1001 &1720977211
 PrefabInstance:
   m_ObjectHideFlags: 0
