@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8762162c5fc5434282674542c3ee0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Label: Bullseye
   m_Score: 15
   m_ColorHex: '#085405'
 --- !u!114 &7309576015341891615

@@ -236,5 +236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8762162c5fc5434282674542c3ee0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Label: InnerZone
   m_Score: 10
   m_ColorHex: '#EBEC0D'

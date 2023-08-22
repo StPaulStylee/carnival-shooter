@@ -10,7 +10,7 @@ namespace CarnivalShooter.Gameplay {
     public static event Action<string> TimerCompleted;
 
     private string m_TimerType;
-    private float m_TotalTime;
+    private float m_TotalTime; // Is this needed?
     private float m_TimeRemaining;
     private bool m_IsRunning;
     private bool m_IsExecutionBlocking;
@@ -49,7 +49,6 @@ namespace CarnivalShooter.Gameplay {
 
       // Countdown has reached zero, perform actions or end the game
       Debug.Log($"{m_TimerType}: Countdown Finished!");
-      //TimerCompleted?.Invoke(m_TimerType);
       TimerBlockingExecution?.Invoke(false);
     }
     public void Pause(CountDownTimer timer) { timer.m_IsRunning = false; }

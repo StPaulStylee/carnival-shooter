@@ -63,7 +63,7 @@ namespace CarnivalShooter.Managers {
       CountdownTimerStarted?.Invoke(TimerConstants.RoundTimerKey);
     }
 
-    private void SetPointsScored(int points) {
+    private void SetPointsScored(int points, string scoreableLabel) {
       m_TotalScore += points;
       ScoreUpdated?.Invoke(m_TotalScore);
     }

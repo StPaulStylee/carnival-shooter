@@ -27,8 +27,9 @@ namespace CarnivalShooter.Managers {
     }
 
     private void TeardownGameplayInputActions(string timerType) {
-      if (timerType.Equals(TimerConstants.RoundTimerKey)) ;
-      m_Player.TearDownInputActions(gameControls);
+      if (timerType.Equals(TimerConstants.RoundTimerKey)) {
+        m_Player.TearDownInputActions(gameControls);
+      }
     }
 
     private void TearDownInputActions() {
