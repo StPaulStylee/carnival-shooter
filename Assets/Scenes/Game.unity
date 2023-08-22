@@ -16783,6 +16783,7 @@ MonoBehaviour:
   m_StartingAmmo: 7
   m_RoundDuration: 30
   m_InitialScore: 0
+  m_GameType: 1
 --- !u!1001 &2106160589473726287
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,6 +1,5 @@
 using Assets.Scripts.Data;
 using CarnivalShooter.Gameplay;
-using CarnivalShooter.Gameplay.Behavior;
 using CarnivalShooter.Managers.Data;
 using System;
 using System.Collections;
@@ -13,7 +12,6 @@ namespace CarnivalShooter.Managers {
     // RoundStartCountdown
     public static event Action<string> CountdownTimerStarted;
     public static event Action<int> ScoreInitializing;
-    public static event Action<int> ScoreUpdated;
     public static event Action<GameType> InitializationCompleted;
 
     private int m_TotalScore;
@@ -31,14 +29,12 @@ namespace CarnivalShooter.Managers {
     [SerializeField] private float m_RoundDuration;
     [Tooltip("The score the player will start the round with")]
     [SerializeField] private int m_InitialScore = 0;
-
+    [SerializeField] private GameType m_GameType = GameType.WhackAMole;
     private void Awake() {
-      Scoreable.PointsScored += SetPointsScored;
       CountDownTimer.TimerBlockingExecution += SetInitialized;
     }
 
     private void OnDisable() {
-      Scoreable.PointsScored -= SetPointsScored;
       CountDownTimer.TimerBlockingExecution -= SetInitialized;
     }
 
@@ -59,13 +55,8 @@ namespace CarnivalShooter.Managers {
     }
 
     private void OnInitializationComplete() {
-      InitializationCompleted?.Invoke(GameType.WhackAMole);
+      InitializationCompleted?.Invoke(m_GameType);
       CountdownTimerStarted?.Invoke(TimerConstants.RoundTimerKey);
-    }
-
-    private void SetPointsScored(int points, string scoreableLabel) {
-      m_TotalScore += points;
-      ScoreUpdated?.Invoke(m_TotalScore);
     }
 
     private void SetInitialized(bool isInitialized) {

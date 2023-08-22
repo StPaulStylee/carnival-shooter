@@ -37,7 +37,7 @@ namespace CarnivalShooter.UI.Manager {
       Weapon.AmmoChanged += UpdateAmmoIcons;
       Weapon.AmmoReloaded += SetAmmoIcons;
       GameManager.ScoreInitializing += SetScoreLabel;
-      GameManager.ScoreUpdated += SetScoreLabel;
+      StatManager.ScoreUpdated += SetScoreLabel;
     }
 
     private void OnDisable() {
@@ -49,7 +49,7 @@ namespace CarnivalShooter.UI.Manager {
       Weapon.AmmoChanged -= UpdateAmmoIcons;
       Weapon.AmmoReloaded -= SetAmmoIcons;
       GameManager.ScoreInitializing -= SetScoreLabel;
-      GameManager.ScoreUpdated -= SetScoreLabel;
+      StatManager.ScoreUpdated -= SetScoreLabel;
     }
 
     private void OnEnable() {
@@ -82,8 +82,8 @@ namespace CarnivalShooter.UI.Manager {
       }
     }
 
-    private void SetScoreLabel(int label) {
-      m_ScoreLabel.text = label.ToString();
+    private void SetScoreLabel(int score) {
+      m_ScoreLabel.text = score.ToString();
     }
 
     private void SetTimerLabel(float label) {
