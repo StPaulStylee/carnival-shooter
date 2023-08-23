@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="GameHudUIDocument" src="project://database/Assets/UI/UXML/GameHudUIDocument.uxml?fileID=9197481963319205126&amp;guid=a6e91636650e5124996f2a6869df3f5e&amp;type=3#GameHudUIDocument" />
+    <ui:Template name="PostRoundStatsUIDocument" src="project://database/Assets/UI/UXML/PostRoundStatsUIDocument.uxml?fileID=9197481963319205126&amp;guid=9d784fa4dce5c46429c7bfd71b3c1a8a&amp;type=3#PostRoundStatsUIDocument" />
+    <ui:Instance template="GameHudUIDocument" name="GameHudUIDocument" />
+    <ui:Instance template="PostRoundStatsUIDocument" name="PostRoundStatsUIDocument" />
+</ui:UXML>

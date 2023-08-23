@@ -10,15 +10,17 @@ public class StatManager : MonoBehaviour {
   public static event Action<int> ScoreUpdated;
 
   private int m_TotalShotsFired = 0;
-  private int m_TotalShotsHit {
+  private float m_TotalShotsHit {
     get { return m_TotalOuterZoneHits + m_TotalInnerZoneHits + m_TotalBullseyeHits; }
   }
-  private double m_ShotAccuracy {
-    get { return (m_TotalShotsHit / m_TotalShotsFired) * 100; }
+  private float m_ShotAccuracy {
+    get { return (m_TotalShotsHit / m_TotalShotsFired) * 100f; }
   }
-  private int m_TotalOuterZoneHits = 0;
-  private int m_TotalInnerZoneHits = 0;
-  private int m_TotalBullseyeHits = 0;
+
+  private float getShotAccuracy() => (m_TotalShotsHit / m_TotalShotsFired) * 100f;
+  private float m_TotalOuterZoneHits = 0;
+  private float m_TotalInnerZoneHits = 0;
+  private float m_TotalBullseyeHits = 0;
   private int m_TotalScore = 0;
 
   private void Awake() {
@@ -42,7 +44,7 @@ public class StatManager : MonoBehaviour {
       Debug.Log($"Bullseye Hits: {m_TotalBullseyeHits}");
       Debug.Log($"Total Score: {m_TotalScore}");
       Debug.Log($"Shots Hit: {m_TotalShotsHit}");
-      Debug.Log($"Hit Accuracy: {m_ShotAccuracy}");
+      Debug.Log($"Hit Accuracy: {getShotAccuracy()}");
     }
   }
 

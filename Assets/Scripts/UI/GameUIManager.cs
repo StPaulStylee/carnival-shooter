@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace CarnivalShooter.UI.Manager {
-  public class GameHudManager : MonoBehaviour {
+  public class GameUIManager : MonoBehaviour {
     const string ammoContainerName = "game-hud__ammo-container";
     const string ammoIconVisualElementName = "game-hud__ammo-icon";
     const string ammoEnabledClassName = "ammo-enabled";
