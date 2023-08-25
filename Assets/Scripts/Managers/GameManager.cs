@@ -8,7 +8,7 @@ using UnityEngine;
 namespace CarnivalShooter.Managers {
   public class GameManager : MonoBehaviour {
     public static event Action<int> AmmoInitializing;
-    public static event Action<string, float> CountdownTimerInitializing;
+    //public static event Action<string> CountdownTimerInitializing;
     // RoundStartCountdown
     public static event Action<string> CountdownTimerStarted;
     public static event Action<int> ScoreInitializing;
@@ -48,8 +48,10 @@ namespace CarnivalShooter.Managers {
 
     private void OnInitializeRound() {
       AmmoInitializing?.Invoke(m_StartingAmmo);
-      CountdownTimerInitializing?.Invoke(TimerConstants.RoundTimerKey, m_RoundDuration);
-      CountdownTimerInitializing?.Invoke(TimerConstants.RoundStartCountdownKey, m_RoundStartCountdownDuration); // Remove this constant float
+      //CountdownTimerInitializing?.Invoke(TimerConstants.RoundTimerKey, m_RoundDuration);
+      //CountdownTimerInitializing?.Invoke(TimerConstants.RoundStartCountdownKey, m_RoundStartCountdownDuration); // Remove this constant float
+      //CountdownTimerInitializing?.Invoke(TimerConstants.RoundTimerKey);
+      //CountdownTimerInitializing?.Invoke(TimerConstants.RoundStartCountdownKey); // Remove this constant float
       ScoreInitializing?.Invoke(m_InitialScore);
       CountdownTimerStarted?.Invoke(TimerConstants.RoundStartCountdownKey);
     }

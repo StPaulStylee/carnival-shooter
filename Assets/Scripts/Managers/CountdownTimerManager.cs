@@ -11,17 +11,24 @@ namespace CarnivalShooter.Managers {
     private Dictionary<string, CountDownTimer> timerInstances = new();
 
     private void Awake() {
-      GameManager.CountdownTimerInitializing += SetTimer;
+      //GameManager.CountdownTimerInitializing += SetTimer;
       GameManager.CountdownTimerStarted += StartTimer;
+      SetAllTimers();
     }
 
     private void OnDisable() {
-      GameManager.CountdownTimerInitializing -= SetTimer;
+      //GameManager.CountdownTimerInitializing -= SetTimer;
       GameManager.CountdownTimerStarted -= StartTimer;
     }
 
-    private void SetTimer(string timerType, float time) {
-      CountDownTimer timer = new CountDownTimer(timerType, time);
+    private void SetAllTimers() {
+      foreach (var timer in timers) {
+        SetTimer(timer.TimerType, timer.TotalTime, timer.PostCompletedDelay);
+      }
+    }
+
+    private void SetTimer(string timerType, float time, float postCompletedDelay) {
+      CountDownTimer timer = new CountDownTimer(timerType, time, postCompletedDelay);
       timerInstances.Add(timerType, timer);
     }
 
