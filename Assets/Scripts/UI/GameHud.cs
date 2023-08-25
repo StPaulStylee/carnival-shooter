@@ -26,8 +26,6 @@ namespace CarnivalShooter.UI {
     private Stack<VisualElement> m_EnabledAmmoIcons = new();
     private Stack<VisualElement> m_DisabledAmmoIcons = new();
     private void Awake() {
-      //GameManager.CountdownTimerInitializing += SetTimerLabel;
-      //GameManager.CountdownTimerInitializing += HideTimerLabel;
       GameManager.CountdownTimerStarted += ShowTimerLabel;
       CountDownTimer.TimerChanged += SetTimerLabel;
       GameManager.AmmoInitializing += SetAmmoIcons;
@@ -38,8 +36,6 @@ namespace CarnivalShooter.UI {
     }
 
     private void OnDisable() {
-      //GameManager.CountdownTimerInitializing -= SetTimerLabel;
-      //GameManager.CountdownTimerInitializing -= HideTimerLabel;
       GameManager.CountdownTimerStarted -= ShowTimerLabel;
       CountDownTimer.TimerChanged -= SetTimerLabel;
       GameManager.AmmoInitializing -= SetAmmoIcons;
@@ -58,7 +54,7 @@ namespace CarnivalShooter.UI {
     }
 
     private void Start() {
-      HideTimerLabels();
+      HideTimerLabels(new Label[] { m_RoundDurationLabel });
     }
 
     private void SetAmmoIcons(int ammoCount) {
@@ -87,23 +83,12 @@ namespace CarnivalShooter.UI {
       m_ScoreLabel.text = score.ToString();
     }
 
-    //private void SetTimerLabel(string label) {
-    //  m_RoundDurationLabel.text = label;
-    //}
 
     private void SetTimerLabel(string timerType, string label) {
       if (timerType.Equals(TimerConstants.RoundTimerKey)) {
         m_RoundDurationLabel.text = label;
         return;
       }
-      //if (timerType.Equals(TimerConstants.RoundTimerKey)) {
-      //  m_RoundDurationLabel.text = label.ToString();
-      //  return;
-      //}
-      //if (label == 0f) {
-      //  m_RoundStartDurationLabel.text = "START!";
-      //  return;
-      //}
       m_RoundStartDurationLabel.text = label;
     }
 
@@ -117,9 +102,10 @@ namespace CarnivalShooter.UI {
       m_RoundDurationLabel.style.opacity = 0f;
     }
 
-    private void HideTimerLabels() {
-      //m_RoundStartDurationLabel.style.opacity = 0f;
-      m_RoundDurationLabel.style.opacity = 0f;
+    private void HideTimerLabels(Label[] labels) {
+      foreach (Label label in labels) {
+        label.style.opacity = 0f;
+      }
     }
   }
 }

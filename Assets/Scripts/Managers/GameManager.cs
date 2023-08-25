@@ -21,12 +21,8 @@ namespace CarnivalShooter.Managers {
     public int TotalScore => m_TotalScore;
 
     [Header("Start of Round Data")]
-    [Tooltip("The length of the countdown timer before the round beings")]
-    [SerializeField] private float m_RoundStartCountdownDuration;
     [Tooltip("The amount of Ammo to be given to the weapon")]
     [SerializeField] private int m_StartingAmmo;
-    [Tooltip("The amount of time in seconds the round will last")]
-    [SerializeField] private float m_RoundDuration;
     [Tooltip("The score the player will start the round with")]
     [SerializeField] private int m_InitialScore = 0;
     [SerializeField] private GameType m_GameType = GameType.WhackAMole;
@@ -48,11 +44,6 @@ namespace CarnivalShooter.Managers {
 
     private void OnInitializeRound() {
       AmmoInitializing?.Invoke(m_StartingAmmo);
-      //CountdownTimerInitializing?.Invoke(TimerConstants.RoundTimerKey, m_RoundDuration);
-      //CountdownTimerInitializing?.Invoke(TimerConstants.RoundStartCountdownKey, m_RoundStartCountdownDuration); // Remove this constant float
-      //CountdownTimerInitializing?.Invoke(TimerConstants.RoundTimerKey);
-      //CountdownTimerInitializing?.Invoke(TimerConstants.RoundStartCountdownKey); // Remove this constant float
-      ScoreInitializing?.Invoke(m_InitialScore);
       CountdownTimerStarted?.Invoke(TimerConstants.RoundStartCountdownKey);
     }
 

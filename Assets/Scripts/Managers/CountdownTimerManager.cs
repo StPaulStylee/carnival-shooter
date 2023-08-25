@@ -5,7 +5,8 @@ using UnityEngine;
 
 namespace CarnivalShooter.Managers {
   public class CountdownTimerManager : MonoBehaviour {
-    //public static event Action<float> TimerChanged;
+    [Header("Timers Data")]
+    [Tooltip("An array of CountDownTimer Scriptable Objects used to initialize each timer instance")]
     [SerializeField] private CountdownTimerData_SO[] timers;
 
     private Dictionary<string, CountDownTimer> timerInstances = new();
