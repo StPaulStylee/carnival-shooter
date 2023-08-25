@@ -1155,7 +1155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: 0bac395913e4d024287159fa7f87e1f6, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: a6e91636650e5124996f2a6869df3f5e,
+  sourceAsset: {fileID: 9197481963319205126, guid: ecb233488ed7b0642b5668e23ab3da89,
     type: 3}
   m_SortingOrder: 0
 --- !u!114 &102131205
@@ -1170,9 +1170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac59ed842c78a4c4198569d0ee457c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UIDocument: {fileID: 102131204}
-  m_ammoTemplate: {fileID: 9197481963319205126, guid: c963dcc2c0527af4cbffd4477300aa53,
-    type: 3}
+  GameHud: {fileID: 668000903}
+  PostRoundStats: {fileID: 612922689}
 --- !u!1 &102858441
 GameObject:
   m_ObjectHideFlags: 0
@@ -6518,6 +6517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc519af856328b4a8cb7fb590eff7c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_UIDocument: {fileID: 102131204}
+  m_GameHudElementName: PostRoundStatsUIDocument
 --- !u!1 &620899687
 GameObject:
   m_ObjectHideFlags: 0
@@ -6920,6 +6921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIDocument: {fileID: 102131204}
+  m_GameHudElementName: GameHudUIDocument
   m_ammoTemplate: {fileID: 9197481963319205126, guid: c963dcc2c0527af4cbffd4477300aa53,
     type: 3}
 --- !u!1001 &679546118
@@ -16870,6 +16872,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c04e717c69c234dbb5d4e7c2dda130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timers:
+  - {fileID: 11400000, guid: 629549d1fd196d74d969282901dd74dc, type: 2}
 --- !u!114 &1746187690102444264
 MonoBehaviour:
   m_ObjectHideFlags: 0

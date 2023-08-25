@@ -1,18 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class PostRoundStats : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+namespace CarnivalShooter.UI {
+  public class PostRoundStats : GameUIScreen {
+    private void OnEnable() {
+      base.SetGameUIElements();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  }
 }

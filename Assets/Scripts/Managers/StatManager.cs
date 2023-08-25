@@ -1,4 +1,3 @@
-using Assets.Scripts.Data;
 using CarnivalShooter.Data;
 using CarnivalShooter.Gameplay;
 using CarnivalShooter.Gameplay.Behavior;
