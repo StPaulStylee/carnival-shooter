@@ -7,13 +7,13 @@ using UnityEngine.UIElements;
 
 namespace CarnivalShooter.UI {
   public class GameHud : GameUIScreen {
-    const string ammoContainerName = "game-hud__ammo-container";
-    const string ammoIconVisualElementName = "game-hud__ammo-icon";
-    const string ammoEnabledClassName = "ammo-enabled";
-    const string ammoDisabledClassName = "ammo-disabled";
-    const string scoreLabelName = "game-hud__score-text";
-    const string roundDurationTimerLabelName = "game-hud__game-timer-text";
-    const string roundStartDurationTimerLabelName = "game-hud__round-start-timer-text";
+    const string k_ammoContainerName = "game-hud__ammo-container";
+    const string k_ammoIconVisualElementName = "game-hud__ammo-icon";
+    const string k_ammoEnabledClassName = "ammo-enabled";
+    const string k_ammoDisabledClassName = "ammo-disabled";
+    const string k_scoreLabelName = "game-hud__score-text";
+    const string k_roundDurationTimerLabelName = "game-hud__game-timer-text";
+    const string k_roundStartDurationTimerLabelName = "game-hud__round-start-timer-text";
 
     [Tooltip("The UXML template to create ammo icons")]
     [SerializeField] private VisualTreeAsset m_ammoTemplate;
@@ -47,10 +47,10 @@ namespace CarnivalShooter.UI {
 
     private void OnEnable() {
       base.SetGameUIElements();
-      m_AmmoContainer = m_GameUIElement.Query<VisualElement>(ammoContainerName);
-      m_ScoreLabel = m_GameUIElement.Query<Label>(scoreLabelName);
-      m_RoundDurationLabel = m_GameUIElement.Query<Label>(roundDurationTimerLabelName);
-      m_RoundStartDurationLabel = m_GameUIElement.Query<Label>(roundStartDurationTimerLabelName);
+      m_AmmoContainer = m_GameUIElement.Query<VisualElement>(k_ammoContainerName);
+      m_ScoreLabel = m_GameUIElement.Query<Label>(k_scoreLabelName);
+      m_RoundDurationLabel = m_GameUIElement.Query<Label>(k_roundDurationTimerLabelName);
+      m_RoundStartDurationLabel = m_GameUIElement.Query<Label>(k_roundStartDurationTimerLabelName);
     }
 
     private void Start() {
@@ -72,9 +72,9 @@ namespace CarnivalShooter.UI {
       VisualElement ammoIconToDisable;
       bool hasAmmoRemaining = m_EnabledAmmoIcons.TryPop(out ammoIconToDisable);
       if (hasAmmoRemaining) {
-        VisualElement ammoIconVisualElement = ammoIconToDisable.Query<VisualElement>(ammoIconVisualElementName);
-        ammoIconVisualElement.AddToClassList(ammoDisabledClassName);
-        ammoIconVisualElement.RemoveFromClassList(ammoEnabledClassName);
+        VisualElement ammoIconVisualElement = ammoIconToDisable.Query<VisualElement>(k_ammoIconVisualElementName);
+        ammoIconVisualElement.AddToClassList(k_ammoDisabledClassName);
+        ammoIconVisualElement.RemoveFromClassList(k_ammoEnabledClassName);
         m_DisabledAmmoIcons.Push(ammoIconToDisable);
       }
     }

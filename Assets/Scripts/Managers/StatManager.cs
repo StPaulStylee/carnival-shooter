@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class StatManager : MonoBehaviour {
   public static event Action<int> ScoreUpdated;
+  public static event Action<PostRoundStatsData> PostRoundStatsCompleted;
 
   private int m_TotalShotsFired = 0;
   private float m_TotalShotsHit {
@@ -16,7 +17,7 @@ public class StatManager : MonoBehaviour {
     get { return (m_TotalShotsHit / m_TotalShotsFired) * 100f; }
   }
 
-  private float getShotAccuracy() => (m_TotalShotsHit / m_TotalShotsFired) * 100f;
+  private float getShotAccuracy() => Mathf.RoundToInt((m_TotalShotsHit / m_TotalShotsFired) * 100f);
   private float m_TotalOuterZoneHits = 0;
   private float m_TotalInnerZoneHits = 0;
   private float m_TotalBullseyeHits = 0;
@@ -38,12 +39,15 @@ public class StatManager : MonoBehaviour {
   private void OnRoundCompleted(string timerType) {
     if (timerType.Equals(TimerConstants.RoundTimerKey)) {
       Debug.Log($"Shots Fired: {m_TotalShotsFired}");
-      Debug.Log($"Outzone Hits: {m_TotalOuterZoneHits}");
-      Debug.Log($"Inner Zone Hits: {m_TotalInnerZoneHits}");
       Debug.Log($"Bullseye Hits: {m_TotalBullseyeHits}");
-      Debug.Log($"Total Score: {m_TotalScore}");
+      Debug.Log($"Inner Zone Hits: {m_TotalInnerZoneHits}");
+      Debug.Log($"Outzone Hits: {m_TotalOuterZoneHits}");
       Debug.Log($"Shots Hit: {m_TotalShotsHit}");
       Debug.Log($"Hit Accuracy: {getShotAccuracy()}");
+      Debug.Log($"Total Score: {m_TotalScore}");
+      PostRoundStatsData stats = new PostRoundStatsData(m_TotalShotsFired, (int)m_TotalBullseyeHits, (int)m_TotalInnerZoneHits, (int)m_TotalOuterZoneHits, (int)m_TotalShotsHit, getShotAccuracy(), m_TotalScore);
+      PostRoundStatsCompleted?.Invoke(stats);
+      // Calculate some sort of accuracy bonus
     }
   }
 

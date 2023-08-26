@@ -2,5 +2,5 @@
     <ui:Template name="GameHudUIDocument" src="project://database/Assets/UI/UXML/GameHudUIDocument.uxml?fileID=9197481963319205126&amp;guid=a6e91636650e5124996f2a6869df3f5e&amp;type=3#GameHudUIDocument" />
     <ui:Template name="PostRoundStatsUIDocument" src="project://database/Assets/UI/UXML/PostRoundStatsUIDocument.uxml?fileID=9197481963319205126&amp;guid=9d784fa4dce5c46429c7bfd71b3c1a8a&amp;type=3#PostRoundStatsUIDocument" />
     <ui:Instance template="GameHudUIDocument" name="GameHudUIDocument" />
-    <ui:Instance template="PostRoundStatsUIDocument" name="PostRoundStatsUIDocument" />
+    <ui:Instance template="PostRoundStatsUIDocument" name="PostRoundStatsUIDocument" style="width: 100%; height: 100%;" />
 </ui:UXML>

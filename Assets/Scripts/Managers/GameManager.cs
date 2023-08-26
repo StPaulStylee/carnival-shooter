@@ -44,6 +44,7 @@ namespace CarnivalShooter.Managers {
 
     private void OnInitializeRound() {
       AmmoInitializing?.Invoke(m_StartingAmmo);
+      ScoreInitializing?.Invoke(m_InitialScore);
       CountdownTimerStarted?.Invoke(TimerConstants.RoundStartCountdownKey);
     }
 
