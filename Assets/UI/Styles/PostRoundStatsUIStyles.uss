@@ -1,9 +1,31 @@
 .post-round-stats-text {
     font-size: 41px;
+    color: rgb(255, 255, 255);
 }
 
 .post-round-stats-container {
     align-items: center;
     flex-direction: row;
     justify-content: flex-start;
+    width: 75%;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-bottom-width: 3px;
+}
+
+.post-round-stats__content-container {
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.post-round-stats__icon {
+}
+
+.text-flex-end {
+    align-self: auto;
+    align-items: auto;
+    flex-direction: row;
+    justify-content: flex-end;
 }
