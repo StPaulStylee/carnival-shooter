@@ -1,47 +1,107 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Styles/PostRoundStatsUIStyles.uss?fileID=7433441132597879392&amp;guid=96ae249189bd205469efabee2ebbefb3&amp;type=3#PostRoundStatsUIStyles" />
     <ui:VisualElement name="post-round-stats_overlay" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.89); -unity-font: url(&apos;project://database/Assets/UI/Assets/Fonts/RifficFree-Bold.ttf?fileID=12800000&amp;guid=50583f47abf99474589ca893d2cb0ce6&amp;type=3#RifficFree-Bold&apos;); -unity-font-definition: url(&apos;project://database/Assets/UI/Assets/Fonts/RifficFree-Bold%20SDF.asset?fileID=11400000&amp;guid=61cd9b27f079c4c4e8ede5c02a746848&amp;type=2#RifficFree-Bold SDF&apos;); font-size: 58px; align-self: center; justify-content: center; width: 100%; height: 100%; position: absolute;" />
-    <ui:VisualElement name="post-round-stats_container" style="flex-grow: 1; background-color: rgb(31, 31, 31); -unity-font: url(&apos;project://database/Assets/UI/Assets/Fonts/RifficFree-Bold.ttf?fileID=12800000&amp;guid=50583f47abf99474589ca893d2cb0ce6&amp;type=3#RifficFree-Bold&apos;); -unity-font-definition: url(&apos;project://database/Assets/UI/Assets/Fonts/RifficFree-Bold%20SDF.asset?fileID=11400000&amp;guid=61cd9b27f079c4c4e8ede5c02a746848&amp;type=2#RifficFree-Bold SDF&apos;); font-size: 58px; align-self: center; justify-content: center; width: 75%; height: 75%; position: absolute; top: 136px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; align-items: center;">
-        <ui:VisualElement name="post-round-stats__stat-container" class="post-round-stats-container" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; -unity-background-image-tint-color: rgba(255, 255, 255, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); justify-content: center;">
-            <ui:Label tabindex="-1" text="ROUNDS STATS" display-tooltip-when-elided="true" name="post-round-stats__shots-fired-label" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
+    <ui:VisualElement name="post-round-stats_container" class="post-round-stats__root-container" style="flex-grow: 1; background-color: rgb(31, 31, 31); -unity-font: url(&apos;project://database/Assets/UI/Assets/Fonts/RifficFree-Bold.ttf?fileID=12800000&amp;guid=50583f47abf99474589ca893d2cb0ce6&amp;type=3#RifficFree-Bold&apos;); -unity-font-definition: url(&apos;project://database/Assets/UI/Assets/Fonts/RifficFree-Bold%20SDF.asset?fileID=11400000&amp;guid=61cd9b27f079c4c4e8ede5c02a746848&amp;type=2#RifficFree-Bold SDF&apos;); font-size: 58px; align-self: center; justify-content: center; width: 75%; height: 75%; position: absolute; top: 15%; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; align-items: center;">
+        <ui:VisualElement name="post-round-stats__stat-container" class="post-round-stats-container post-round-stats__header" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; -unity-background-image-tint-color: rgba(255, 255, 255, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); justify-content: center;">
+            <ui:Label tabindex="-1" text="ROUND STATS" display-tooltip-when-elided="true" name="post-round-stats__shots-fired-label" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
         </ui:VisualElement>
         <ui:VisualElement name="post-round-stats__stat-container" class="post-round-stats-container" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; -unity-background-image-tint-color: rgba(255, 255, 255, 0); align-items: stretch; justify-content: space-around;">
-            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-                <ui:Label tabindex="-1" text="Bullseye Score" display-tooltip-when-elided="true" name="post-round-stats__shots-fired-label" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container post-round-stats__content-container-first-item" style="flex-wrap: wrap;">
+                <ui:Label tabindex="-1" text="Bullseye" display-tooltip-when-elided="true" name="post-round-stats__shots-fired-label" class="post-round-stats-text" style="flex-wrap: wrap;" />
             </ui:VisualElement>
-            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0);">
-                <ui:VisualElement class="post-round-stats__icon" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/UI/Assets/stat_screen-bullseye.png?fileID=2800000&amp;guid=66fbb6d122584ba4593f11b96656e7c0&amp;type=3#stat_screen-bullseye&apos;); -unity-background-scale-mode: scale-to-fit; width: 96px; height: 100%; align-self: auto;" />
-                <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-                    <ui:Label tabindex="-1" text="15" display-tooltip-when-elided="true" class="post-round-stats-text" />
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container post-round-stats-__content-container-middle-item" style="align-items: stretch;">
+                <ui:VisualElement name="post-round-stats__icon-container" class="post-round-stats__icon-container" style="align-items: stretch; background-image: none; justify-content: center;">
+                    <ui:VisualElement class="post-round-stats__icon" />
+                </ui:VisualElement>
+                <ui:VisualElement name="VisualElement" class="post-round-stats__content-container-middle-item-text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                    <ui:Label tabindex="-1" text="10" display-tooltip-when-elided="true" name="post-round-stats__bullseye-hit-data" class="post-round-stats-text" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container text-flex-end" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-                <ui:Label tabindex="-1" text="107" display-tooltip-when-elided="true" name="post-round-stats__shots-fired-data" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container text-flex-end post-round-stats__content-container-last-item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:Label tabindex="-1" text="150" display-tooltip-when-elided="true" name="post-round-stats__bullseye-score-data" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="post-round-stats__stat-container" class="post-round-stats-container" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; -unity-background-image-tint-color: rgba(255, 255, 255, 0);">
-            <ui:Label tabindex="-1" text="Bullseye Hits:" display-tooltip-when-elided="true" name="post-round-stats__bullseye-label" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
-            <ui:Label tabindex="-1" text="107" display-tooltip-when-elided="true" name="post-round-stats__bullseye-hit-data" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
+        <ui:VisualElement name="post-round-stats__stat-container" class="post-round-stats-container" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; -unity-background-image-tint-color: rgba(255, 255, 255, 0); align-items: stretch; justify-content: space-around;">
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container post-round-stats__content-container-first-item">
+                <ui:Label tabindex="-1" text="Inner Zone" display-tooltip-when-elided="true" name="post-round-stats__shots-fired-label" class="post-round-stats-text" />
+            </ui:VisualElement>
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container post-round-stats-__content-container-middle-item" style="align-items: stretch;">
+                <ui:VisualElement name="post-round-stats__icon-container" class="post-round-stats__icon-container" style="align-items: stretch; background-image: none; justify-content: center;">
+                    <ui:VisualElement class="post-round-stats__icon" style="background-image: url(&apos;project://database/Assets/UI/Assets/stat_screen_inner-zone.png?fileID=2800000&amp;guid=764ce9ded5043c94c95fb06a4ce225a0&amp;type=3#stat_screen_inner-zone&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="VisualElement" class="post-round-stats__content-container-middle-item-text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                    <ui:Label tabindex="-1" text="25" display-tooltip-when-elided="true" name="post-round-stats__inner-zone-hit-data" class="post-round-stats-text" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container text-flex-end post-round-stats__content-container-last-item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:Label tabindex="-1" text="250" display-tooltip-when-elided="true" name="post-round-stats__inner-zone-score-data" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="post-round-stats__stat-container" class="post-round-stats-container" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; -unity-background-image-tint-color: rgba(255, 255, 255, 0);">
-            <ui:Label tabindex="-1" text="Inner Zone Hits:" display-tooltip-when-elided="true" name="post-round-stats__inner-zone-label" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
-            <ui:Label tabindex="-1" text="107" display-tooltip-when-elided="true" name="post-round-stats__inner-zone-data" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
+        <ui:VisualElement name="post-round-stats__stat-container" class="post-round-stats-container" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; -unity-background-image-tint-color: rgba(255, 255, 255, 0); align-items: stretch; justify-content: space-around;">
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container post-round-stats__content-container-first-item">
+                <ui:Label tabindex="-1" text="Outer Zone" display-tooltip-when-elided="true" name="post-round-stats__shots-fired-label" class="post-round-stats-text" />
+            </ui:VisualElement>
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container post-round-stats-__content-container-middle-item" style="align-items: stretch;">
+                <ui:VisualElement name="post-round-stats__icon-container" class="post-round-stats__icon-container" style="align-items: stretch; background-image: none; justify-content: center;">
+                    <ui:VisualElement class="post-round-stats__icon" style="background-image: url(&apos;project://database/Assets/UI/Assets/stat_screen_outer-zone.png?fileID=2800000&amp;guid=f798dac5c305a45418013e1c0b791959&amp;type=3#stat_screen_outer-zone&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="VisualElement" class="post-round-stats__content-container-middle-item-text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                    <ui:Label tabindex="-1" text="100" display-tooltip-when-elided="true" name="post-round-stats__outer-zone-hit-data" class="post-round-stats-text" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container text-flex-end post-round-stats__content-container-last-item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:Label tabindex="-1" text="1164" display-tooltip-when-elided="true" name="post-round-stats__outer-zone-score-data" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="post-round-stats__stat-container" class="post-round-stats-container" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; -unity-background-image-tint-color: rgba(255, 255, 255, 0);">
-            <ui:Label tabindex="-1" text="Outer Zone Hits:" display-tooltip-when-elided="true" name="post-round-stats__outer-zone-label" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
-            <ui:Label tabindex="-1" text="107" display-tooltip-when-elided="false" name="post-round-stats__outer-zone-data" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
+        <ui:VisualElement name="post-round-stats__stat-container" class="post-round-stats-container" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; -unity-background-image-tint-color: rgba(255, 255, 255, 0); align-items: stretch; justify-content: space-around;">
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container post-round-stats__content-container-first-item">
+                <ui:Label tabindex="-1" text="Accuracy" display-tooltip-when-elided="true" name="post-round-stats__shots-fired-label" class="post-round-stats-text" />
+            </ui:VisualElement>
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container post-round-stats-__content-container-middle-item" style="align-items: stretch;">
+                <ui:VisualElement name="post-round-stats__icon-container" class="post-round-stats__icon-container" style="align-items: stretch; background-image: none; justify-content: center;">
+                    <ui:VisualElement class="post-round-stats__icon" style="background-image: url(&apos;project://database/Assets/UI/Assets/bullet_filled.png?fileID=2800000&amp;guid=dbcffba7e6aba1d46ab187efaeb3164d&amp;type=3#bullet_filled&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="VisualElement" class="post-round-stats__content-container-middle-item-text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                    <ui:Label tabindex="-1" text="21" display-tooltip-when-elided="true" name="post-round-stats__shots-hit-data" class="post-round-stats-text" />
+                    <ui:Label tabindex="-1" text="/" display-tooltip-when-elided="true" class="post-round-stats-text" />
+                    <ui:Label tabindex="-1" text="25" display-tooltip-when-elided="true" name="post-round-stats__shots-fired-data" class="post-round-stats-text" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container text-flex-end post-round-stats__content-container-last-item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:Label tabindex="-1" text="87%" display-tooltip-when-elided="true" name="post-round-stats__hit-accuracy-data" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="post-round-stats__stat-container" class="post-round-stats-container" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; -unity-background-image-tint-color: rgba(255, 255, 255, 0);">
-            <ui:Label tabindex="-1" text="Shots Hit:" display-tooltip-when-elided="true" name="post-round-stats__shots-hit-label" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
-            <ui:Label tabindex="-1" text="107" display-tooltip-when-elided="true" name="post-round-stats__shots-hit-data" enable-rich-text="false" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
+        <ui:VisualElement name="post-round-stats__stat-container" class="post-round-stats-container" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; -unity-background-image-tint-color: rgba(255, 255, 255, 0); align-items: stretch; justify-content: space-around;">
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container post-round-stats__content-container-first-item">
+                <ui:Label tabindex="-1" text="Round Bonus" display-tooltip-when-elided="true" name="post-round-stats__shots-fired-label" class="post-round-stats-text" />
+            </ui:VisualElement>
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container post-round-stats-__content-container-middle-item" style="align-items: stretch;">
+                <ui:VisualElement name="post-round-stats__icon-container" class="post-round-stats__icon-container" style="align-items: stretch; background-image: none; justify-content: center;">
+                    <ui:VisualElement class="post-round-stats__icon" style="background-image: none;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="VisualElement" class="post-round-stats__content-container-middle-item-text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                    <ui:Label tabindex="-1" display-tooltip-when-elided="true" class="post-round-stats-text" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container text-flex-end post-round-stats__content-container-last-item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:Label tabindex="-1" text="300" display-tooltip-when-elided="true" name="post-round-stats__bonus-data" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="post-round-stats__stat-container" class="post-round-stats-container">
-            <ui:Label tabindex="-1" text="Hit Accuracy:" display-tooltip-when-elided="true" name="post-round-stats__hit-accuracy-label" enable-rich-text="false" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
-            <ui:Label tabindex="-1" text="107" display-tooltip-when-elided="true" name="post-round-stats__hit-accuracy-data" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
-        </ui:VisualElement>
-        <ui:VisualElement name="post-round-stats__stat-container" class="post-round-stats-container" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; -unity-background-image-tint-color: rgba(255, 255, 255, 0);">
-            <ui:Label tabindex="-1" text="Points Scored:" display-tooltip-when-elided="true" name="post-round-stats__round-score-label" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
-            <ui:Label tabindex="-1" text="107" display-tooltip-when-elided="true" name="post-round-stats__round-score-data" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
+        <ui:VisualElement name="post-round-stats__stat-container" class="post-round-stats-container post-round-stats__total-container" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; -unity-background-image-tint-color: rgba(255, 255, 255, 0); align-items: stretch; justify-content: space-around;">
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container post-round-stats__content-container-first-item">
+                <ui:Label tabindex="-1" text="TOTAL" display-tooltip-when-elided="true" name="post-round-stats__shots-fired-label" enable-rich-text="false" class="post-round-stats-text text-lg" />
+            </ui:VisualElement>
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container post-round-stats-__content-container-middle-item" style="align-items: stretch;">
+                <ui:VisualElement name="post-round-stats__icon-container" class="post-round-stats__icon-container" style="align-items: stretch; background-image: none; justify-content: center;">
+                    <ui:VisualElement class="post-round-stats__icon" style="background-image: none;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="VisualElement" class="post-round-stats__content-container-middle-item-text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                    <ui:Label tabindex="-1" display-tooltip-when-elided="true" class="post-round-stats-text" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container text-flex-end post-round-stats__content-container-last-item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:Label tabindex="-1" text="300" display-tooltip-when-elided="true" name="post-round-stats__round-total-score-data" class="post-round-stats-text text-lg" style="color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

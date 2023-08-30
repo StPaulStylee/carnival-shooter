@@ -12,9 +12,12 @@ namespace CarnivalShooter.EditorExtensions {
       // Get the integer values from ScoreConstants
       int[] values = new int[]
       {
+        ScoreConstants.Three,
         ScoreConstants.Five,
+        ScoreConstants.Seven,
         ScoreConstants.Ten,
-        ScoreConstants.Fifteen
+        ScoreConstants.Fifteen,
+        ScoreConstants.Twenty
       };
 
       // Convert them to strings for the dropdown options

@@ -237,5 +237,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Label: InnerZone
-  m_Score: 10
-  m_ColorHex: '#EBEC0D'
+  m_Score: 3
+  m_ColorHex: '#EA2811'

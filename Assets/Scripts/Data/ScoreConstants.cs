@@ -2,9 +2,12 @@ using UnityEngine;
 
 namespace CarnivalShooter.Data {
   public static class ScoreConstants {
+    public const int Three = 3;
     public const int Five = 5;
+    public const int Seven = 7;
     public const int Ten = 10;
     public const int Fifteen = 15;
+    public const int Twenty = 20;
 
     public const string Green = "#085405";
     public const string Yellow = "#EBEC0D";

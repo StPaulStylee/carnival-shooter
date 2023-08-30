@@ -68,9 +68,9 @@ namespace CarnivalShooter.Gameplay {
 
     private string SetIsCompletedMessage(string timerType) {
       if (timerType == TimerConstants.RoundTimerKey) {
-        return "Finish!";
+        return "FINISH!";
       }
-      return "Start!";
+      return "START!";
     }
   }
 }

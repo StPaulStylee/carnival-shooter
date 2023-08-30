@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Label: Bullseye
-  m_Score: 15
+  m_Score: 20
   m_ColorHex: '#085405'
 --- !u!114 &7309576015341891615
 MonoBehaviour:

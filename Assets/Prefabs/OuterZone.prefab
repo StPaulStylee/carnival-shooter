@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!23 &6742999513561005180
 MeshRenderer:
@@ -237,5 +237,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Label: OuterZone
-  m_Score: 5
-  m_ColorHex: '#EA2811'
+  m_Score: 7
+  m_ColorHex: '#EBEC0D'
