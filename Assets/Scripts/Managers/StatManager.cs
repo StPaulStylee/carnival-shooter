@@ -22,7 +22,9 @@ public class StatManager : MonoBehaviour {
     get { return (m_TotalShotsHit / m_TotalShotsFired) * 100f; }
   }
 
-  private float getShotAccuracy() => Mathf.RoundToInt((m_TotalShotsHit / m_TotalShotsFired) * 100f);
+  private float getShotAccuracyPercentage() => Mathf.RoundToInt((m_TotalShotsHit / m_TotalShotsFired) * 100f);
+  private float getShotAccuracyDecimal() => m_TotalShotsHit / m_TotalShotsFired;
+
   private float m_TotalOuterZoneHits = 0;
   private int m_TotalOutzonePoints = 0;
   private float m_TotalInnerZoneHits = 0;
@@ -54,7 +56,7 @@ public class StatManager : MonoBehaviour {
       Debug.Log($"Inner Zone Hits: {m_TotalInnerZoneHits}");
       Debug.Log($"Outzone Hits: {m_TotalOuterZoneHits}");
       Debug.Log($"Shots Hit: {m_TotalShotsHit}");
-      Debug.Log($"Hit Accuracy: {getShotAccuracy()}");
+      Debug.Log($"Hit Accuracy: {getShotAccuracyPercentage()}");
       Debug.Log($"Total Score: {m_TotalScore}");
       PostRoundStatsData stats = new PostRoundStatsData(
         totalBullseyeHits: (int)m_TotalBullseyeHits,
@@ -65,7 +67,7 @@ public class StatManager : MonoBehaviour {
         totalOuterZoneScore: m_TotalOutzonePoints,
         totalShotsFired: m_TotalShotsFired,
         totalHits: (int)m_TotalShotsHit,
-        accuracy: getShotAccuracy(),
+        accuracy: getShotAccuracyPercentage(),
         roundBonus: GetRoundBonus(),
         roundScore: m_TotalScore + m_RoundBonus
       );
@@ -105,8 +107,9 @@ public class StatManager : MonoBehaviour {
     m_TotalShotsFired++;
   }
 
+
   private int GetRoundBonus() {
-    float bonus = (0.05f * m_TotalInnerZonePoints + 0.15f * m_TotalOutzonePoints + 0.8f * m_TotalBullseyePoints);
+    float bonus = (0.05f * m_TotalInnerZonePoints + 0.15f * m_TotalOutzonePoints + 0.65f * m_TotalBullseyePoints + (0.45f * getShotAccuracyDecimal() * m_TotalScore));
     Debug.Log(bonus);
     return Mathf.RoundToInt(bonus);
   }
