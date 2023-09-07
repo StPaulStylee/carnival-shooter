@@ -5,11 +5,11 @@ namespace CarnivalShooter.Gameplay {
   public class Player : MonoBehaviour {
     private GameControls gameControls;
     private Camera mainCamera;
-    [SerializeField] private Weapon weapon;
+    [SerializeField] private GenericWeapon weapon;
 
     private void Awake() {
       mainCamera = Camera.main;
-      weapon = GetComponentInChildren<Weapon>(false);
+      weapon = GetComponentInChildren<GenericWeapon>(false);
       Cursor.lockState = CursorLockMode.Locked;
 
       if (weapon == null) {
@@ -34,8 +34,10 @@ namespace CarnivalShooter.Gameplay {
 
     private void CameraLook() {
       Vector2 currentInput = gameControls.GameController.Look.ReadValue<Vector2>();
+      weapon.WeaponSway.VelocityForSway = currentInput;
       bool isMoving = currentInput.y != 0f || currentInput.x != 0f;
       if (isMoving) {
+        Debug.Log(currentInput);
         currentRotationY += currentInput.x * LookSensitivity; // Get Y rotation AROUND the x axis
         currentRotationY = Mathf.Clamp(currentRotationY, MinLookY, MaxLookY);
         currentRotationX += currentInput.y * LookSensitivity; // Get X rotation AROUND the y axis

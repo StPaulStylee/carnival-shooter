@@ -29,8 +29,8 @@ namespace CarnivalShooter.UI {
       GameManager.CountdownTimerStarted += ShowTimerLabel;
       CountDownTimer.TimerChanged += SetTimerLabel;
       GameManager.AmmoInitializing += SetAmmoIcons;
-      Weapon.AmmoChanged += UpdateAmmoIcons;
-      Weapon.AmmoReloaded += SetAmmoIcons;
+      CurrentWeapon.AmmoChanged += UpdateAmmoIcons;
+      CurrentWeapon.AmmoReloaded += SetAmmoIcons;
       GameManager.ScoreInitializing += SetScoreLabel;
       StatManager.ScoreUpdated += SetScoreLabel;
     }
@@ -39,8 +39,8 @@ namespace CarnivalShooter.UI {
       GameManager.CountdownTimerStarted -= ShowTimerLabel;
       CountDownTimer.TimerChanged -= SetTimerLabel;
       GameManager.AmmoInitializing -= SetAmmoIcons;
-      Weapon.AmmoChanged -= UpdateAmmoIcons;
-      Weapon.AmmoReloaded -= SetAmmoIcons;
+      CurrentWeapon.AmmoChanged -= UpdateAmmoIcons;
+      CurrentWeapon.AmmoReloaded -= SetAmmoIcons;
       GameManager.ScoreInitializing -= SetScoreLabel;
       StatManager.ScoreUpdated -= SetScoreLabel;
     }

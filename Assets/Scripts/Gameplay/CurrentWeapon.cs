@@ -1,16 +1,23 @@
-using CarnivalShooter.Gameplay.Behavior;
 using CarnivalShooter.Managers;
 using System;
 using UnityEngine;
 
 namespace CarnivalShooter.Gameplay {
-  public class Weapon : MonoBehaviour {
+  public class CurrentWeapon : MonoBehaviour {
     public static event Action AmmoChanged;
     public static event Action<int> AmmoReloaded;
+
+    public Animator Animator => m_animator;
+    public float RefireRate => m_refireRate;
+    public bool IsReloading => m_isReloading;
+    public int RemainingAmmo => m_remainingAmmo;
+    public float ShotDistance => m_shotDistance;
     [Header("Weapon Configuration")]
+    public GenericWeapon GenericWeapon;
     [SerializeField] private float m_refireRate = 0.2f;
     [SerializeField] private float m_shotDistance = 10f;
     [SerializeField] private int m_startingAmmo = 30;
+
     [Header("Particle Effects")]
     [SerializeField] private ParticleSystem m_shotParticle;
     [SerializeField] private ParticleSystem m_bulletEjectionParticle;
@@ -21,13 +28,12 @@ namespace CarnivalShooter.Gameplay {
     [SerializeField] private AudioClip m_reloadMagOutSfxClip;
     [SerializeField] private AudioClip m_reloadMagInSfxClip;
     [SerializeField] private AudioClip m_reloadSlideInSfxClip;
+    [Header("Animation/VFX")]
     [SerializeField] private Animator m_animator;
-    private float m_fireTimer;
-    private Camera m_povCamera;
+
     private int m_remainingAmmo;
     private bool m_isReloading;
     private void Awake() {
-      m_povCamera = Camera.main;
       GameManager.AmmoInitializing += SetStartingAmmo;
     }
 
@@ -35,24 +41,16 @@ namespace CarnivalShooter.Gameplay {
       GameManager.AmmoInitializing -= SetStartingAmmo;
     }
 
-    private void Update() {
-      m_fireTimer += Time.deltaTime;
-
-    }
-
-    public void TryShoot() {
-      if (CanShoot()) {
-        Shoot();
-      }
-    }
-
-    public void Reload() {
+    private void Reload() {
       SetIsReloading(true);
       m_animator.SetBool("IsEmpty", false);
       m_remainingAmmo = m_startingAmmo;
-      //m_shotSfx.PlayOneShot(m_reloadSfxClip, 0.8f);
       m_animator.SetTrigger("Reload");
       AmmoReloaded?.Invoke(m_startingAmmo);
+    }
+
+    public void OnReload() {
+      Reload();
     }
 
     private void SetIsReloading(bool isReloading) {
@@ -64,36 +62,18 @@ namespace CarnivalShooter.Gameplay {
       m_remainingAmmo = amount;
     }
 
-    private void Shoot() {
-      HandleRemainingAmmoDuringShot();
+    public void OnShoot() {
       m_shotParticle.Play();
       m_weaponSfx.PlayOneShot(m_shotSfxClip, 0.8f);
       m_animator.SetTrigger("Shoot");
-      AmmoChanged?.Invoke();
-      bool hasHit = Physics.Raycast(m_povCamera.transform.position, m_povCamera.transform.forward, out RaycastHit hit, m_shotDistance);
-      if (hasHit && hit.transform.TryGetComponent(out Scoreable scoreable)) {
-        hit.transform.GetComponent<Shootable>().TakeShot(hit);
-        scoreable.OnPointsScored(hit.transform.position);
-        return;
-      }
+      AmmoChanged?.Invoke(); // Should this event be moved to GenericWeapon?
     }
 
-
-    private bool CanShoot() {
-      if (m_isReloading) {
-        return false;
-      }
-      if (m_fireTimer >= m_refireRate && m_remainingAmmo > 0) {
-        m_fireTimer = 0;
-        return true;
-      }
-      if (m_remainingAmmo == 0) {
-        m_weaponSfx.PlayOneShot(m_magEmptySfxClip, 0.8f);
-      }
-      return false;
+    public void PlayMagEmptySfxClip() {
+      m_weaponSfx.PlayOneShot(m_magEmptySfxClip, 0.8f);
     }
 
-    private void HandleRemainingAmmoDuringShot() {
+    public void HandleRemainingAmmoDuringShot() {
       m_remainingAmmo--;
       if (m_remainingAmmo == 0) {
         m_animator.SetBool("IsEmpty", true);

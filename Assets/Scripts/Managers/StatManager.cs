@@ -37,7 +37,7 @@ public class StatManager : MonoBehaviour {
   private void Awake() {
     Scoreable.PointsScored += OnScoreableHit;
     CountDownTimer.TimerCompleted += OnRoundCompleted;
-    Weapon.AmmoChanged += OnWeaponShot;
+    CurrentWeapon.AmmoChanged += OnWeaponShot;
     GameManager.ScoreInitializing += (int score) => m_TotalScore = score;
     OverallAccuracyBonusWeight = 1f - (OuterZoneBonusWeight + InnerZoneBonusWeight);
     Debug.Log(OverallAccuracyBonusWeight);
@@ -46,7 +46,7 @@ public class StatManager : MonoBehaviour {
   private void OnDisable() {
     Scoreable.PointsScored -= OnScoreableHit;
     CountDownTimer.TimerCompleted -= OnRoundCompleted;
-    Weapon.AmmoChanged -= OnWeaponShot;
+    CurrentWeapon.AmmoChanged -= OnWeaponShot;
   }
 
   private void OnRoundCompleted(string timerType) {
@@ -109,7 +109,7 @@ public class StatManager : MonoBehaviour {
 
 
   private int GetRoundBonus() {
-    float bonus = (0.05f * m_TotalInnerZonePoints + 0.15f * m_TotalOutzonePoints + 0.65f * m_TotalBullseyePoints + (0.45f * getShotAccuracyDecimal() * m_TotalScore));
+    float bonus = (0.05f * m_TotalInnerZonePoints + 0.15f * m_TotalOutzonePoints + 0.65f * m_TotalBullseyePoints + (0.15f * getShotAccuracyDecimal() * m_TotalScore));
     Debug.Log(bonus);
     return Mathf.RoundToInt(bonus);
   }
