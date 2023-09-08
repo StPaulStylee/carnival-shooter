@@ -11,7 +11,8 @@ namespace CarnivalShooter.Data {
     public float HitAccuracy;
     public int RoundBonus;
     public int RoundScore;
-    public PostRoundStatsData(int totalBullseyeHits, int totalBullseyeScore, int totalInnerZoneHits, int totalInnerZoneScore, int totalOuterZoneHits, int totalOuterZoneScore, int totalShotsFired, int totalHits, float accuracy, int roundBonus, int roundScore) {
+    public int TotalScore;
+    public PostRoundStatsData(int totalBullseyeHits, int totalBullseyeScore, int totalInnerZoneHits, int totalInnerZoneScore, int totalOuterZoneHits, int totalOuterZoneScore, int totalShotsFired, int totalHits, float accuracy, int roundBonus, int roundScore, int totalScore) {
       TotalBullseyeHits = totalBullseyeHits;
       TotalBullseyeScore = totalBullseyeScore;
       TotalInnerZoneHits = totalInnerZoneHits;
@@ -23,6 +24,7 @@ namespace CarnivalShooter.Data {
       HitAccuracy = accuracy;
       RoundBonus = roundBonus;
       RoundScore = roundScore;
+      TotalScore = totalScore;
     }
   }
 }

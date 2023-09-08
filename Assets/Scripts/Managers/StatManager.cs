@@ -31,7 +31,7 @@ public class StatManager : MonoBehaviour {
   private int m_TotalInnerZonePoints = 0;
   private float m_TotalBullseyeHits = 0;
   private int m_TotalBullseyePoints = 0;
-  private int m_RoundBonus = 300;
+  private int m_RoundBonus = 0;
   private int m_TotalScore = 0;
 
   private void Awake() {
@@ -69,10 +69,10 @@ public class StatManager : MonoBehaviour {
         totalHits: (int)m_TotalShotsHit,
         accuracy: getShotAccuracyPercentage(),
         roundBonus: GetRoundBonus(),
-        roundScore: m_TotalScore + m_RoundBonus
+        roundScore: m_TotalScore, // Remember that m_TotalScore actually represents the round score without bonuses applied
+        totalScore: m_TotalScore + m_RoundBonus
       );
       PostRoundStatsCompleted?.Invoke(stats);
-      // Calculate some sort of accuracy bonus
     }
   }
 
@@ -110,8 +110,8 @@ public class StatManager : MonoBehaviour {
 
   private int GetRoundBonus() {
     float bonus = (0.05f * m_TotalInnerZonePoints + 0.15f * m_TotalOutzonePoints + 0.65f * m_TotalBullseyePoints + (0.15f * getShotAccuracyDecimal() * m_TotalScore));
-    Debug.Log(bonus);
-    return Mathf.RoundToInt(bonus);
+    m_RoundBonus = Mathf.RoundToInt(bonus);
+    return m_RoundBonus;
   }
 
 }
