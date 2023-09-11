@@ -11,8 +11,11 @@ namespace CarnivalShooter.Gameplay {
     private float m_fireTimer;
     private Camera m_povCamera;
 
-    private void Update() {
+    private void Start() {
       m_povCamera = Camera.main;
+    }
+
+    private void Update() {
       m_fireTimer += Time.deltaTime;
     }
 

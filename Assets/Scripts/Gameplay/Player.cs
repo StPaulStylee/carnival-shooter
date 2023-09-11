@@ -37,14 +37,12 @@ namespace CarnivalShooter.Gameplay {
       weapon.WeaponSway.VelocityForSway = currentInput;
       bool isMoving = currentInput.y != 0f || currentInput.x != 0f;
       if (isMoving) {
-        Debug.Log(currentInput);
         currentRotationY += currentInput.x * LookSensitivity; // Get Y rotation AROUND the x axis
         currentRotationY = Mathf.Clamp(currentRotationY, MinLookY, MaxLookY);
         currentRotationX += currentInput.y * LookSensitivity; // Get X rotation AROUND the y axis
         currentRotationX = Mathf.Clamp(currentRotationX, MinLookX, MaxLookX); // Restrict x rotation (can only look up and down to set boundries)
         mainCamera.transform.localRotation = Quaternion.Euler(-currentRotationX, currentRotationY, 0); // Apply x restriction (Note the negative in the x param, this makes in NOT INVERTED)
       }
-      //transform.eulerAngles += Vector3.up * currentRotationY; // Apply the y rotation to the player (Not the mainCamera) so the player is always facing the correct way
     }
 
     private void OnFirePerformed(InputAction.CallbackContext ctx) {
