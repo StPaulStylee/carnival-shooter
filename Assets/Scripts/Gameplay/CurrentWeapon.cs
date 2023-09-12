@@ -1,4 +1,5 @@
 using CarnivalShooter.Managers;
+using EZCameraShake;
 using System;
 using UnityEngine;
 
@@ -17,6 +18,12 @@ namespace CarnivalShooter.Gameplay {
     [SerializeField] private float m_refireRate = 0.2f;
     [SerializeField] private float m_shotDistance = 10f;
     [SerializeField] private int m_startingAmmo = 30;
+    [Tooltip("The intensity of the Camera Shake when shooting")]
+    [SerializeField] private float m_ShotShakeMagnitude = 4f;
+    [Tooltip("The roughness of the Camera Shake when shooting. Smaller is smoother")]
+    [SerializeField] private float m_ShotShakeRoughness = 4f;
+    [SerializeField] private float m_ShotShakeFadeInTime = 0.1f;
+    [SerializeField] private float m_ShotShakeFadeOutTime = 0.1f;
 
     [Header("Particle Effects")]
     [SerializeField] private ParticleSystem m_shotParticle;
@@ -66,6 +73,7 @@ namespace CarnivalShooter.Gameplay {
       m_shotParticle.Play();
       m_weaponSfx.PlayOneShot(m_shotSfxClip, 0.8f);
       m_animator.SetTrigger("Shoot");
+      CameraShaker.Instance.ShakeOnce(m_ShotShakeMagnitude, m_ShotShakeRoughness, m_ShotShakeFadeInTime, m_ShotShakeFadeOutTime);
       AmmoChanged?.Invoke(); // Should this event be moved to GenericWeapon?
     }
 

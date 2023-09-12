@@ -1,18 +1,19 @@
+using CarnivalShooter.Utilities;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace CarnivalShooter.Gameplay {
   public class Player : MonoBehaviour {
     private GameControls gameControls;
-    private Camera mainCamera;
-    [SerializeField] private GenericWeapon weapon;
+    private CameraHolder m_MainCamera;
+    [SerializeField] private GenericWeapon m_Weapon;
 
     private void Awake() {
-      mainCamera = Camera.main;
-      weapon = GetComponentInChildren<GenericWeapon>(false);
+      m_MainCamera = GetComponentInChildren<CameraHolder>();
+      m_Weapon = GetComponentInChildren<GenericWeapon>(false);
       Cursor.lockState = CursorLockMode.Locked;
 
-      if (weapon == null) {
+      if (m_Weapon == null) {
         Debug.LogError($"The {name} component does not have a child Weapon component!");
       }
     }
@@ -34,23 +35,23 @@ namespace CarnivalShooter.Gameplay {
 
     private void CameraLook() {
       Vector2 currentInput = gameControls.GameController.Look.ReadValue<Vector2>();
-      weapon.WeaponSway.VelocityForSway = currentInput;
+      m_Weapon.WeaponSway.VelocityForSway = currentInput;
       bool isMoving = currentInput.y != 0f || currentInput.x != 0f;
       if (isMoving) {
         currentRotationY += currentInput.x * LookSensitivity; // Get Y rotation AROUND the x axis
         currentRotationY = Mathf.Clamp(currentRotationY, MinLookY, MaxLookY);
         currentRotationX += currentInput.y * LookSensitivity; // Get X rotation AROUND the y axis
         currentRotationX = Mathf.Clamp(currentRotationX, MinLookX, MaxLookX); // Restrict x rotation (can only look up and down to set boundries)
-        mainCamera.transform.localRotation = Quaternion.Euler(-currentRotationX, currentRotationY, 0); // Apply x restriction (Note the negative in the x param, this makes in NOT INVERTED)
+        m_MainCamera.transform.localRotation = Quaternion.Euler(-currentRotationX, currentRotationY, 0); // Apply x restriction (Note the negative in the x param, this makes in NOT INVERTED)
       }
     }
 
     private void OnFirePerformed(InputAction.CallbackContext ctx) {
-      weapon.TryShoot();
+      m_Weapon.TryShoot();
     }
 
     private void OnReloadPerformed(InputAction.CallbackContext ctx) {
-      weapon.Reload();
+      m_Weapon.Reload();
     }
 
     public void SetupInputActions(GameControls gameInput) {

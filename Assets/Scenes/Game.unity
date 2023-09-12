@@ -3690,6 +3690,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3763,14 +3764,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 906539454}
-  m_Father: {fileID: 1722403123}
-  m_RootOrder: 0
+  m_Father: {fileID: 1667661798}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
@@ -3816,6 +3817,22 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab8353b5ebd32545867da143199a814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultPosInfluence: {x: 0.15, y: 0.15, z: 0.15}
+  DefaultRotInfluence: {x: 1, y: 1, z: 1}
+  RestPositionOffset: {x: 0, y: 0, z: 0}
+  RestRotationOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &331154475
 GameObject:
   m_ObjectHideFlags: 0
@@ -12437,7 +12454,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29542
+  m_Name: pb_Mesh38618
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -13132,7 +13149,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29740
+  m_Name: pb_Mesh29748
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -13291,6 +13308,51 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1667661797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1667661798}
+  - component: {fileID: 1667661799}
+  m_Layer: 0
+  m_Name: CameraHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1667661798
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667661797}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 330585546}
+  m_Father: {fileID: 1722403123}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1667661799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667661797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6aab84426c79424483871ef61e08a4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1676265922
 GameObject:
   m_ObjectHideFlags: 0
@@ -13517,7 +13579,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 330585546}
+  - {fileID: 1667661798}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -13533,7 +13595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355145c254eb8584988c2b80170ae7a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
+  m_Weapon: {fileID: 0}
   LookSensitivity: 0.505
   MinLookX: -80
   MaxLookX: 80
@@ -17053,6 +17115,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SwaySmoothSpeed
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2530823010334919597, guid: 855c1808bb8a6ed4094e0eafa2a70dca,
+        type: 3}
+      propertyPath: m_ShotShakeMagnitude
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2530823010334919597, guid: 855c1808bb8a6ed4094e0eafa2a70dca,
+        type: 3}
+      propertyPath: m_ShotShakeRoughness
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3205097094613940964, guid: 855c1808bb8a6ed4094e0eafa2a70dca,
         type: 3}
