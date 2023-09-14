@@ -22,8 +22,9 @@ public class StatManager : MonoBehaviour {
     get { return (m_TotalShotsHit / m_TotalShotsFired) * 100f; }
   }
 
-  private float getShotAccuracyPercentage() => Mathf.RoundToInt((m_TotalShotsHit / m_TotalShotsFired) * 100f);
-  private float getShotAccuracyDecimal() => m_TotalShotsHit / m_TotalShotsFired;
+  private float getShotAccuracyPercentage() => m_TotalShotsFired == 0 ? 0f : Mathf.RoundToInt((m_TotalShotsHit / m_TotalShotsFired) * 100f);
+
+  private float getShotAccuracyDecimal() => m_TotalShotsFired == 0 ? 0f : m_TotalShotsHit / m_TotalShotsFired;
 
   private float m_TotalOuterZoneHits = 0;
   private int m_TotalOutzonePoints = 0;
@@ -51,13 +52,6 @@ public class StatManager : MonoBehaviour {
 
   private void OnRoundCompleted(string timerType) {
     if (timerType.Equals(TimerConstants.RoundTimerKey)) {
-      Debug.Log($"Shots Fired: {m_TotalShotsFired}");
-      Debug.Log($"Bullseye Hits: {m_TotalBullseyeHits}");
-      Debug.Log($"Inner Zone Hits: {m_TotalInnerZoneHits}");
-      Debug.Log($"Outzone Hits: {m_TotalOuterZoneHits}");
-      Debug.Log($"Shots Hit: {m_TotalShotsHit}");
-      Debug.Log($"Hit Accuracy: {getShotAccuracyPercentage()}");
-      Debug.Log($"Total Score: {m_TotalScore}");
       PostRoundStatsData stats = new PostRoundStatsData(
         totalBullseyeHits: (int)m_TotalBullseyeHits,
         totalBullseyeScore: m_TotalBullseyePoints,

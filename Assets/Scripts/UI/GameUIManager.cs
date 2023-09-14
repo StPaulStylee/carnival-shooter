@@ -4,15 +4,15 @@ using UnityEngine;
 
 namespace CarnivalShooter.UI.Manager {
   public class GameUIManager : MonoBehaviour {
-    public GameHud GameHud;
-    public PostRoundStats PostRoundStats;
+    [SerializeField] private GameHud m_GameHud;
+    [SerializeField] PostRoundStats m_PostRoundStats;
 
     private void Awake() {
       CountDownTimer.TimerPostCompleted += ShowPostRoundStats;
     }
 
     public void Start() {
-      HideVisualAsset(PostRoundStats);
+      HideVisualAsset(m_PostRoundStats);
     }
 
     public void HideVisualAsset(GameUIScreen screen) {
@@ -25,8 +25,8 @@ namespace CarnivalShooter.UI.Manager {
 
     private void ShowPostRoundStats(string timerType) {
       if (timerType.Equals(TimerConstants.RoundTimerKey)) {
-        HideVisualAsset(GameHud);
-        ShowVisualAsset(PostRoundStats);
+        HideVisualAsset(m_GameHud);
+        ShowVisualAsset(m_PostRoundStats);
       }
     }
   }
