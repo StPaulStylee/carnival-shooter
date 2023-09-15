@@ -53,6 +53,15 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""f627738f-1f48-475f-ae4c-291eccffae56"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -88,6 +97,17 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce11878f-4304-4486-aaf6-87320a9c7c41"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -105,6 +125,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         m_GameController_Look = m_GameController.FindAction("Look", throwIfNotFound: true);
         m_GameController_Fire = m_GameController.FindAction("Fire", throwIfNotFound: true);
         m_GameController_Reload = m_GameController.FindAction("Reload", throwIfNotFound: true);
+        m_GameController_Pause = m_GameController.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -169,6 +190,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_GameController_Look;
     private readonly InputAction m_GameController_Fire;
     private readonly InputAction m_GameController_Reload;
+    private readonly InputAction m_GameController_Pause;
     public struct GameControllerActions
     {
         private @GameControls m_Wrapper;
@@ -176,6 +198,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_GameController_Look;
         public InputAction @Fire => m_Wrapper.m_GameController_Fire;
         public InputAction @Reload => m_Wrapper.m_GameController_Reload;
+        public InputAction @Pause => m_Wrapper.m_GameController_Pause;
         public InputActionMap Get() { return m_Wrapper.m_GameController; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -194,6 +217,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @Reload.started += instance.OnReload;
             @Reload.performed += instance.OnReload;
             @Reload.canceled += instance.OnReload;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IGameControllerActions instance)
@@ -207,6 +233,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @Reload.started -= instance.OnReload;
             @Reload.performed -= instance.OnReload;
             @Reload.canceled -= instance.OnReload;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IGameControllerActions instance)
@@ -238,5 +267,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

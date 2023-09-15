@@ -57,14 +57,14 @@ namespace CarnivalShooter.Gameplay {
     public void SetupInputActions(GameControls gameInput) {
       gameInput.GameController.Fire.performed += OnFirePerformed;
       gameInput.GameController.Reload.performed += OnReloadPerformed;
-      gameInput.GameController.Enable();
+      //gameInput.GameController.Enable();
       gameControls = gameInput;
     }
 
     public void TearDownInputActions(GameControls gameInput) {
       gameInput.GameController.Fire.performed -= OnFirePerformed;
       gameInput.GameController.Reload.performed -= OnReloadPerformed;
-      gameInput.GameController.Disable();
+      //gameInput.GameController.Disable();
       gameControls = null;
     }
   }
