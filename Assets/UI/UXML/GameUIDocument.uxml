@@ -4,5 +4,5 @@
     <ui:Template name="PauseMenuUIDocument" src="project://database/Assets/UI/UXML/PauseMenuUIDocument.uxml?fileID=9197481963319205126&amp;guid=104b9707c026ad24e8af56c69b107d0e&amp;type=3#PauseMenuUIDocument" />
     <ui:Instance template="GameHudUIDocument" name="GameHudUIDocument" />
     <ui:Instance template="PostRoundStatsUIDocument" name="PostRoundStatsUIDocument" style="width: 100%; height: 100%;" />
-    <ui:Instance template="PauseMenuUIDocument" name="PauseMenuUIDocument" />
+    <ui:Instance template="PauseMenuUIDocument" name="PauseMenuUIDocument" style="width: 100%; height: 100%; position: absolute;" />
 </ui:UXML>

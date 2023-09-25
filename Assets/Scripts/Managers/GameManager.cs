@@ -2,6 +2,7 @@ using CarnivalShooter.Data;
 using CarnivalShooter.Gameplay;
 using CarnivalShooter.Input;
 using CarnivalShooter.Managers.Data;
+using CarnivalShooter.UI;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -33,6 +34,7 @@ namespace CarnivalShooter.Managers {
     private void Awake() {
       CountDownTimer.TimerBlockingExecution += SetInitialized;
       InGameGlobalInput.OnPause += TogglePaused;
+      PauseMenu.OnReturnToGame += TogglePaused;
     }
 
     private void OnDisable() {

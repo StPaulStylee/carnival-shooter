@@ -1,29 +1,29 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Styles/SharedUIStyles.uss?fileID=7433441132597879392&amp;guid=79ae6c86e88beb84cad959a64ca246fb&amp;type=3#SharedUIStyles" />
     <Style src="project://database/Assets/UI/Styles/PauseMenuUIStyles.uss?fileID=7433441132597879392&amp;guid=1c59bc6d9d8968f48bd4a49eef85acdf&amp;type=3#PauseMenuUIStyles" />
-    <ui:VisualElement name="pause-menu-overlay" class="screen-overlay" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
-    <ui:VisualElement name="pause-menu__root-container" style="position: absolute; width: 100%; height: 100%; justify-content: center;">
+    <ui:VisualElement name="pause-menu-overlay" class="screen-overlay" />
+    <ui:VisualElement name="pause-menu__root-container" style="position: absolute; width: 67%; height: 53%; justify-content: center; top: 186px; right: 237px; left: 16%;">
         <ui:VisualElement name="pause-menu__header-container" class="pause-menu-content-container">
             <ui:Label tabindex="-1" text="Pause" display-tooltip-when-elided="true" class="font__riffic-free--white pause-menu-header" />
         </ui:VisualElement>
         <ui:VisualElement name="pause-menu__items-container" class="pause-menu-content-container">
-            <ui:VisualElement name="pause-menu__button-container" class="pause-menu-button-container" style="background-color: rgba(0, 0, 0, 0); flex-shrink: 0;">
-                <ui:Button display-tooltip-when-elided="true" name="pause-menu__button" class="pause-menu-button" style="height: 100px; background-image: none; -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgba(253, 253, 253, 0); -unity-background-scale-mode: stretch-to-fill;">
+            <ui:VisualElement name="pause-menu__button-container" class="pause-menu-button-container pause-menu-button-container--return-to-game" style="background-color: rgba(0, 0, 0, 0); flex-shrink: 0;">
+                <ui:Button display-tooltip-when-elided="true" name="pause-menu__button" class="pause-menu-button">
                     <ui:VisualElement name="pause-menu__button-icon" class="pause-menu__button--icon" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/UI/Assets/play.png?fileID=21300000&amp;guid=b53951c215e4ed544b1e85db3a2679a2&amp;type=3#play&apos;);" />
                 </ui:Button>
-                <ui:Label tabindex="-1" text="Return to Game" display-tooltip-when-elided="true" class="font__riffic-free--white" />
+                <ui:Label tabindex="-1" text="Return to Game" display-tooltip-when-elided="true" name="pause-menu-item-label" class="font__riffic-free--white" />
             </ui:VisualElement>
-            <ui:VisualElement name="pause-menu__button-container" class="pause-menu-button-container" style="background-color: rgba(0, 0, 0, 0); flex-shrink: 0;">
+            <ui:VisualElement name="pause-menu__button-container" class="pause-menu-button-container pause-menu-button-container--settings" style="background-color: rgba(0, 0, 0, 0); flex-shrink: 0;">
                 <ui:Button display-tooltip-when-elided="true" name="pause-menu__button" class="pause-menu-button" style="align-items: stretch; justify-content: flex-start; background-image: none; -unity-background-scale-mode: scale-to-fit;">
                     <ui:VisualElement name="pause-menu__button-icon" class="pause-menu__button--icon" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/UI/Assets/gear.png?fileID=21300000&amp;guid=be9d7d243faceef4cb8d83e9084ebbbc&amp;type=3#gear&apos;);" />
                 </ui:Button>
-                <ui:Label tabindex="-1" text="Settings" display-tooltip-when-elided="true" class="font__riffic-free--white" />
+                <ui:Label tabindex="-1" text="Settings" display-tooltip-when-elided="true" name="pause-menu-item-label" class="font__riffic-free--white" />
             </ui:VisualElement>
-            <ui:VisualElement name="pause-menu__button-container" class="pause-menu-button-container" style="background-color: rgba(0, 0, 0, 0); flex-shrink: 0;">
-                <ui:Button display-tooltip-when-elided="true" name="pause-menu__button" class="pause-menu-button" style="height: 100px; background-image: none; -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgba(253, 253, 253, 0); -unity-background-scale-mode: scale-to-fit;">
+            <ui:VisualElement name="pause-menu__button-container" class="pause-menu-button-container pause-menu-button-container--exit-to-menu" style="background-color: rgba(0, 0, 0, 0); flex-shrink: 0;">
+                <ui:Button display-tooltip-when-elided="true" name="pause-menu__button" class="pause-menu-button">
                     <ui:VisualElement name="pause-menu__button-icon" class="pause-menu__button--icon" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/UI/Assets/logout.png?fileID=21300000&amp;guid=27d6a08e67fc7a74c8249da45ce6e934&amp;type=3#logout&apos;);" />
                 </ui:Button>
-                <ui:Label tabindex="-1" text="Exit to Menu" display-tooltip-when-elided="true" class="font__riffic-free--white" />
+                <ui:Label tabindex="-1" text="Exit to Menu" display-tooltip-when-elided="true" name="pause-menu-item-label" class="font__riffic-free--white" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

@@ -3,6 +3,7 @@ using UnityEngine.UIElements;
 
 namespace CarnivalShooter.UI {
   public abstract class GameUIScreen : MonoBehaviour {
+    [HideInInspector] public string GameHudElementName => m_GameHudElementName;
     [Header("UXML Documents/Templates")]
     [Tooltip("The Root UI Document")]
     [SerializeField] protected UIDocument m_UIDocument;
