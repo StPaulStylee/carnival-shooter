@@ -2,7 +2,9 @@
     <ui:Template name="GameHudUIDocument" src="project://database/Assets/UI/UXML/GameHudUIDocument.uxml?fileID=9197481963319205126&amp;guid=a6e91636650e5124996f2a6869df3f5e&amp;type=3#GameHudUIDocument" />
     <ui:Template name="PostRoundStatsUIDocument" src="project://database/Assets/UI/UXML/PostRoundStatsUIDocument.uxml?fileID=9197481963319205126&amp;guid=9d784fa4dce5c46429c7bfd71b3c1a8a&amp;type=3#PostRoundStatsUIDocument" />
     <ui:Template name="PauseMenuUIDocument" src="project://database/Assets/UI/UXML/PauseMenuUIDocument.uxml?fileID=9197481963319205126&amp;guid=104b9707c026ad24e8af56c69b107d0e&amp;type=3#PauseMenuUIDocument" />
+    <ui:Template name="SettingsMenuUIDocument" src="project://database/Assets/UI/UXML/SettingsMenuUIDocument.uxml?fileID=9197481963319205126&amp;guid=c35137cf7463ceb43873b58789cd89b4&amp;type=3#SettingsMenuUIDocument" />
     <ui:Instance template="GameHudUIDocument" name="GameHudUIDocument" />
     <ui:Instance template="PostRoundStatsUIDocument" name="PostRoundStatsUIDocument" style="width: 100%; height: 100%;" />
     <ui:Instance template="PauseMenuUIDocument" name="PauseMenuUIDocument" style="width: 100%; height: 100%; position: absolute;" />
+    <ui:Instance template="SettingsMenuUIDocument" name="SettingsMenuUIDocument" style="position: absolute; width: 100%; height: 100%;" />
 </ui:UXML>

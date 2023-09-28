@@ -4,7 +4,7 @@
     <ui:VisualElement name="pause-menu-overlay" class="screen-overlay" />
     <ui:VisualElement name="pause-menu__root-container" style="position: absolute; width: 67%; height: 53%; justify-content: center; top: 186px; right: 237px; left: 16%;">
         <ui:VisualElement name="pause-menu__header-container" class="pause-menu-content-container">
-            <ui:Label tabindex="-1" text="Pause" display-tooltip-when-elided="true" class="font__riffic-free--white pause-menu-header" />
+            <ui:Label tabindex="-1" text="Pause" display-tooltip-when-elided="true" name="Label" class="font__riffic-free--white menu-header" />
         </ui:VisualElement>
         <ui:VisualElement name="pause-menu__items-container" class="pause-menu-content-container">
             <ui:VisualElement name="pause-menu__button-container" class="pause-menu-button-container pause-menu-button-container--return-to-game" style="background-color: rgba(0, 0, 0, 0); flex-shrink: 0;">

@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 namespace CarnivalShooter.UI {
   public class PauseMenu : GameUIScreen {
     public static event Action OnReturnToGame;
+    public static event Action SettingsMenuOpened;
 
     const string k_ReturnToGameButton = "pause-menu-button-container--return-to-game";
     const string k_SettingsButton = "pause-menu-button-container--settings";
@@ -31,6 +32,7 @@ namespace CarnivalShooter.UI {
     }
 
     private void OnSettingsButtonClicked(ClickEvent e) {
+      SettingsMenuOpened?.Invoke();
       Debug.Log("Settings Button Clicked");
     }
 

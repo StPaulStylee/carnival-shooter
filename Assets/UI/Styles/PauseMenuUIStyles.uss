@@ -15,14 +15,16 @@
     align-items: flex-start;
 }
 
-.pause-menu-header {
-    font-size: 93px;
+.pause-menu-button-container > * {
+    transition: all 175ms ease-in;
 }
 
-.pause-menu-button-container > *,
-.pause-menu-button,
+.pause-menu-button {
+    transition: all 175ms ease-in;
+}
+
 .pause-menu-button > * {
-  transition: all 175ms ease-in;
+    transition: all 175ms ease-in;
 }
 
 .pause-menu-button {
@@ -47,13 +49,18 @@
     padding-bottom: 15px;
 }
 
-.pause-menu-button-container:hover > *,
-.pause-menu-button-container:hover .pause-menu__button--icon {
-  border-color: #C6A63B;
-  scale: 1.1;
-  -unity-background-image-tint-color: #C6A63B;
-  color: #C6A63B;
+.pause-menu-button-container:hover > * {
+    border-color: rgb(255, 222, 20);
+    scale: 1.1;
+    -unity-background-image-tint-color: rgb(255, 222, 20);
+    color: rgb(255, 222, 20);
+}
 
+.pause-menu-button-container:hover .pause-menu__button--icon {
+    border-color: rgb(255, 222, 20);
+    scale: 1.1;
+    -unity-background-image-tint-color: rgb(255, 222, 20);
+    color: rgb(255, 222, 20);
 }
 
 .pause-menu-button-container {
@@ -71,6 +78,62 @@
     align-items: center;
     margin-left: 20px;
 }
+/*
+<div class="checkbox-wrapper-22">
+  <label class="switch" for="checkbox">
+    <input type="checkbox" id="checkbox" />
+    <div class="slider round"></div>
+  </label>
+</div>
 
-.pause-menu__button--icon {
-}
+<style>
+  .checkbox-wrapper-22 .switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .checkbox-wrapper-22 .switch input {
+    display:none;
+  }
+
+  .checkbox-wrapper-22 .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+  }
+
+  .checkbox-wrapper-22 .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+  }
+
+  .checkbox-wrapper-22 input:checked + .slider {
+    background-color: #66bb6a;
+  }
+
+  .checkbox-wrapper-22 input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  .checkbox-wrapper-22 .slider.round {
+    border-radius: 34px;
+  }
+
+  .checkbox-wrapper-22 .slider.round:before {
+    border-radius: 50%;
+  }
+</style>*/
+
