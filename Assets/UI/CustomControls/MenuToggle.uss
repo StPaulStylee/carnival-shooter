@@ -5,29 +5,34 @@
 
 .menu-toggle__input {
     background-color: var(--unity-colors-slider_groove-background);
-    max-width: 25px;
-    border-top-left-radius: 8px;
+    width: 50px;
+    border-radius: 12.5px;
+/*    border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
     border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-bottom-right-radius: 8px;*/
     overflow: visible;
-    border-left-width: 1px;
+    border-width: 1px;
+/*    border-left-width: 1px;
     border-right-width: 1px;
     border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-right-color: var(--unity-colors-slider_thumb-border);
+    border-bottom-width: 1px;*/
+    border-color: var(--unity-colors-slider_thumb-border);
+/*    border-right-color: var(--unity-colors-slider_thumb-border);
     border-top-color: var(--unity-colors-slider_thumb-border);
     border-bottom-color: var(--unity-colors-slider_thumb-border);
-    height: 16px;
+    border-left-color: var(--unity-colors-slider_thumb-border);*/
+    height: 25px;
     margin-top: 10px;
-    border-left-color: var(--unity-colors-slider_thumb-border);
     transition-property: background-color;
     transition-duration: 0.5s;
+    flex-basis: auto;
+    flex-grow: 0;
 }
 
 .menu-toggle__input-knob {
-    height: 16px;
-    width: 16px;
+    height: 25px;
+    width: 25px;
     background-color: var(--unity-colors-slider_thumb-background);
     position: absolute;
     border-top-left-radius: 25px;
@@ -53,7 +58,7 @@
 }
 
 .menu-toggle__input--checked > .menu-toggle__input-knob {
-    translate: 8px 0;
+    translate: 24px 0;
 }
 
 .menu-toggle:focus .menu-toggle__input-knob {

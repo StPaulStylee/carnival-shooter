@@ -6,7 +6,9 @@ namespace CarnivalShooter.UI.CustomControls {
     public new class UxmlFactory : UxmlFactory<MenuToggle, UxmlTraits> { }
     public new class UxmlTraits : BaseFieldTraits<bool, UxmlBoolAttributeDescription> { }
 
-    // Determine if the "new" keyword is actually necessary here
+    // The "new" keyword is used here becase "BaseField" has these exact same variables
+    // and we want our custom instance to have the same ones. We could eliminate the use of "new"
+    // by simply using our own unique variable names for these assignments
     public static readonly new string ussClassName = "menu-toggle";
     public static readonly new string inputUssClassName = "menu-toggle__input";
     public static readonly string inputKnobUssClassName = "menu-toggle__input-knob";
@@ -23,9 +25,12 @@ namespace CarnivalShooter.UI.CustomControls {
       // Root selector
       AddToClassList(ussClassName);
       // Get the BaseField's visual input element and use it as the background of the slide.
+      // This is Querying the the BaseFields element using the className assigned to its own instance of
+      // "inputUssClassName"
       m_Input = this.Q(className: BaseField<bool>.inputUssClassName);
       m_Input.AddToClassList(inputUssClassName);
       Add(m_Input);
+
 
       // Create a "knob" child element for the background to represent the actual slide of the toggle.
       m_Knob = new();

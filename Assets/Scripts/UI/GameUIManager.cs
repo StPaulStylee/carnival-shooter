@@ -11,12 +11,13 @@ namespace CarnivalShooter.UI.Manager {
     private PauseMenu m_PauseMenu;
 
     [SerializeField] private List<GameUIScreen> m_GameUIScreens;
-    private Stack<GameUIScreen> m_ActiveMenuScreensStack = new Stack<GameUIScreen>();
+    [SerializeField] private Stack<GameUIScreen> m_ActiveMenuScreensStack = new Stack<GameUIScreen>();
 
     private void Awake() {
       CountDownTimer.TimerPostCompleted += ShowPostRoundStats;
       GameManager.PauseStateToggled += OnIsPausedToggle;
       PauseMenu.SettingsMenuOpened += ShowSettingsMenu;
+      SettingsMenu.BackButtonClicked += HideSettingsMenu;
     }
 
     public void Start() {
@@ -52,10 +53,17 @@ namespace CarnivalShooter.UI.Manager {
 
     private void RemoveActiveMenuScreen() {
       if (m_ActiveMenuScreensStack.Count == 0) {
+        Debug.Log("The Stack is empty.");
         return;
       }
       GameUIScreen removedScreen = m_ActiveMenuScreensStack.Pop();
+      Debug.Log($"Removing {removedScreen.name}");
       HideVisualAsset(removedScreen);
+      if (m_ActiveMenuScreensStack.Count > 0) {
+        GameUIScreen screenToActivate = m_ActiveMenuScreensStack.Peek();
+        Debug.Log($"Activated {screenToActivate.GameHudElementName}");
+        screenToActivate.SetVisibility(true);
+      }
     }
 
     private void ShowPostRoundStats(string timerType) {
@@ -73,15 +81,24 @@ namespace CarnivalShooter.UI.Manager {
       RemoveActiveMenuScreen();
     }
 
+    private void HidePauseMenu() {
+      foreach (GameUIScreen screen in m_ActiveMenuScreensStack) {
+        Debug.Log($"Hiding {screen.name}");
+        screen.SetVisibility(false);
+      }
+      m_ActiveMenuScreensStack.Clear();
+    }
+
     private void OnIsPausedToggle(bool isPaused) {
+      Debug.Log(isPaused);
       GameUIScreen pauseMenu = m_GameUIScreens.Find(screen => screen.GameHudElementName == ScreenNameConstants.PauseMenu);
       if (isPaused) {
         m_ActiveMenuScreensStack.Push(pauseMenu);
         pauseMenu.SetVisibility(true);
         return;
       }
-      RemoveActiveMenuScreen();
-      m_ActiveMenuScreensStack.Clear();
+      Debug.Log("Hiding the screen.");
+      HidePauseMenu();
     }
   }
 }
