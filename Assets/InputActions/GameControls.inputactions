@@ -88,6 +88,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "MainMenuController",
+            "id": "feb09810-32ce-4f03-a0c7-6803f5c6c214",
+            "actions": [
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "19a2cafd-3b0f-4f04-a318-5bac4adcc005",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c6614301-4f7c-4896-bee3-02363502f44a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse and Keyboard",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

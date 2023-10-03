@@ -5,7 +5,7 @@ using CarnivalShooter.Managers.Data;
 using UnityEngine;
 
 namespace CarnivalShooter.Managers {
-  public class InputManager : MonoBehaviour {
+  public class GameInputManager : MonoBehaviour {
     private GameControls gameControls;
 
     [Header("In Scene Dependencies")]
@@ -14,6 +14,7 @@ namespace CarnivalShooter.Managers {
 
     private void Awake() {
       gameControls = new GameControls();
+      gameControls.GameController.Enable();
       // Differentiating here because the player will need to be able to pause before the round actually starts
       GameManager.OnGameStarted += SetupGlobalInputActions;
       GameManager.InitializationCompleted += SetupGameplayInputActions;
@@ -25,6 +26,7 @@ namespace CarnivalShooter.Managers {
       GameManager.OnGameStarted -= SetupGlobalInputActions;
       GameManager.InitializationCompleted -= SetupGameplayInputActions;
       GameManager.PauseStateToggled -= ToggleGameplayInputActions;
+      CountDownTimer.TimerCompleted -= TeardownGameplayInputActions;
       TeardownGlobalInputActions();
       TearDownInputActions();
     }
@@ -57,10 +59,6 @@ namespace CarnivalShooter.Managers {
 
     private void TearDownInputActions() {
       m_Player.TearDownInputActions(gameControls);
-    }
-
-    private void OnPausePerformed() {
-
     }
   }
 }

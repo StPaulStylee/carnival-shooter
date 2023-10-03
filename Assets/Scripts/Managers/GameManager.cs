@@ -39,6 +39,8 @@ namespace CarnivalShooter.Managers {
 
     private void OnDisable() {
       CountDownTimer.TimerBlockingExecution -= SetInitialized;
+      InGameGlobalInput.OnPause -= TogglePaused;
+      PauseMenu.OnReturnToGame -= TogglePaused;
     }
 
     private void OnEnable() {

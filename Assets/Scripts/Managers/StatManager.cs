@@ -39,15 +39,19 @@ public class StatManager : MonoBehaviour {
     Scoreable.PointsScored += OnScoreableHit;
     CountDownTimer.TimerCompleted += OnRoundCompleted;
     CurrentWeapon.AmmoChanged += OnWeaponShot;
-    GameManager.ScoreInitializing += (int score) => m_TotalScore = score;
+    GameManager.ScoreInitializing += OnScoreInitialized;
     OverallAccuracyBonusWeight = 1f - (OuterZoneBonusWeight + InnerZoneBonusWeight);
-    Debug.Log(OverallAccuracyBonusWeight);
   }
 
   private void OnDisable() {
     Scoreable.PointsScored -= OnScoreableHit;
     CountDownTimer.TimerCompleted -= OnRoundCompleted;
     CurrentWeapon.AmmoChanged -= OnWeaponShot;
+    GameManager.ScoreInitializing -= OnScoreInitialized;
+  }
+
+  private void OnScoreInitialized(int score) {
+    m_TotalScore = score;
   }
 
   private void OnRoundCompleted(string timerType) {

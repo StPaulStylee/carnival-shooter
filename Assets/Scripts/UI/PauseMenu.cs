@@ -1,6 +1,5 @@
 using System;
-using UnityEditor;
-using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace CarnivalShooter.UI {
@@ -33,15 +32,10 @@ namespace CarnivalShooter.UI {
 
     private void OnSettingsButtonClicked(ClickEvent e) {
       SettingsMenuOpened?.Invoke();
-      Debug.Log("Settings Button Clicked");
     }
 
     private void OnExitToMenuButtonClicked(ClickEvent e) {
-      if (EditorApplication.isPlaying) {
-        EditorApplication.isPlaying = false;
-        return;
-      }
-      Debug.Log("Exit Button Clicked");
+      SceneManager.LoadSceneAsync(0);
     }
   }
 }

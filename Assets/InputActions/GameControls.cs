@@ -110,6 +110,34 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""MainMenuController"",
+            ""id"": ""feb09810-32ce-4f03-a0c7-6803f5c6c214"",
+            ""actions"": [
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""19a2cafd-3b0f-4f04-a318-5bac4adcc005"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""c6614301-4f7c-4896-bee3-02363502f44a"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -126,6 +154,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         m_GameController_Fire = m_GameController.FindAction("Fire", throwIfNotFound: true);
         m_GameController_Reload = m_GameController.FindAction("Reload", throwIfNotFound: true);
         m_GameController_Pause = m_GameController.FindAction("Pause", throwIfNotFound: true);
+        // MainMenuController
+        m_MainMenuController = asset.FindActionMap("MainMenuController", throwIfNotFound: true);
+        m_MainMenuController_Select = m_MainMenuController.FindAction("Select", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -253,6 +284,52 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         }
     }
     public GameControllerActions @GameController => new GameControllerActions(this);
+
+    // MainMenuController
+    private readonly InputActionMap m_MainMenuController;
+    private List<IMainMenuControllerActions> m_MainMenuControllerActionsCallbackInterfaces = new List<IMainMenuControllerActions>();
+    private readonly InputAction m_MainMenuController_Select;
+    public struct MainMenuControllerActions
+    {
+        private @GameControls m_Wrapper;
+        public MainMenuControllerActions(@GameControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Select => m_Wrapper.m_MainMenuController_Select;
+        public InputActionMap Get() { return m_Wrapper.m_MainMenuController; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MainMenuControllerActions set) { return set.Get(); }
+        public void AddCallbacks(IMainMenuControllerActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MainMenuControllerActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MainMenuControllerActionsCallbackInterfaces.Add(instance);
+            @Select.started += instance.OnSelect;
+            @Select.performed += instance.OnSelect;
+            @Select.canceled += instance.OnSelect;
+        }
+
+        private void UnregisterCallbacks(IMainMenuControllerActions instance)
+        {
+            @Select.started -= instance.OnSelect;
+            @Select.performed -= instance.OnSelect;
+            @Select.canceled -= instance.OnSelect;
+        }
+
+        public void RemoveCallbacks(IMainMenuControllerActions instance)
+        {
+            if (m_Wrapper.m_MainMenuControllerActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMainMenuControllerActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MainMenuControllerActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MainMenuControllerActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MainMenuControllerActions @MainMenuController => new MainMenuControllerActions(this);
     private int m_MouseandKeyboardSchemeIndex = -1;
     public InputControlScheme MouseandKeyboardScheme
     {
@@ -268,5 +345,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+    }
+    public interface IMainMenuControllerActions
+    {
+        void OnSelect(InputAction.CallbackContext context);
     }
 }

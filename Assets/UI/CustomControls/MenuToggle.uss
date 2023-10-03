@@ -3,25 +3,17 @@
   align-items: center; 
 }
 
+.menu-toggle .unity-base-field__label {
+   color: rgb(255, 255, 255);
+}
+
 .menu-toggle__input {
     background-color: var(--unity-colors-slider_groove-background);
     width: 50px;
     border-radius: 12.5px;
-/*    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;*/
     overflow: visible;
     border-width: 1px;
-/*    border-left-width: 1px;
-    border-right-width: 1px;
-    border-top-width: 1px;
-    border-bottom-width: 1px;*/
     border-color: var(--unity-colors-slider_thumb-border);
-/*    border-right-color: var(--unity-colors-slider_thumb-border);
-    border-top-color: var(--unity-colors-slider_thumb-border);
-    border-bottom-color: var(--unity-colors-slider_thumb-border);
-    border-left-color: var(--unity-colors-slider_thumb-border);*/
     height: 25px;
     margin-top: 10px;
     transition-property: background-color;

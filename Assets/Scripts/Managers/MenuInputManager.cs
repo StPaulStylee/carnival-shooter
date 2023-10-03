@@ -1,29 +1,29 @@
 using CarnivalShooter.Data;
-using CarnivalShooter.Gameplay;
-using CarnivalShooter.Managers;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace CarnivalShooter.UI.Manager {
-  public class GameUIManager : UIManager, IHasMenu {
+  public class MenuInputManager : UIManager, IHasMenu {
+    private GameControls gameControls;
     private Stack<GameUIScreen> m_ActiveMenuScreensStack = new Stack<GameUIScreen>();
 
     private void Awake() {
-      CountDownTimer.TimerPostCompleted += ShowPostRoundStats;
-      GameManager.PauseStateToggled += OnIsPausedToggle;
-      PauseMenu.SettingsMenuOpened += ShowSettingsMenu;
+      gameControls = new GameControls();
+      gameControls.MainMenuController.Enable();
       SettingsMenu.BackButtonClicked += HideSettingsMenu;
+      MainMenu.SettingsMenuOpened += ShowSettingsMenu;
+      // What about the global input that is being used in the game scene. How does that work here?
     }
 
     private void OnDisable() {
-      CountDownTimer.TimerPostCompleted -= ShowPostRoundStats;
-      GameManager.PauseStateToggled -= OnIsPausedToggle;
-      PauseMenu.SettingsMenuOpened -= ShowSettingsMenu;
+      gameControls.MainMenuController.Disable();
       SettingsMenu.BackButtonClicked -= HideSettingsMenu;
+      MainMenu.SettingsMenuOpened -= ShowSettingsMenu;
     }
 
-    public void Start() {
-      ShowSingleVisualElementByName(ScreenNameConstants.GameHud);
+    private void Start() {
+      GameUIScreen screen = ShowSingleVisualElementByName(ScreenNameConstants.MainMenu);
+      AddActiveMenuScreen(screen);
     }
 
     public void AddActiveMenuScreen(GameUIScreen screen) {
@@ -43,18 +43,11 @@ namespace CarnivalShooter.UI.Manager {
         return;
       }
       GameUIScreen removedScreen = m_ActiveMenuScreensStack.Pop();
-      Debug.Log($"Removing {removedScreen.name}");
       HideVisualAsset(removedScreen);
       if (m_ActiveMenuScreensStack.Count > 0) {
         GameUIScreen screenToActivate = m_ActiveMenuScreensStack.Peek();
         Debug.Log($"Activated {screenToActivate.GameHudElementName}");
         screenToActivate.SetVisibility(true);
-      }
-    }
-
-    private void ShowPostRoundStats(string timerType) {
-      if (timerType.Equals(TimerConstants.RoundTimerKey)) {
-        ShowSingleVisualElementByName(ScreenNameConstants.PostRoundStats);
       }
     }
 
@@ -65,26 +58,6 @@ namespace CarnivalShooter.UI.Manager {
 
     private void HideSettingsMenu() {
       RemoveActiveMenuScreen();
-    }
-
-    private void HidePauseMenu() {
-      foreach (GameUIScreen screen in m_ActiveMenuScreensStack) {
-        Debug.Log($"Hiding {screen.name}");
-        screen.SetVisibility(false);
-      }
-      m_ActiveMenuScreensStack.Clear();
-    }
-
-    private void OnIsPausedToggle(bool isPaused) {
-      Debug.Log(isPaused);
-      GameUIScreen pauseMenu = m_GameUIScreens.Find(screen => screen.GameHudElementName == ScreenNameConstants.PauseMenu);
-      if (isPaused) {
-        m_ActiveMenuScreensStack.Push(pauseMenu);
-        pauseMenu.SetVisibility(true);
-        return;
-      }
-      Debug.Log("Hiding the screen.");
-      HidePauseMenu();
     }
   }
 }

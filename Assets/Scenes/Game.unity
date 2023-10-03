@@ -17390,10 +17390,12 @@ GameObject:
   - component: {fileID: 3876574691634491826}
   - component: {fileID: 2242030499123087392}
   - component: {fileID: 1205435998144178719}
+  - component: {fileID: 8234783298046638664}
   - component: {fileID: 8234783298046638662}
   - component: {fileID: 8234783298046638663}
+  - component: {fileID: 8234783298046638665}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: GameplayManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17426,3 +17428,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64d7a0d63ceecb47867cbe97420c3d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8234783298046638664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8234783298046638661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ea8ba0079a48344ad643cfcf8be875, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8234783298046638665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8234783298046638661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfce1866e47a82c4b8123f680670775c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SettingsData: {fileID: 11400000, guid: b63ab039b8650b149b069043e3d2fc2d, type: 2}

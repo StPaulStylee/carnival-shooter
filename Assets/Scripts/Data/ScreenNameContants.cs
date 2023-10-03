@@ -4,5 +4,6 @@ namespace CarnivalShooter.Data {
     public const string PostRoundStats = "PostRoundStatsUIDocument";
     public const string PauseMenu = "PauseMenuUIDocument";
     public const string SettingsMenu = "SettingsMenuUIDocument";
+    public const string MainMenu = "MainMenuOptionsUIDocument";
   }
 }

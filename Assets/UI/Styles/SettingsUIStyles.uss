@@ -8,4 +8,10 @@
 .settings-menu-row--item {
     flex-direction: row;
     justify-content: center;
+    align-self: auto;
+    align-items: center;
+}
+
+.settings-menu--btn-group {
+    flex-direction: row;
 }

@@ -22,12 +22,12 @@ namespace CarnivalShooter.UI.CustomControls {
     public MenuToggle() : this(null) { }
 
     public MenuToggle(string label) : base(label, null) {
-      // Root selector
       AddToClassList(ussClassName);
       // Get the BaseField's visual input element and use it as the background of the slide.
       // This is Querying the the BaseFields element using the className assigned to its own instance of
       // "inputUssClassName"
       m_Input = this.Q(className: BaseField<bool>.inputUssClassName);
+      //labelElement.AddToClassList("font__riffic-free--white");
       m_Input.AddToClassList(inputUssClassName);
       Add(m_Input);
 
@@ -37,6 +37,9 @@ namespace CarnivalShooter.UI.CustomControls {
       m_Knob.AddToClassList(inputKnobUssClassName);
       m_Input.Add(m_Knob);
 
+
+      var labelElement = this.Q(className: labelUssClassName);
+      //labelElement.AddToClassList("font__riffic-free--white");
       // There are three main ways to activate or deactivate the SlideToggle. All three event handlers use the
       // static function pattern described in the Custom control best practices.
 
@@ -80,7 +83,6 @@ namespace CarnivalShooter.UI.CustomControls {
     // All three callbacks call this method.
     void ToggleValue() {
       value = !value;
-      Debug.Log(value);
     }
 
     // Because ToggleValue() sets the value property, the BaseField class dispatches a ChangeEvent. This results in a

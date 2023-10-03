@@ -11,11 +11,15 @@ namespace CarnivalShooter.Input {
       GameManager.PauseStateToggled += OnIsPausedToggle;
     }
 
+    private void OnDisable() {
+      GameManager.PauseStateToggled -= OnIsPausedToggle;
+    }
+
     private void OnIsPausedToggle(bool isPaused) {
       m_IsPaused = isPaused;
       if (m_IsPaused) {
         Time.timeScale = 0f;
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
         return;
       }
       Time.timeScale = 1f;

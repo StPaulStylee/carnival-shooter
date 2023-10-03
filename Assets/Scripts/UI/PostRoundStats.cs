@@ -33,6 +33,10 @@ namespace CarnivalShooter.UI {
       StatManager.PostRoundStatsCompleted += SetLabels;
     }
 
+    private void OnDisable() {
+      StatManager.PostRoundStatsCompleted -= SetLabels;
+    }
+
     private void OnEnable() {
       base.SetGameUIElements();
       m_BullseyeHitDataLabel = m_GameUIElement.Q<Label>(k_BullseyeHitData);
