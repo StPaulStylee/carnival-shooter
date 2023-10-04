@@ -17452,4 +17452,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfce1866e47a82c4b8123f680670775c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SettingsData: {fileID: 11400000, guid: b63ab039b8650b149b069043e3d2fc2d, type: 2}
+  m_SettingsData: {fileID: 11400000, guid: b63ab039b8650b149b069043e3d2fc2d, type: 2}

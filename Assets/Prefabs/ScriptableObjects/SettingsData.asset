@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f1b4b9a7c3085428e38604bc7e205a, type: 3}
   m_Name: SettingsData
   m_EditorClassIdentifier: 
-  IsAudioEnabled: 0
+  IsAudioEnabled: 1
   IsLookInverted: 0
   LookSensitivity: 62
-  GameplaySfxVolume: 80
-  MusicSfxVolume: 80
-  BackgroundSfxVolume: 80
+  GameplaySfxVolume: 8
+  MusicSfxVolume: 70
+  BackgroundSfxVolume: 69
