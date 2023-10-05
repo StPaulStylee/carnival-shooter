@@ -1,4 +1,5 @@
 using CarnivalShooter.Managers;
+using CarnivalShooter.Managers.Data;
 using EZCameraShake;
 using System;
 using UnityEngine;
@@ -35,6 +36,7 @@ namespace CarnivalShooter.Gameplay {
     [SerializeField] private AudioClip m_reloadMagOutSfxClip;
     [SerializeField] private AudioClip m_reloadMagInSfxClip;
     [SerializeField] private AudioClip m_reloadSlideInSfxClip;
+    private float m_SfxVolume;
     [Header("Animation/VFX")]
     [SerializeField] private Animator m_animator;
 
@@ -42,10 +44,12 @@ namespace CarnivalShooter.Gameplay {
     private bool m_isReloading;
     private void Awake() {
       GameManager.AmmoInitializing += SetStartingAmmo;
+      AudioManager.AudioSettingsChanged += SetSfxVolume;
     }
 
     private void OnDisable() {
       GameManager.AmmoInitializing -= SetStartingAmmo;
+      AudioManager.AudioSettingsChanged -= SetSfxVolume;
     }
 
     private void Reload() {
@@ -69,16 +73,20 @@ namespace CarnivalShooter.Gameplay {
       m_remainingAmmo = amount;
     }
 
+    private void SetSfxVolume(AudioSettingsData data) {
+      m_SfxVolume = data.GameplaySfxVolume;
+    }
+
     public void OnShoot() {
       m_shotParticle.Play();
-      m_weaponSfx.PlayOneShot(m_shotSfxClip, 0.8f);
+      m_weaponSfx.PlayOneShot(m_shotSfxClip, m_SfxVolume);
       m_animator.SetTrigger("Shoot");
       CameraShaker.Instance.ShakeOnce(m_ShotShakeMagnitude, m_ShotShakeRoughness, m_ShotShakeFadeInTime, m_ShotShakeFadeOutTime);
       AmmoChanged?.Invoke(); // Should this event be moved to GenericWeapon?
     }
 
     public void PlayMagEmptySfxClip() {
-      m_weaponSfx.PlayOneShot(m_magEmptySfxClip, 0.8f);
+      m_weaponSfx.PlayOneShot(m_magEmptySfxClip, m_SfxVolume);
     }
 
     public void HandleRemainingAmmoDuringShot() {
@@ -94,15 +102,15 @@ namespace CarnivalShooter.Gameplay {
     }
 
     private void PlayReloadMagOutSfx() {
-      m_weaponSfx.PlayOneShot(m_reloadMagOutSfxClip);
+      m_weaponSfx.PlayOneShot(m_reloadMagOutSfxClip, m_SfxVolume);
     }
 
     private void PlayReloadMagInSfx() {
-      m_weaponSfx.PlayOneShot(m_reloadMagInSfxClip);
+      m_weaponSfx.PlayOneShot(m_reloadMagInSfxClip, m_SfxVolume);
     }
 
     private void PlayReloadSlideInSfx() {
-      m_weaponSfx.PlayOneShot(m_reloadSlideInSfxClip, 0.8f);
+      m_weaponSfx.PlayOneShot(m_reloadSlideInSfxClip, m_SfxVolume);
     }
 
     private void SetIsReloadingToFalse() {
