@@ -6,7 +6,6 @@ using UnityEngine;
 namespace CarnivalShooter.Managers {
   public class AudioManager : MonoBehaviour {
     public static event Action<AudioSettingsData> AudioSettingsChanged;
-
     private const float VOLUME_DIVISOR = 100f;
     private bool m_AudioEnabled;
     [Range(0, 1f)] private float m_GameSfxVolume;
