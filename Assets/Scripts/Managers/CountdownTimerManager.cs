@@ -32,6 +32,7 @@ namespace CarnivalShooter.Managers {
     }
 
     private void StartTimer(string timerKey) {
+      Debug.Log($"Starting timer: {timerKey}");
       bool hasTimer = timerInstances.TryGetValue(timerKey, out CountDownTimer timer);
       if (hasTimer) {
         StartCoroutine(timer.StartCountdown());

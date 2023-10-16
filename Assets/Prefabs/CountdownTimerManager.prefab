@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1322852961282841998
+--- !u!1 &6333973413391122566
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5748815411729998763}
-  - component: {fileID: 2822875161277175664}
+  - component: {fileID: 3357212208483896501}
+  - component: {fileID: 2691334497552681302}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: CountdownTimerManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5748815411729998763
+--- !u!4 &3357212208483896501
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322852961282841998}
+  m_GameObject: {fileID: 6333973413391122566}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,18 +32,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2822875161277175664
+--- !u!114 &2691334497552681302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322852961282841998}
+  m_GameObject: {fileID: 6333973413391122566}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b4adbfa970ced247a6ef2fbc9c3a46b, type: 3}
+  m_Script: {fileID: 11500000, guid: 82c04e717c69c234dbb5d4e7c2dda130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_StartingAmmo: 7
-  m_InitialScore: 0
-  m_GameType: 1
+  timers:
+  - {fileID: 11400000, guid: 629549d1fd196d74d969282901dd74dc, type: 2}
+  - {fileID: 11400000, guid: 8780ca06a0595d74cbd6f12bacb1222e, type: 2}

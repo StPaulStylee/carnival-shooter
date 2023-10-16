@@ -1,5 +1,4 @@
 using CarnivalShooter.Data;
-using CarnivalShooter.Data.ScriptableObjects;
 using CarnivalShooter.Managers;
 using CarnivalShooter.UI.CustomControls;
 using System;
@@ -25,9 +24,6 @@ namespace CarnivalShooter.UI {
     private VisualElement m_BackButton, m_DecrementGameplaySfxBtn, m_IncrementGameplaySfxBtn, m_DecrementMusicSfxBtn, m_IncrementMusicSfxBtn, m_DecrementBackgroundSfxBtn, m_IncrementBackgroundSfxBtn;
     private Label m_GameplaySfxValue, m_MusicSfxValue, m_BackgroundSfxValue;
     private MenuToggle m_AudioEnabledValue;
-    private void Awake() {
-      SettingsManager.OnSettingsChanged += SetValues;
-    }
 
     private void OnDisable() {
       SettingsManager.OnSettingsChanged -= SetValues;
@@ -56,9 +52,11 @@ namespace CarnivalShooter.UI {
       m_DecrementBackgroundSfxBtn.RegisterCallback<ClickEvent>(OnDecrementBackgroundSfx);
       m_IncrementBackgroundSfxBtn.RegisterCallback<ClickEvent>(OIncrementBackgroundSfx);
       m_AudioEnabledValue.RegisterCallback<ClickEvent>(OnAudioEnabledToggle);
+
+      SettingsManager.OnSettingsChanged += SetValues;
     }
 
-    private void SetValues(Settings_SO values) {
+    private void SetValues(SettingsData values) {
       m_AudioEnabledValue.SetValueWithoutNotify(values.IsAudioEnabled);
       m_GameplaySfxValue.text = $"{values.GameplaySfxVolume}%";
       m_MusicSfxValue.text = $"{values.MusicSfxVolume}%";

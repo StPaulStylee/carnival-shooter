@@ -1,4 +1,4 @@
-using CarnivalShooter.Data.ScriptableObjects;
+using CarnivalShooter.Data;
 using CarnivalShooter.Managers.Data;
 using System;
 using UnityEngine;
@@ -20,7 +20,7 @@ namespace CarnivalShooter.Managers {
       SettingsManager.OnSettingsChanged -= SetAudioData;
     }
 
-    private void SetAudioData(Settings_SO data) {
+    private void SetAudioData(SettingsData data) {
       m_AudioEnabled = data.IsAudioEnabled;
       m_GameSfxVolume = m_AudioEnabled ? data.GameplaySfxVolume / VOLUME_DIVISOR : 0f;
       m_BackgroundSfxVolume = m_AudioEnabled ? data.BackgroundSfxVolume / VOLUME_DIVISOR : 0f;

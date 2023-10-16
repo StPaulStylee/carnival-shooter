@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
@@ -35,6 +36,7 @@ namespace CarnivalShooter.UI {
     }
 
     private void OnExitToMenuButtonClicked(ClickEvent e) {
+      Time.timeScale = 1f;
       SceneManager.LoadSceneAsync(0);
     }
   }

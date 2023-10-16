@@ -1,46 +1,58 @@
 using CarnivalShooter.Data;
-using CarnivalShooter.Data.ScriptableObjects;
 using CarnivalShooter.UI;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CarnivalShooter.Managers {
   public class SettingsManager : MonoBehaviour {
-    [SerializeField] private Settings_SO m_SettingsData;
-    private Dictionary<SettingsMenuType, Action<SettingsMenuAction, Settings_SO>> m_MenuActions;
+    public static SettingsManager Instance;
+    public static event Action<SettingsData> OnSettingsChanged;
 
-    public static event Action<Settings_SO> OnSettingsChanged;
+    [SerializeField] private SettingsData m_SettingsData;
+    private Dictionary<SettingsMenuType, Action<SettingsMenuAction, SettingsData>> m_MenuActions;
 
     private void Awake() {
-      SettingsMenu.SettingValueClicked += SetSettingsData;
-      m_MenuActions = new Dictionary<SettingsMenuType, Action<SettingsMenuAction, Settings_SO>> {
-        {SettingsMenuType.GAMEPLAY_SFX, OnGameplaySfxChange },
-        {SettingsMenuType.MUSIC_SFX, OnMusicSfxChange },
-        {SettingsMenuType.BACKGROUND_SFX, OnBackgroundSfxChange },
-        {SettingsMenuType.AUDIO_ENABLE, OnAudioEnabledToggle },
-      };
+      if (Instance == null) {
+        Instance = this;
+        m_SettingsData = new SettingsData();
+
+        SettingsMenu.SettingValueClicked += SetSettingsData;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+        m_MenuActions = new Dictionary<SettingsMenuType, Action<SettingsMenuAction, SettingsData>> {
+          {SettingsMenuType.GAMEPLAY_SFX, OnGameplaySfxChange },
+          {SettingsMenuType.MUSIC_SFX, OnMusicSfxChange },
+          {SettingsMenuType.BACKGROUND_SFX, OnBackgroundSfxChange },
+          {SettingsMenuType.AUDIO_ENABLE, OnAudioEnabledToggle },
+        };
+        DontDestroyOnLoad(gameObject);
+      } else {
+        Destroy(gameObject);
+      }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+      OnSettingsChanged?.Invoke(m_SettingsData);
     }
 
     private void OnDisable() {
       SettingsMenu.SettingValueClicked -= SetSettingsData;
-    }
-
-    private void Start() {
-      OnSettingsChanged?.Invoke(m_SettingsData);
+      SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void SetSettingsData(SettingsMenuAction action, SettingsMenuType type) {
       SetSettingsData(action, type, m_SettingsData);
     }
 
-    private void SetSettingsData(SettingsMenuAction settingsAction, SettingsMenuType settingsType, Settings_SO data) {
-      if (m_MenuActions.TryGetValue(settingsType, out Action<SettingsMenuAction, Settings_SO> action)) {
+    private void SetSettingsData(SettingsMenuAction settingsAction, SettingsMenuType settingsType, SettingsData data) {
+      if (m_MenuActions.TryGetValue(settingsType, out Action<SettingsMenuAction, SettingsData> action)) {
         action(settingsAction, data);
       }
     }
 
-    private void OnGameplaySfxChange(SettingsMenuAction action, Settings_SO data) {
+    private void OnGameplaySfxChange(SettingsMenuAction action, SettingsData data) {
       if (action == SettingsMenuAction.INCREMENT) {
         IncrementValue(ref data.GameplaySfxVolume);
         OnSettingsChanged?.Invoke(data);
@@ -52,7 +64,7 @@ namespace CarnivalShooter.Managers {
       }
     }
 
-    private void OnMusicSfxChange(SettingsMenuAction action, Settings_SO data) {
+    private void OnMusicSfxChange(SettingsMenuAction action, SettingsData data) {
       if (action == SettingsMenuAction.INCREMENT) {
         IncrementValue(ref data.MusicSfxVolume);
         OnSettingsChanged?.Invoke(data);
@@ -64,7 +76,7 @@ namespace CarnivalShooter.Managers {
       }
     }
 
-    private void OnBackgroundSfxChange(SettingsMenuAction action, Settings_SO data) {
+    private void OnBackgroundSfxChange(SettingsMenuAction action, SettingsData data) {
       if (action == SettingsMenuAction.INCREMENT) {
         IncrementValue(ref data.BackgroundSfxVolume);
         OnSettingsChanged?.Invoke(data);
@@ -76,17 +88,17 @@ namespace CarnivalShooter.Managers {
       }
     }
 
-    private void OnAudioEnabledToggle(SettingsMenuAction action, Settings_SO data) {
+    private void OnAudioEnabledToggle(SettingsMenuAction action, SettingsData data) {
       data.IsAudioEnabled = !data.IsAudioEnabled;
       OnSettingsChanged?.Invoke(data);
     }
 
     private void IncrementValue(ref int value) {
-      value = Mathf.Clamp(value + 1, 0, 100);
+      value = Mathf.Clamp(value + 5, 0, 100);
     }
 
     private void DecrementValue(ref int value) {
-      value = Mathf.Clamp(value - 1, 0, 100);
+      value = Mathf.Clamp(value - 5, 0, 100);
     }
   }
 }

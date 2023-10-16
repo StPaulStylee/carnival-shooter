@@ -19,7 +19,7 @@ namespace CarnivalShooter.Managers {
     public static event Action<bool> PauseStateToggled;
 
     private int m_TotalScore;
-    // Right now this is completely controller by CountdownTimer. This will need to be changed if
+    // Right now this is completely controlled by CountdownTimer. This will need to be changed if
     // this value depends on more than just the countdown timer sending its ready event
     private bool m_IsInitialized = false;
     private bool m_IsPaused = false;
@@ -44,14 +44,16 @@ namespace CarnivalShooter.Managers {
     }
 
     private void OnEnable() {
-      OnInitializeRound();
+      //OnInitializeRound();
     }
 
     private void Start() {
+      OnInitializeRound();
       StartCoroutine(CompleteInitialization());
     }
 
     private void OnInitializeRound() {
+      Debug.Log("Initializing Round.");
       OnGameStarted?.Invoke();
       AmmoInitializing?.Invoke(m_StartingAmmo);
       ScoreInitializing?.Invoke(m_InitialScore);
@@ -64,6 +66,7 @@ namespace CarnivalShooter.Managers {
     }
 
     private void SetInitialized(bool isInitialized) {
+      Debug.Log($"m_IsInitialized == {!isInitialized}");
       m_IsInitialized = !isInitialized;
     }
 
@@ -76,6 +79,7 @@ namespace CarnivalShooter.Managers {
       while (m_IsInitialized == false) {
         yield return null;
       }
+      Debug.Log("Initialization Complete.");
       OnInitializationComplete();
     }
   }

@@ -13,8 +13,6 @@ namespace CarnivalShooter.Gameplay.Components {
     private void SetWeaponSway() {
       Quaternion rotationX = Quaternion.AngleAxis(-VelocityForSway.y * m_SwayMultiplier, Vector3.right);
       Quaternion rotationY = Quaternion.AngleAxis(-VelocityForSway.x * m_SwayMultiplier, Vector3.up);
-      //Debug.Log($"rotationX: {rotationX}");
-      //Debug.Log($"rotationY: {rotationY}");
       Quaternion targetRotation = rotationX * rotationY;
       transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, m_SwaySmoothSpeed * Time.deltaTime);
     }

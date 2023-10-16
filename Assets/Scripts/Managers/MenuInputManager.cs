@@ -1,6 +1,5 @@
 using CarnivalShooter.Data;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace CarnivalShooter.UI.Manager {
   public class MenuInputManager : UIManager, IHasMenu {
@@ -39,14 +38,12 @@ namespace CarnivalShooter.UI.Manager {
 
     public void RemoveActiveMenuScreen() {
       if (m_ActiveMenuScreensStack.Count == 0) {
-        Debug.Log("The Stack is empty.");
         return;
       }
       GameUIScreen removedScreen = m_ActiveMenuScreensStack.Pop();
       HideVisualAsset(removedScreen);
       if (m_ActiveMenuScreensStack.Count > 0) {
         GameUIScreen screenToActivate = m_ActiveMenuScreensStack.Peek();
-        Debug.Log($"Activated {screenToActivate.GameHudElementName}");
         screenToActivate.SetVisibility(true);
       }
     }
