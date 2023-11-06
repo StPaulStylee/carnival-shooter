@@ -46,9 +46,13 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="settings-menu-container--controls" class="root-container" style="height: auto; position: relative; top: auto;">
-            <ui:VisualElement name="settings-menu-container--controls-header" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+        <ui:VisualElement name="settings-menu-container--controls" class="root-container" style="height: auto; position: relative; top: auto; background-color: rgba(31, 31, 31, 0);">
+            <ui:VisualElement name="settings-menu-container--controls-header" style="flex-grow: 0;">
                 <ui:Label tabindex="-1" text="Controls" display-tooltip-when-elided="true" class="font__riffic-free--white menu-text" />
+            </ui:VisualElement>
+            <ui:VisualElement name="settings-menu-container--controls-container" class="settings-menu-row" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:VisualElement class="settings-menu-row--item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/UI/Assets/mouse.png?fileID=2800000&amp;guid=5dca5e21c4eb91a438ae09a196031757&amp;type=3#mouse&apos;); flex-shrink: 0; width: 50%; -unity-background-scale-mode: scale-to-fit; height: 100%;" />
+                <ui:VisualElement class="settings-menu-row--item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-shrink: 0; width: 50%; height: 100%; background-image: url(&apos;project://database/Assets/UI/Assets/gamepad.png?fileID=2800000&amp;guid=65cd484aa430814429a7f2b9751c889f&amp;type=3#gamepad&apos;); -unity-background-scale-mode: scale-to-fit;" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
