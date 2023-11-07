@@ -3,8 +3,8 @@
     <Style src="project://database/Assets/UI/Styles/SettingsUIStyles.uss?fileID=7433441132597879392&amp;guid=c79fef2fa01287245887e1e369e51b46&amp;type=3#SettingsUIStyles" />
     <Style src="project://database/Assets/UI/CustomControls/MenuToggle.uss?fileID=7433441132597879392&amp;guid=04416eb6f48c18e45b0ed73c076649e6&amp;type=3#MenuToggle" />
     <ui:VisualElement name="settings-menu-overlay" class="screen-overlay" />
-    <ui:VisualElement name="settings-menu-container" style="position: absolute; flex-grow: 1; width: 100%; height: 100%;">
-        <ui:VisualElement name="settings-menu--header-container" class="settings-menu-row" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+    <ui:VisualElement name="settings-menu-container" style="position: relative; flex-grow: 1; width: 100%; height: 100%;">
+        <ui:VisualElement name="settings-menu--header-container" class="settings-menu-row" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-shrink: 1;">
             <ui:VisualElement name="settings-menu-container-back-button" class="menu-button-container">
                 <ui:VisualElement name="settings-menu--back-button" class="menu-button--back" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/UI/Assets/arrow.png?fileID=2800000&amp;guid=eee73973c0cee5f44b326fd050e872e6&amp;type=3#arrow&apos;);" />
             </ui:VisualElement>
@@ -13,10 +13,10 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="settings-menu-container--sounds" class="root-container" style="height: auto; position: relative; top: auto; background-color: rgba(31, 31, 31, 0);">
-            <ui:VisualElement name="settings-menu-container--sounds-header" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+            <ui:VisualElement name="settings-menu-container--sounds-header" class="settings-menu-container--header" style="background-color: rgba(0, 0, 0, 0);">
                 <ui:Label tabindex="-1" text="Sounds" display-tooltip-when-elided="true" class="font__riffic-free--white menu-text" />
             </ui:VisualElement>
-            <ui:VisualElement name="settings-menu-row-0" class="settings-menu-row" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+            <ui:VisualElement name="settings-menu-row-0" class="settings-menu-row" style="background-color: rgba(0, 0, 0, 0);">
                 <ui:VisualElement name="menu-toggle-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: center;">
                     <CarnivalShooter.UI.CustomControls.MenuToggle value="true" label="All Sounds" name="MenuToggle" class="font__riffic-free--white menu-text--item" style="flex-grow: 0; overflow: hidden; opacity: 1;" />
                 </ui:VisualElement>
@@ -31,7 +31,7 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="settings-menu-row-1" class="settings-menu-row" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+            <ui:VisualElement name="settings-menu-row-1" class="settings-menu-row" style="background-color: rgba(0, 0, 0, 0);">
                 <ui:VisualElement focusable="false" class="settings-menu-row--item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); -unity-text-align: upper-left;">
                     <ui:Label tabindex="-1" text="Music" display-tooltip-when-elided="true" class="font__riffic-free--white menu-text--item" />
                     <ui:Button text="-" display-tooltip-when-elided="true" name="settings-menu__music--decrement" class="settings-button--increment font__riffic-free--white" />
@@ -47,12 +47,29 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="settings-menu-container--controls" class="root-container" style="height: auto; position: relative; top: auto; background-color: rgba(31, 31, 31, 0);">
-            <ui:VisualElement name="settings-menu-container--controls-header" style="flex-grow: 0;">
-                <ui:Label tabindex="-1" text="Controls" display-tooltip-when-elided="true" class="font__riffic-free--white menu-text" />
+            <ui:VisualElement name="settings-menu-container--controls-header" class="settings-menu-container--header">
+                <ui:Label tabindex="-1" text="Controls" display-tooltip-when-elided="true" class="font__riffic-free--white menu-text settings-menu-container--header" />
             </ui:VisualElement>
             <ui:VisualElement name="settings-menu-container--controls-container" class="settings-menu-row" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-                <ui:VisualElement class="settings-menu-row--item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/UI/Assets/mouse.png?fileID=2800000&amp;guid=5dca5e21c4eb91a438ae09a196031757&amp;type=3#mouse&apos;); flex-shrink: 0; width: 50%; -unity-background-scale-mode: scale-to-fit; height: 100%;" />
-                <ui:VisualElement class="settings-menu-row--item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-shrink: 0; width: 50%; height: 100%; background-image: url(&apos;project://database/Assets/UI/Assets/gamepad.png?fileID=2800000&amp;guid=65cd484aa430814429a7f2b9751c889f&amp;type=3#gamepad&apos;); -unity-background-scale-mode: scale-to-fit;" />
+                <ui:VisualElement class="settings-menu-row--item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/UI/Assets/mouse.png?fileID=2800000&amp;guid=5dca5e21c4eb91a438ae09a196031757&amp;type=3#mouse&apos;); flex-shrink: 0; width: 50%; -unity-background-scale-mode: scale-to-fit; height: 100%; min-height: 200px;">
+                    <ui:VisualElement name="settings-menu-controls--mouse-fire" class="settings-menu-controls--text" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); position: absolute; flex-shrink: 0; left: 112px; top: 0;">
+                        <ui:Label tabindex="-1" text="Fire" display-tooltip-when-elided="true" class="font__riffic-free--white" style="font-size: 22px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="settings-menu-controls--mouse-reload" class="settings-menu-controls--text" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); position: absolute; flex-shrink: 0; left: auto; top: 0; right: 86px;">
+                        <ui:Label tabindex="-1" text="Reload" display-tooltip-when-elided="true" class="font__riffic-free--white" style="font-size: 22px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="settings-menu-row--item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-shrink: 0; width: 50%; height: 100%; background-image: url(&apos;project://database/Assets/UI/Assets/gamepad.png?fileID=2800000&amp;guid=65cd484aa430814429a7f2b9751c889f&amp;type=3#gamepad&apos;); -unity-background-scale-mode: scale-to-fit;">
+                    <ui:VisualElement name="settings-menu-controls--gamepad-fire" class="settings-menu-controls--text" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); position: absolute; flex-shrink: 0; left: auto; top: -5px; right: 75px;">
+                        <ui:Label tabindex="-1" text="Fire" display-tooltip-when-elided="true" class="font__riffic-free--white" style="font-size: 22px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="settings-menu-controls--gamepad-reload" class="settings-menu-controls--text" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); position: absolute; flex-shrink: 0; left: auto; top: -11px; right: 169px;">
+                        <ui:Label tabindex="-1" text="Reload" display-tooltip-when-elided="true" class="font__riffic-free--white" style="font-size: 22px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="settings-menu-controls--gamepad-look" class="settings-menu-controls--text" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); position: absolute; flex-shrink: 0; left: auto; top: auto; right: 180px; bottom: 21px;">
+                        <ui:Label tabindex="-1" text="Look" display-tooltip-when-elided="true" focusable="true" class="font__riffic-free--white" style="font-size: 22px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

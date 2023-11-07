@@ -1,8 +1,16 @@
+.settings-menu-container--header {
+    flex-grow: 0;
+}
+
+.settings-menu-controls--text {
+}
+
 .settings-menu-row {
     flex-direction: row;
     align-items: center;
     justify-content: center;
     flex-grow: 1;
+    margin-bottom: 10px;
 }
 
 .settings-menu-row--item {
