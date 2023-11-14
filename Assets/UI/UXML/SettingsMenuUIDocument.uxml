@@ -18,7 +18,7 @@
             </ui:VisualElement>
             <ui:VisualElement name="settings-menu-row-0" class="settings-menu-row" style="background-color: rgba(0, 0, 0, 0);">
                 <ui:VisualElement name="menu-toggle-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: center;">
-                    <CarnivalShooter.UI.CustomControls.MenuToggle value="true" label="All Sounds" name="MenuToggle" class="font__riffic-free--white menu-text--item" style="flex-grow: 0; overflow: hidden; opacity: 1;" />
+                    <CarnivalShooter.UI.CustomControls.MenuToggle value="true" label="All Sounds" name="AllSoundsToggle" class="font__riffic-free--white menu-text--item" style="flex-grow: 0; overflow: hidden; opacity: 1;" />
                 </ui:VisualElement>
                 <ui:VisualElement focusable="false" name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); -unity-text-align: upper-left;">
                     <ui:VisualElement class="settings-menu-row--item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
@@ -59,15 +59,23 @@
                         <ui:Label tabindex="-1" text="Reload" display-tooltip-when-elided="true" class="font__riffic-free--white" style="font-size: 22px;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement class="settings-menu-row--item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-shrink: 0; width: 50%; height: 100%; background-image: url(&apos;project://database/Assets/UI/Assets/gamepad.png?fileID=2800000&amp;guid=65cd484aa430814429a7f2b9751c889f&amp;type=3#gamepad&apos;); -unity-background-scale-mode: scale-to-fit;">
-                    <ui:VisualElement name="settings-menu-controls--gamepad-fire" class="settings-menu-controls--text" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); position: absolute; flex-shrink: 0; left: auto; top: -5px; right: 75px;">
-                        <ui:Label tabindex="-1" text="Fire" display-tooltip-when-elided="true" class="font__riffic-free--white" style="font-size: 22px;" />
+                <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-shrink: 0; width: 50%; height: 100%; background-image: none; -unity-background-scale-mode: scale-to-fit; flex-direction: column; align-items: center; justify-content: flex-start;">
+                    <ui:VisualElement name="VisualElement" class="settings-menu-row" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                        <ui:VisualElement name="menu-toggle-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: center;">
+                            <CarnivalShooter.UI.CustomControls.MenuToggle value="true" label="Look Inversion" name="LookInversionToggle" class="font__riffic-free--white menu-text--item" style="flex-grow: 0; overflow: hidden; opacity: 1;" />
+                        </ui:VisualElement>
                     </ui:VisualElement>
-                    <ui:VisualElement name="settings-menu-controls--gamepad-reload" class="settings-menu-controls--text" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); position: absolute; flex-shrink: 0; left: auto; top: -11px; right: 169px;">
-                        <ui:Label tabindex="-1" text="Reload" display-tooltip-when-elided="true" class="font__riffic-free--white" style="font-size: 22px;" />
-                    </ui:VisualElement>
-                    <ui:VisualElement name="settings-menu-controls--gamepad-look" class="settings-menu-controls--text" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); position: absolute; flex-shrink: 0; left: auto; top: auto; right: 180px; bottom: 21px;">
-                        <ui:Label tabindex="-1" text="Look" display-tooltip-when-elided="true" focusable="true" class="font__riffic-free--white" style="font-size: 22px;" />
+                    <ui:VisualElement name="VisualElement" class="settings-menu-row" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                        <ui:VisualElement focusable="false" name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); -unity-text-align: upper-left; align-items: auto; align-self: auto; justify-content: flex-start;">
+                            <ui:VisualElement class="settings-menu-row--item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                                <ui:Label tabindex="-1" text="Look Sensitivity" display-tooltip-when-elided="true" class="font__riffic-free--white menu-text--item" />
+                                <ui:VisualElement name="settings-menu__look-sensitvity--btn-group" class="settings-menu--btn-group" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                                    <ui:Button text="-" display-tooltip-when-elided="true" name="settings-menu__look-sensitivity--decrement" class="settings-button--increment font__riffic-free--white" />
+                                    <ui:Label tabindex="-1" text="50%" display-tooltip-when-elided="true" name="settings-menu__look-sensitivity--value" class="font__riffic-free--white menu-text--item" />
+                                    <ui:Button text="+" display-tooltip-when-elided="true" name="settings-menu__look-sensitivity--increment" class="settings-button--increment font__riffic-free--white" />
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>

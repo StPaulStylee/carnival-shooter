@@ -1,3 +1,28 @@
+.settings-button--increment {
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(195, 49, 49);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    font-size: 25px;
+    -unity-text-align: middle-center;
+    margin-right: 20px;
+    margin-left: 20px;
+    transition-property: all;
+    transition-duration: 0.25s;
+}
+
+.settings-button--increment:hover {
+  scale: 1.1;
+}
+
 .settings-menu-container--header {
     flex-grow: 0;
 }

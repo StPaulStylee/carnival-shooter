@@ -8,7 +8,8 @@ namespace CarnivalShooter.Data {
     MUSIC_SFX,
     BACKGROUND_SFX,
     AUDIO_ENABLE,
-    LOOK_INVERSION
+    LOOK_INVERSION,
+    LOOK_SENSITIVITY
   }
 
 }

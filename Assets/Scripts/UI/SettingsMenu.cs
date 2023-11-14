@@ -16,14 +16,18 @@ namespace CarnivalShooter.UI {
     const string k_IncrementMusicSfx = "settings-menu__music--increment";
     const string k_DecrementBackgroundSfx = "settings-menu__background-sfx--decrement";
     const string k_IncrementBackgroundSfx = "settings-menu__background-sfx--increment";
-    const string k_AudioEnabledValue = "MenuToggle";
+    const string k_DecrementLookSensitivity = "settings-menu__look-sensitivity--decrement";
+    const string k_IncrementLookSensitivity = "settings-menu__look-sensitivity--increment";
+    const string k_AudioEnabledValue = "AllSoundsToggle";
     const string k_GameplaySfxValue = "settings-menu__gameplay-sfx--value";
     const string k_MusicSfxValue = "settings-menu__music-sfx--value";
     const string k_BackgroundSfxValue = "settings-menu__background-sfx--value";
+    const string k_LookSensitivityValue = "settings-menu__look-sensitivity--value";
+    const string k_LookInversionValue = "LookInversionToggle";
 
-    private VisualElement m_BackButton, m_DecrementGameplaySfxBtn, m_IncrementGameplaySfxBtn, m_DecrementMusicSfxBtn, m_IncrementMusicSfxBtn, m_DecrementBackgroundSfxBtn, m_IncrementBackgroundSfxBtn;
-    private Label m_GameplaySfxValue, m_MusicSfxValue, m_BackgroundSfxValue;
-    private MenuToggle m_AudioEnabledValue;
+    private VisualElement m_BackButton, m_DecrementGameplaySfxBtn, m_IncrementGameplaySfxBtn, m_DecrementMusicSfxBtn, m_IncrementMusicSfxBtn, m_DecrementBackgroundSfxBtn, m_IncrementBackgroundSfxBtn, m_IncrementLookSensitivityBtn, m_DecrementLookSensitivityBtn;
+    private Label m_GameplaySfxValue, m_MusicSfxValue, m_BackgroundSfxValue, m_LookSensitivityValue;
+    private MenuToggle m_AudioEnabledValue, m_LookInversionValue;
 
     private void OnDisable() {
       SettingsManager.OnSettingsChanged -= SetValues;
@@ -38,11 +42,14 @@ namespace CarnivalShooter.UI {
       m_IncrementMusicSfxBtn = m_GameUIElement.Q(k_IncrementMusicSfx);
       m_DecrementBackgroundSfxBtn = m_GameUIElement.Q(k_DecrementBackgroundSfx);
       m_IncrementBackgroundSfxBtn = m_GameUIElement.Q(k_IncrementBackgroundSfx);
+      m_DecrementLookSensitivityBtn = m_GameUIElement.Q(k_DecrementLookSensitivity);
+      m_IncrementLookSensitivityBtn = m_GameUIElement.Q(k_IncrementLookSensitivity);
       m_AudioEnabledValue = m_GameUIElement.Q<MenuToggle>(k_AudioEnabledValue);
-
+      m_LookInversionValue = m_GameUIElement.Q<MenuToggle>(k_LookInversionValue);
       m_GameplaySfxValue = m_GameUIElement.Q<Label>(k_GameplaySfxValue);
       m_MusicSfxValue = m_GameUIElement.Q<Label>(k_MusicSfxValue);
       m_BackgroundSfxValue = m_GameUIElement.Q<Label>(k_BackgroundSfxValue);
+      m_LookSensitivityValue = m_GameUIElement.Q<Label>(k_LookSensitivityValue);
 
       m_BackButton.RegisterCallback<ClickEvent>(OnBackButtonClicked);
       m_DecrementGameplaySfxBtn.RegisterCallback<ClickEvent>(OnDecrementGameplaySfx);
@@ -52,15 +59,19 @@ namespace CarnivalShooter.UI {
       m_DecrementBackgroundSfxBtn.RegisterCallback<ClickEvent>(OnDecrementBackgroundSfx);
       m_IncrementBackgroundSfxBtn.RegisterCallback<ClickEvent>(OIncrementBackgroundSfx);
       m_AudioEnabledValue.RegisterCallback<ClickEvent>(OnAudioEnabledToggle);
-
+      m_LookInversionValue.RegisterCallback<ClickEvent>(OnLookInversionEnabledToggle);
+      m_DecrementLookSensitivityBtn.RegisterCallback<ClickEvent>(OnDecrementLookSensitivity);
+      m_IncrementLookSensitivityBtn.RegisterCallback<ClickEvent>(OnIncrementLookSensitivity);
       SettingsManager.OnSettingsChanged += SetValues;
     }
 
     private void SetValues(SettingsData values) {
       m_AudioEnabledValue.SetValueWithoutNotify(values.IsAudioEnabled);
+      m_LookInversionValue.SetValueWithoutNotify(values.IsLookInverted);
       m_GameplaySfxValue.text = $"{values.GameplaySfxVolume}%";
       m_MusicSfxValue.text = $"{values.MusicSfxVolume}%";
       m_BackgroundSfxValue.text = $"{values.BackgroundSfxVolume}%";
+      m_LookSensitivityValue.text = $"{values.LookSensitivity}%";
     }
 
     private void OnBackButtonClicked(ClickEvent e) {
@@ -93,6 +104,18 @@ namespace CarnivalShooter.UI {
 
     private void OnAudioEnabledToggle(ClickEvent e) {
       SettingValueClicked?.Invoke(SettingsMenuAction.TOGGLE, SettingsMenuType.AUDIO_ENABLE);
+    }
+
+    private void OnLookInversionEnabledToggle(ClickEvent e) {
+      SettingValueClicked?.Invoke(SettingsMenuAction.TOGGLE, SettingsMenuType.LOOK_INVERSION);
+    }
+
+    private void OnIncrementLookSensitivity(ClickEvent e) {
+      SettingValueClicked?.Invoke(SettingsMenuAction.INCREMENT, SettingsMenuType.LOOK_SENSITIVITY);
+    }
+
+    private void OnDecrementLookSensitivity(ClickEvent e) {
+      SettingValueClicked?.Invoke(SettingsMenuAction.DECREMENT, SettingsMenuType.LOOK_SENSITIVITY);
     }
   }
 }
