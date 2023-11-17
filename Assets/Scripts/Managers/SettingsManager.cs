@@ -25,6 +25,7 @@ namespace CarnivalShooter.Managers {
           {SettingsMenuType.GAMEPLAY_SFX, OnGameplaySfxChange },
           {SettingsMenuType.MUSIC_SFX, OnMusicSfxChange },
           {SettingsMenuType.BACKGROUND_SFX, OnBackgroundSfxChange },
+          {SettingsMenuType.UI_SFX, OnUiSfxChange },
           {SettingsMenuType.AUDIO_ENABLE, OnAudioEnabledToggle },
           {SettingsMenuType.LOOK_INVERSION, OnLookInversionEnabledToggle },
           {SettingsMenuType.LOOK_SENSITIVITY, OnLookSensitivityChange },
@@ -86,6 +87,18 @@ namespace CarnivalShooter.Managers {
       }
       if (action == SettingsMenuAction.DECREMENT) {
         DecrementValue(ref data.BackgroundSfxVolume);
+        OnSettingsChanged?.Invoke(data);
+      }
+    }
+
+    private void OnUiSfxChange(SettingsMenuAction action, SettingsData data) {
+      if (action == SettingsMenuAction.INCREMENT) {
+        IncrementValue(ref data.UiSfxVolume);
+        OnSettingsChanged?.Invoke(data);
+        return;
+      }
+      if (action == SettingsMenuAction.DECREMENT) {
+        DecrementValue(ref data.UiSfxVolume);
         OnSettingsChanged?.Invoke(data);
       }
     }

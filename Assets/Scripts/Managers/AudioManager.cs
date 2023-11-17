@@ -11,6 +11,7 @@ namespace CarnivalShooter.Managers {
     [Range(0, 1f)] private float m_GameSfxVolume;
     [Range(0, 1f)] private float m_BackgroundSfxVolume;
     [Range(0, 1f)] private float m_MusicSfxVolume;
+    [Range(0, 1f)] private float m_UiSfxVolume;
     private AudioSettingsData m_AudioSettings;
     private void Awake() {
       SettingsManager.OnSettingsChanged += SetAudioData;
@@ -25,7 +26,8 @@ namespace CarnivalShooter.Managers {
       m_GameSfxVolume = m_AudioEnabled ? data.GameplaySfxVolume / VOLUME_DIVISOR : 0f;
       m_BackgroundSfxVolume = m_AudioEnabled ? data.BackgroundSfxVolume / VOLUME_DIVISOR : 0f;
       m_MusicSfxVolume = m_AudioEnabled ? data.MusicSfxVolume / VOLUME_DIVISOR : 0f;
-      m_AudioSettings = new AudioSettingsData(m_AudioEnabled, m_GameSfxVolume, m_MusicSfxVolume, m_BackgroundSfxVolume);
+      m_UiSfxVolume = m_AudioEnabled ? data.UiSfxVolume / VOLUME_DIVISOR : 0f;
+      m_AudioSettings = new AudioSettingsData(m_AudioEnabled, m_GameSfxVolume, m_MusicSfxVolume, m_BackgroundSfxVolume, m_UiSfxVolume);
       AudioSettingsChanged?.Invoke(m_AudioSettings);
     }
   }

@@ -4,11 +4,13 @@ namespace CarnivalShooter.Managers.Data {
     public float GameplaySfxVolume;
     public float MusicSfxVolume;
     public float BackgroundSfxVolume;
-    public AudioSettingsData(bool isAudioEnabled, float gameplaySfxVolume, float musicSfxVolume, float backgroundSfxVolume) {
+    public float UiSfxVolume;
+    public AudioSettingsData(bool isAudioEnabled, float gameplaySfxVolume, float musicSfxVolume, float backgroundSfxVolume, float uiSfxVolume) {
       IsAudioEnabled = isAudioEnabled;
       GameplaySfxVolume = gameplaySfxVolume;
       MusicSfxVolume = musicSfxVolume;
       BackgroundSfxVolume = backgroundSfxVolume;
+      UiSfxVolume = uiSfxVolume;
     }
   }
 }

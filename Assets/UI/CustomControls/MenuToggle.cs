@@ -13,6 +13,7 @@ namespace CarnivalShooter.UI.CustomControls {
     public static readonly new string inputUssClassName = "menu-toggle__input";
     public static readonly string inputKnobUssClassName = "menu-toggle__input-knob";
     public static readonly string inputCheckedUssClassName = "menu-toggle__input--checked";
+    public static readonly string inputUnCheckedUssClassName = "menu-toggle__input--unchecked";
 
     VisualElement m_Input;
     VisualElement m_Knob;
@@ -92,6 +93,7 @@ namespace CarnivalShooter.UI.CustomControls {
       base.SetValueWithoutNotify(newValue);
 
       //This line of code styles the input element to look enabled or disabled.
+      m_Input.EnableInClassList(inputUnCheckedUssClassName, !newValue);
       m_Input.EnableInClassList(inputCheckedUssClassName, newValue);
     }
   }

@@ -24,6 +24,8 @@
     margin-top: 20px;
     margin-bottom: 20px;
     flex-shrink: 0;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .screen-overlay {
@@ -47,6 +49,7 @@
     color: rgb(255, 255, 255);
     -unity-font: url('project://database/Assets/UI/Assets/Fonts/RifficFree-Bold.ttf?fileID=12800000&guid=50583f47abf99474589ca893d2cb0ce6&type=3#RifficFree-Bold');
     -unity-font-definition: url('project://database/Assets/UI/Assets/Fonts/RifficFree-Bold%20SDF.asset?fileID=11400000&guid=61cd9b27f079c4c4e8ede5c02a746848&type=2#RifficFree-Bold SDF');
+    -unity-text-align: upper-left;
 }
 
 .menu-text {
@@ -63,6 +66,13 @@
     bottom: auto;
     width: 50px;
     height: 50px;
+    transition-property: scale, -unity-background-image-tint-color;
+    transition-duration: 0.25s;
+}
+
+.menu-button--back:hover {
+    scale: 1.1;
+    -unity-background-image-tint-color: rgb(255, 222, 20);
 }
 
 .menu-button-container {
@@ -81,5 +91,14 @@
 }
 
 .menu-text--item {
-    font-size: 25px;
+    font-size: 20px;
+    padding-left: 0;
+    padding-right: 0;
+    min-width: 55px;
+    width: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-text-align: middle-center;
+    margin-right: 5px;
+    margin-left: 5px;
 }

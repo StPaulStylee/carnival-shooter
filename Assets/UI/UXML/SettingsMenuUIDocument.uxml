@@ -17,13 +17,13 @@
                 <ui:Label tabindex="-1" text="Sounds" display-tooltip-when-elided="true" class="font__riffic-free--white menu-text" />
             </ui:VisualElement>
             <ui:VisualElement name="settings-menu-row-0" class="settings-menu-row" style="background-color: rgba(0, 0, 0, 0);">
-                <ui:VisualElement name="menu-toggle-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: center;">
+                <ui:VisualElement name="menu-toggle-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: flex-start; flex-basis: 50%;">
                     <CarnivalShooter.UI.CustomControls.MenuToggle value="true" label="All Sounds" name="AllSoundsToggle" class="font__riffic-free--white menu-text--item" style="flex-grow: 0; overflow: hidden; opacity: 1;" />
                 </ui:VisualElement>
-                <ui:VisualElement focusable="false" name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); -unity-text-align: upper-left;">
-                    <ui:VisualElement class="settings-menu-row--item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:VisualElement focusable="false" name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); -unity-text-align: upper-left; align-items: stretch; flex-basis: 50%;">
+                    <ui:VisualElement name="VisualElement" class="settings-menu-row--item" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); justify-content: space-between;">
                         <ui:Label tabindex="-1" text="Gameplay SFX" display-tooltip-when-elided="true" class="font__riffic-free--white menu-text--item" />
-                        <ui:VisualElement name="settings-menu__gameplay-sfx--btn-group" class="settings-menu--btn-group" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                        <ui:VisualElement name="settings-menu__gameplay-sfx--btn-group" class="settings-menu--btn-group" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); justify-content: space-between;">
                             <ui:Button text="-" display-tooltip-when-elided="true" name="settings-menu__gameplay-sfx--decrement" class="settings-button--increment font__riffic-free--white" />
                             <ui:Label tabindex="-1" text="50%" display-tooltip-when-elided="true" name="settings-menu__gameplay-sfx--value" class="font__riffic-free--white menu-text--item" />
                             <ui:Button text="+" display-tooltip-when-elided="true" name="settings-menu__gameplay-sfx--increment" class="settings-button--increment font__riffic-free--white" />
@@ -31,18 +31,32 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="settings-menu-row-1" class="settings-menu-row" style="background-color: rgba(0, 0, 0, 0);">
-                <ui:VisualElement focusable="false" class="settings-menu-row--item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); -unity-text-align: upper-left;">
+            <ui:VisualElement name="settings-menu-row-1" class="settings-menu-row" style="background-color: rgba(0, 0, 0, 0); justify-content: center;">
+                <ui:VisualElement focusable="false" class="settings-menu-row--item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); -unity-text-align: upper-left; flex-basis: 50%;">
                     <ui:Label tabindex="-1" text="Music" display-tooltip-when-elided="true" class="font__riffic-free--white menu-text--item" />
-                    <ui:Button text="-" display-tooltip-when-elided="true" name="settings-menu__music--decrement" class="settings-button--increment font__riffic-free--white" />
-                    <ui:Label tabindex="-1" text="50%" display-tooltip-when-elided="true" name="settings-menu__music-sfx--value" class="font__riffic-free--white menu-text--item" />
-                    <ui:Button text="+" display-tooltip-when-elided="true" name="settings-menu__music--increment" class="settings-button--increment font__riffic-free--white" />
+                    <ui:VisualElement name="settings-menu_music--btn-group" class="settings-menu--btn-group" style="background-color: rgba(0, 0, 0, 0);">
+                        <ui:Button text="-" display-tooltip-when-elided="true" name="settings-menu__music--decrement" class="settings-button--increment font__riffic-free--white" />
+                        <ui:Label tabindex="-1" text="50%" display-tooltip-when-elided="true" name="settings-menu__music-sfx--value" class="font__riffic-free--white menu-text--item" />
+                        <ui:Button text="+" display-tooltip-when-elided="true" name="settings-menu__music--increment" class="settings-button--increment font__riffic-free--white" />
+                    </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement focusable="false" class="settings-menu-row--item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); -unity-text-align: upper-left;">
+                <ui:VisualElement focusable="false" class="settings-menu-row--item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); -unity-text-align: upper-left; flex-basis: 50%; justify-content: space-between;">
                     <ui:Label tabindex="-1" text="Background SFX" display-tooltip-when-elided="true" class="font__riffic-free--white menu-text--item" />
-                    <ui:Button text="-" display-tooltip-when-elided="true" name="settings-menu__background-sfx--decrement" class="settings-button--increment font__riffic-free--white" />
-                    <ui:Label tabindex="-1" text="50%" display-tooltip-when-elided="true" name="settings-menu__background-sfx--value" class="font__riffic-free--white menu-text--item" />
-                    <ui:Button text="+" display-tooltip-when-elided="true" name="settings-menu__background-sfx--increment" class="settings-button--increment font__riffic-free--white" />
+                    <ui:VisualElement name="settings-menu_background-sfx--btn-group" class="settings-menu--btn-group" style="background-color: rgba(0, 0, 0, 0); justify-content: flex-end;">
+                        <ui:Button text="-" display-tooltip-when-elided="true" name="settings-menu__background-sfx--decrement" class="settings-button--increment font__riffic-free--white" />
+                        <ui:Label tabindex="-1" text="50%" display-tooltip-when-elided="true" name="settings-menu__background-sfx--value" class="font__riffic-free--white menu-text--item" />
+                        <ui:Button text="+" display-tooltip-when-elided="true" name="settings-menu__background-sfx--increment" class="settings-button--increment font__riffic-free--white" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="settings-menu-row-1" class="settings-menu-row" style="background-color: rgba(0, 0, 0, 0); justify-content: center;">
+                <ui:VisualElement focusable="false" class="settings-menu-row--item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); -unity-text-align: upper-left; flex-basis: 50%;">
+                    <ui:Label tabindex="-1" text="UI SFX" display-tooltip-when-elided="true" class="font__riffic-free--white menu-text--item" />
+                    <ui:VisualElement name="settings-menu_ui--btn-group" class="settings-menu--btn-group" style="background-color: rgba(0, 0, 0, 0);">
+                        <ui:Button text="-" display-tooltip-when-elided="true" name="settings-menu__ui--decrement" class="settings-button--increment font__riffic-free--white" />
+                        <ui:Label tabindex="-1" text="50%" display-tooltip-when-elided="true" name="settings-menu__ui-sfx--value" class="font__riffic-free--white menu-text--item" />
+                        <ui:Button text="+" display-tooltip-when-elided="true" name="settings-menu__ui--increment" class="settings-button--increment font__riffic-free--white" />
+                    </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
@@ -52,24 +66,24 @@
             </ui:VisualElement>
             <ui:VisualElement name="settings-menu-container--controls-container" class="settings-menu-row" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
                 <ui:VisualElement class="settings-menu-row--item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/UI/Assets/mouse.png?fileID=2800000&amp;guid=5dca5e21c4eb91a438ae09a196031757&amp;type=3#mouse&apos;); flex-shrink: 0; width: 50%; -unity-background-scale-mode: scale-to-fit; height: 100%; min-height: 200px;">
-                    <ui:VisualElement name="settings-menu-controls--mouse-fire" class="settings-menu-controls--text" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); position: absolute; flex-shrink: 0; left: 112px; top: 0;">
+                    <ui:VisualElement name="settings-menu-controls--mouse-fire" class="settings-menu-controls--text" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); position: absolute; flex-shrink: 0; left: 100px; top: 0;">
                         <ui:Label tabindex="-1" text="Fire" display-tooltip-when-elided="true" class="font__riffic-free--white" style="font-size: 22px;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="settings-menu-controls--mouse-reload" class="settings-menu-controls--text" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); position: absolute; flex-shrink: 0; left: auto; top: 0; right: 86px;">
+                    <ui:VisualElement name="settings-menu-controls--mouse-reload" class="settings-menu-controls--text" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); position: absolute; flex-shrink: 0; left: auto; top: 0; right: 82px;">
                         <ui:Label tabindex="-1" text="Reload" display-tooltip-when-elided="true" class="font__riffic-free--white" style="font-size: 22px;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-shrink: 0; width: 50%; height: 100%; background-image: none; -unity-background-scale-mode: scale-to-fit; flex-direction: column; align-items: center; justify-content: flex-start;">
                     <ui:VisualElement name="VisualElement" class="settings-menu-row" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-                        <ui:VisualElement name="menu-toggle-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: center;">
+                        <ui:VisualElement name="menu-toggle-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: flex-start;">
                             <CarnivalShooter.UI.CustomControls.MenuToggle value="true" label="Look Inversion" name="LookInversionToggle" class="font__riffic-free--white menu-text--item" style="flex-grow: 0; overflow: hidden; opacity: 1;" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement name="VisualElement" class="settings-menu-row" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-                        <ui:VisualElement focusable="false" name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); -unity-text-align: upper-left; align-items: auto; align-self: auto; justify-content: flex-start;">
+                        <ui:VisualElement focusable="false" name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); -unity-text-align: upper-left; align-items: auto; align-self: auto; justify-content: flex-start; flex-direction: row;">
                             <ui:VisualElement class="settings-menu-row--item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
                                 <ui:Label tabindex="-1" text="Look Sensitivity" display-tooltip-when-elided="true" class="font__riffic-free--white menu-text--item" />
-                                <ui:VisualElement name="settings-menu__look-sensitvity--btn-group" class="settings-menu--btn-group" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                                <ui:VisualElement name="settings-menu__look-sensitvity--btn-group" class="settings-menu--btn-group" style="background-color: rgba(0, 0, 0, 0);">
                                     <ui:Button text="-" display-tooltip-when-elided="true" name="settings-menu__look-sensitivity--decrement" class="settings-button--increment font__riffic-free--white" />
                                     <ui:Label tabindex="-1" text="50%" display-tooltip-when-elided="true" name="settings-menu__look-sensitivity--value" class="font__riffic-free--white menu-text--item" />
                                     <ui:Button text="+" display-tooltip-when-elided="true" name="settings-menu__look-sensitivity--increment" class="settings-button--increment font__riffic-free--white" />

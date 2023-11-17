@@ -9,6 +9,7 @@ namespace CarnivalShooter.Data {
     [Range(0, 100)] public int GameplaySfxVolume = 80;
     [Range(0, 100)] public int MusicSfxVolume = 30;
     [Range(0, 100)] public int BackgroundSfxVolume = 55;
+    [Range(0, 100)] public int UiSfxVolume = 80;
     public SettingsData() { }
   }
 }

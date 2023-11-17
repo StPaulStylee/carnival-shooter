@@ -7,27 +7,38 @@
     width: 40px;
     height: 40px;
     background-color: rgb(195, 49, 49);
-    border-left-color: rgba(0, 0, 0, 0);
-    border-right-color: rgba(0, 0, 0, 0);
-    border-top-color: rgba(0, 0, 0, 0);
-    border-bottom-color: rgba(0, 0, 0, 0);
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
     font-size: 25px;
     -unity-text-align: middle-center;
-    margin-right: 20px;
-    margin-left: 20px;
+    margin-right: 0;
+    margin-left: 0;
     transition-property: all;
     transition-duration: 0.25s;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-left-width: 0.5px;
+    border-right-width: 0.5px;
+    border-top-width: 0.5px;
+    border-bottom-width: 0.5px;
 }
 
 .settings-button--increment:hover {
-  scale: 1.1;
+    scale: 1.1
+}
+
+/*.menu-button--back:hover {
+    -unity-background-image-tint-color: rgb(241, 237, 237);
+}*/
+
+.settings-button--increment:active {
+    scale: 1;
 }
 
 .settings-menu-container--header {
     flex-grow: 0;
-}
-
-.settings-menu-controls--text {
 }
 
 .settings-menu-row {
@@ -40,11 +51,15 @@
 
 .settings-menu-row--item {
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-self: auto;
     align-items: center;
 }
 
 .settings-menu--btn-group {
     flex-direction: row;
+}
+
+.settings-menu--btn-group .menu-text--item {
+    width: 55px;
 }

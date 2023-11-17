@@ -13,11 +13,11 @@
     border-radius: 12.5px;
     overflow: visible;
     border-width: 1px;
-    border-color: var(--unity-colors-slider_thumb-border);
+    border-color: var(--unity-colors-slider_thumb-background);
     height: 25px;
     margin-top: 10px;
     transition-property: background-color;
-    transition-duration: 0.5s;
+    transition-duration: 0.25s;
     flex-basis: auto;
     flex-grow: 0;
 }
@@ -33,7 +33,7 @@
     border-bottom-right-radius: 25px;
     top: -1px;
     transition-property: translate, background-color;
-    transition-duration: 0.5s, 0.5s;
+    transition-duration: 0.25s, 0.25s;
     translate: -1px 0;
     border-left-width: 1px;
     border-right-width: 1px;
@@ -58,8 +58,16 @@
     border-right-width: 1px;
     border-top-width: 1px;
     border-bottom-width: 1px;
-    border-left-color: var(--unity-colors-input_field-border-focus);
+/*    border-left-color: var(--unity-colors-input_field-border-focus);
     border-right-color: var(--unity-colors-input_field-border-focus);
     border-top-color: var(--unity-colors-input_field-border-focus);
-    border-bottom-color: var(--unity-colors-input_field-border-focus);
+    border-bottom-color: var(--unity-colors-input_field-border-focus);*/
+}
+
+.menu-toggle:hover .menu-toggle__input--unchecked .menu-toggle__input-knob {
+    translate: 5px 0;
+}
+
+.menu-toggle:hover .menu-toggle__input--checked .menu-toggle__input-knob {
+    translate: 18px 0;
 }
