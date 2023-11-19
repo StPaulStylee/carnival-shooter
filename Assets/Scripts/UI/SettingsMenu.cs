@@ -32,6 +32,8 @@ namespace CarnivalShooter.UI {
     private Label m_GameplaySfxValue, m_MusicSfxValue, m_UiSfxValue, m_BackgroundSfxValue, m_LookSensitivityValue;
     private MenuToggle m_AudioEnabledValue, m_LookInversionValue;
 
+    private SettingsData m_settingsData;
+
     private void OnDisable() {
       SettingsManager.OnSettingsChanged -= SetValues;
     }
@@ -74,6 +76,7 @@ namespace CarnivalShooter.UI {
     }
 
     private void SetValues(SettingsData values) {
+      m_settingsData = values;
       m_AudioEnabledValue.SetValueWithoutNotify(values.IsAudioEnabled);
       m_LookInversionValue.SetValueWithoutNotify(values.IsLookInverted);
       m_GameplaySfxValue.text = $"{values.GameplaySfxVolume}%";
