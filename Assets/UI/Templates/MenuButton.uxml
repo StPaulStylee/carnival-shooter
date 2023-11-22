@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="pause-menu__button-container" class="pause-menu-button-container pause-menu-button-container--return-to-game" style="background-color: rgba(0, 0, 0, 0); flex-shrink: 0;">
+        <ui:Button display-tooltip-when-elided="true" name="pause-menu__button" class="pause-menu-button">
+            <ui:VisualElement name="pause-menu__button-icon" class="pause-menu__button--icon" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/UI/Assets/play.png?fileID=21300000&amp;guid=b53951c215e4ed544b1e85db3a2679a2&amp;type=3#play&apos;);" />
+        </ui:Button>
+        <ui:Label tabindex="-1" text="Return to Game" display-tooltip-when-elided="true" name="pause-menu-item-label" class="font__riffic-free--white" />
+    </ui:VisualElement>
+</ui:UXML>

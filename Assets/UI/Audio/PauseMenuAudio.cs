@@ -14,6 +14,12 @@ public class PauseMenuAudio : AudioCore {
     PauseMenu.SettingsMenuOpened += PlayPauseMenuOptionClicked;
   }
 
+  protected override void OnDisable() {
+    base.OnDisable();
+    PauseMenu.OnReturnToGame -= PlayPauseMenuOptionClicked;
+    PauseMenu.SettingsMenuOpened -= PlayPauseMenuOptionClicked;
+  }
+
   private void PlayPauseMenuOptionClicked() {
     m_AudioSource.PlayOneShot(m_OptionClickedAudioClip, m_AudioVolume);
   }

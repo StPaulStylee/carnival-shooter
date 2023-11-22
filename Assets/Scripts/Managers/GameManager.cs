@@ -11,18 +11,18 @@ namespace CarnivalShooter.Managers {
   public class GameManager : MonoBehaviour {
     public static event Action OnGameStarted;
     public static event Action<int> AmmoInitializing;
-    //public static event Action<string> CountdownTimerInitializing;
     // RoundStartCountdown
     public static event Action<string> CountdownTimerStarted;
     public static event Action<int> ScoreInitializing;
     public static event Action<GameType> InitializationCompleted;
     public static event Action<bool> PauseStateToggled;
-
+    public static event Action<bool> OnRoundCompleted;
     private int m_TotalScore;
     // Right now this is completely controlled by CountdownTimer. This will need to be changed if
     // this value depends on more than just the countdown timer sending its ready event
     private bool m_IsInitialized = false;
     private bool m_IsPaused = false;
+    private bool m_IsRoundCompleted = false;
     public int TotalScore => m_TotalScore; // Is this necessary?
 
     [Header("Start of Round Data")]
@@ -33,18 +33,16 @@ namespace CarnivalShooter.Managers {
     [SerializeField] private GameType m_GameType = GameType.WhackAMole;
     private void Awake() {
       CountDownTimer.TimerBlockingExecution += SetInitialized;
+      CountDownTimer.TimerPostCompleted += RoundCompleted;
       InGameGlobalInput.OnPause += TogglePaused;
       PauseMenu.OnReturnToGame += TogglePaused;
     }
 
     private void OnDisable() {
       CountDownTimer.TimerBlockingExecution -= SetInitialized;
+      CountDownTimer.TimerPostCompleted -= RoundCompleted;
       InGameGlobalInput.OnPause -= TogglePaused;
       PauseMenu.OnReturnToGame -= TogglePaused;
-    }
-
-    private void OnEnable() {
-      //OnInitializeRound();
     }
 
     private void Start() {
@@ -81,6 +79,13 @@ namespace CarnivalShooter.Managers {
       }
       Debug.Log("Initialization Complete.");
       OnInitializationComplete();
+    }
+
+    private void RoundCompleted(string timerType) {
+      if (timerType == TimerConstants.RoundTimerKey) {
+        m_IsRoundCompleted = true;
+        OnRoundCompleted?.Invoke(m_IsRoundCompleted);
+      }
     }
   }
 }

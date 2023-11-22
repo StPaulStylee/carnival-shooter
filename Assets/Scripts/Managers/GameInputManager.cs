@@ -11,25 +11,37 @@ namespace CarnivalShooter.Managers {
     [Header("In Scene Dependencies")]
     [SerializeField] private Player m_Player;
     [SerializeField] private InGameGlobalInput m_GameGlobalInput;
+    private bool m_GameplayIsActive = false;
 
     private void Awake() {
       gameControls = new GameControls();
       gameControls.GameController.Enable();
       // Differentiating here because the player will need to be able to pause before the round actually starts
       GameManager.OnGameStarted += SetupGlobalInputActions;
+      //GameManager.OnGameStarted += SetRoundIsComplete;
+
       GameManager.InitializationCompleted += SetupGameplayInputActions;
+      GameManager.InitializationCompleted += SetGameplayIsActiveToTrue;
+      GameManager.OnRoundCompleted += SetRoundIsComplete;
       GameManager.PauseStateToggled += ToggleGameplayInputActions;
       CountDownTimer.TimerCompleted += TeardownGameplayInputActions;
     }
 
     private void OnDisable() {
       GameManager.OnGameStarted -= SetupGlobalInputActions;
+      //GameManager.OnGameStarted -= SetRoundIsComplete;
       GameManager.InitializationCompleted -= SetupGameplayInputActions;
+      GameManager.InitializationCompleted -= SetGameplayIsActiveToTrue;
       GameManager.PauseStateToggled -= ToggleGameplayInputActions;
+      GameManager.OnRoundCompleted -= SetRoundIsComplete;
       CountDownTimer.TimerCompleted -= TeardownGameplayInputActions;
       TeardownGlobalInputActions();
       TearDownInputActions();
     }
+
+    private void SetRoundIsComplete(bool isComplete) => m_GameplayIsActive = !isComplete;
+
+    private void SetGameplayIsActiveToTrue(GameType _) => m_GameplayIsActive = true;
 
     private void SetupGlobalInputActions() {
       m_GameGlobalInput.SetupGlobalInputActions(gameControls);
@@ -50,7 +62,7 @@ namespace CarnivalShooter.Managers {
     }
 
     private void ToggleGameplayInputActions(bool isPaused) {
-      if (isPaused) {
+      if (isPaused || !m_GameplayIsActive) {
         m_Player.TearDownInputActions(gameControls);
         return;
       }

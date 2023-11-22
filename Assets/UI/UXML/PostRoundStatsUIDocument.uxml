@@ -1,8 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Styles/PostRoundStatsUIStyles.uss?fileID=7433441132597879392&amp;guid=96ae249189bd205469efabee2ebbefb3&amp;type=3#PostRoundStatsUIStyles" />
     <Style src="project://database/Assets/UI/Styles/SharedUIStyles.uss?fileID=7433441132597879392&amp;guid=79ae6c86e88beb84cad959a64ca246fb&amp;type=3#SharedUIStyles" />
-    <ui:VisualElement name="post-round-stats_overlay" class="screen-overlay" />
-    <ui:VisualElement name="post-round-stats_container" class="post-round-stats__root-container root-container" style="top: 10%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;">
+    <Style src="project://database/Assets/UI/Styles/PauseMenuUIStyles.uss?fileID=7433441132597879392&amp;guid=1c59bc6d9d8968f48bd4a49eef85acdf&amp;type=3#PauseMenuUIStyles" />
+    <ui:VisualElement name="post-round-stats_overlay" class="screen-overlay" style="-unity-background-scale-mode: scale-to-fit;" />
+    <ui:VisualElement name="post-round-stats_container" class="post-round-stats__root-container root-container" style="top: 10%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; left: 5%;">
         <ui:VisualElement name="post-round-stats__stat-container" class="post-round-stats-container post-round-stats__header" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; -unity-background-image-tint-color: rgba(255, 255, 255, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); justify-content: center;">
             <ui:Label tabindex="-1" text="ROUND STATS" display-tooltip-when-elided="true" name="post-round-stats__shots-fired-label" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
         </ui:VisualElement>
@@ -119,6 +120,20 @@
             <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container text-flex-end post-round-stats__content-container-last-item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
                 <ui:Label tabindex="-1" text="300" display-tooltip-when-elided="true" name="post-round-stats__round-total-score-data" class="post-round-stats-text text-lg" style="color: rgb(255, 255, 255);" />
             </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="post-round-stats_buttons-container" class="pause-menu-content-container" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); position: absolute; top: 10%; left: auto; height: auto; width: auto; right: 5%; flex-direction: column; justify-content: space-between;">
+        <ui:VisualElement name="post-round-stats__button-container" class="pause-menu-button-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+            <ui:Button display-tooltip-when-elided="true" class="pause-menu-button">
+                <ui:VisualElement name="post-round-stats__button-icon" class="pause-menu__button--icon" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/UI/Assets/replay.png?fileID=2800000&amp;guid=504c9c6a4721c444bad9d04e6804ebda&amp;type=3#replay&apos;); -unity-background-scale-mode: scale-to-fit;" />
+            </ui:Button>
+            <ui:Label tabindex="-1" text="Play Again" display-tooltip-when-elided="true" name="post-round-stats__button-label" class="font__riffic-free--white" />
+        </ui:VisualElement>
+        <ui:VisualElement name="post-round-stats__button-container" class="pause-menu-button-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+            <ui:Button display-tooltip-when-elided="true" class="pause-menu-button">
+                <ui:VisualElement name="post-round-stats__button-icon" class="pause-menu__button--icon" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/UI/Assets/replay.png?fileID=2800000&amp;guid=504c9c6a4721c444bad9d04e6804ebda&amp;type=3#replay&apos;); -unity-background-scale-mode: scale-to-fit;" />
+            </ui:Button>
+            <ui:Label tabindex="-1" text="Play Again" display-tooltip-when-elided="true" name="post-round-stats__button-label" class="font__riffic-free--white" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

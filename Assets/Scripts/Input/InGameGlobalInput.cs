@@ -16,14 +16,17 @@ namespace CarnivalShooter.Input {
     }
 
     private void OnIsPausedToggle(bool isPaused) {
+      Debug.Log("Toggle Pause");
       m_IsPaused = isPaused;
       if (m_IsPaused) {
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         return;
       }
       Time.timeScale = 1f;
       Cursor.lockState = CursorLockMode.Locked;
+      Cursor.visible = false;
     }
 
     public void SetupGlobalInputActions(GameControls gameInput) {

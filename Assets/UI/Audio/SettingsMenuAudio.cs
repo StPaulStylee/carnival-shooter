@@ -20,6 +20,12 @@ namespace CarnivalShooter.UI.Audio {
       m_AudioSource = GetComponent<AudioSource>();
     }
 
+    protected override void OnDisable() {
+      base.OnDisable();
+      SettingsMenu.SettingValueClicked -= PlaySettingChanged;
+      SettingsMenu.BackButtonClicked -= PlayBackButtonClicked;
+    }
+
     private void PlayBackButtonClicked() {
       m_AudioSource.PlayOneShot(m_BackButtonAudioClip, m_AudioVolume);
     }
