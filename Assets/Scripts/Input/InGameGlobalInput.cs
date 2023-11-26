@@ -1,3 +1,5 @@
+using CarnivalShooter.Data;
+using CarnivalShooter.Gameplay;
 using CarnivalShooter.Managers;
 using System;
 using UnityEngine;
@@ -7,16 +9,41 @@ namespace CarnivalShooter.Input {
   public class InGameGlobalInput : MonoBehaviour {
     public static event Action OnPause;
     private bool m_IsPaused;
+    private bool m_IsCursorVisible = false;
     private void Awake() {
       GameManager.PauseStateToggled += OnIsPausedToggle;
-    }
+      //StatManager.PostRoundStatsCompleted += ToggleCursorState;
+      CountDownTimer.TimerPostCompleted += ToggleCursorState;
 
+    }
     private void OnDisable() {
       GameManager.PauseStateToggled -= OnIsPausedToggle;
+      //StatManager.PostRoundStatsCompleted -= ToggleCursorState;
+      CountDownTimer.TimerPostCompleted -= ToggleCursorState;
+
     }
 
+    //private void ToggleCursorState(PostRoundStatsData _) {
+    //  ToggleCursorState();
+    //}
+
+    // This is terrible. Don't name the method this. Or don't actually rely on this event
+    // Maybe its ok since it needs to disable at the start of the game anyways
+    private void ToggleCursorState(string timerType) {
+      if (!timerType.Equals(TimerConstants.RoundTimerKey)) {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        m_IsCursorVisible = false;
+        return;
+      }
+      Cursor.lockState = CursorLockMode.None;
+      Cursor.visible = true;
+      m_IsCursorVisible = true;
+      return;
+    }
+
+
     private void OnIsPausedToggle(bool isPaused) {
-      Debug.Log("Toggle Pause");
       m_IsPaused = isPaused;
       if (m_IsPaused) {
         Time.timeScale = 0f;
