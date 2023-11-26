@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: RoundStartCountdown
   m_EditorClassIdentifier: 
   TimerType: RoundCountdown
-  TotalTime: 0
+  TotalTime: 3
   PostCompletedDelay: 1

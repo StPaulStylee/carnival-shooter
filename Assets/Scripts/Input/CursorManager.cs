@@ -6,45 +6,37 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace CarnivalShooter.Input {
-  public class InGameGlobalInput : MonoBehaviour {
+  public class CursorManager : MonoBehaviour {
     public static event Action OnPause;
     private bool m_IsPaused;
-    private bool m_IsCursorVisible = false;
+    private bool m_IsPostRoundStatsActive = false;
     private void Awake() {
       GameManager.PauseStateToggled += OnIsPausedToggle;
-      //StatManager.PostRoundStatsCompleted += ToggleCursorState;
-      CountDownTimer.TimerPostCompleted += ToggleCursorState;
+      CountDownTimer.TimerPostCompleted += EnableCursorForPostRoundStats;
 
     }
     private void OnDisable() {
       GameManager.PauseStateToggled -= OnIsPausedToggle;
-      //StatManager.PostRoundStatsCompleted -= ToggleCursorState;
-      CountDownTimer.TimerPostCompleted -= ToggleCursorState;
+      CountDownTimer.TimerPostCompleted -= EnableCursorForPostRoundStats;
 
     }
 
-    //private void ToggleCursorState(PostRoundStatsData _) {
-    //  ToggleCursorState();
-    //}
-
-    // This is terrible. Don't name the method this. Or don't actually rely on this event
-    // Maybe its ok since it needs to disable at the start of the game anyways
-    private void ToggleCursorState(string timerType) {
+    private void EnableCursorForPostRoundStats(string timerType) {
       if (!timerType.Equals(TimerConstants.RoundTimerKey)) {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        m_IsCursorVisible = false;
         return;
       }
       Cursor.lockState = CursorLockMode.None;
       Cursor.visible = true;
-      m_IsCursorVisible = true;
+      m_IsPostRoundStatsActive = true;
       return;
     }
 
 
     private void OnIsPausedToggle(bool isPaused) {
       m_IsPaused = isPaused;
+      if (m_IsPostRoundStatsActive) {
+        return;
+      }
       if (m_IsPaused) {
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;

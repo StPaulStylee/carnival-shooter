@@ -10,7 +10,7 @@ namespace CarnivalShooter.Managers {
 
     [Header("In Scene Dependencies")]
     [SerializeField] private Player m_Player;
-    [SerializeField] private InGameGlobalInput m_GameGlobalInput;
+    [SerializeField] private CursorManager m_GameGlobalInput;
     private bool m_GameplayIsActive = false;
 
     private void Awake() {

@@ -34,14 +34,14 @@ namespace CarnivalShooter.Managers {
     private void Awake() {
       CountDownTimer.TimerBlockingExecution += SetInitialized;
       CountDownTimer.TimerPostCompleted += RoundCompleted;
-      InGameGlobalInput.OnPause += TogglePaused;
+      CursorManager.OnPause += TogglePaused;
       PauseMenu.OnReturnToGame += TogglePaused;
     }
 
     private void OnDisable() {
       CountDownTimer.TimerBlockingExecution -= SetInitialized;
       CountDownTimer.TimerPostCompleted -= RoundCompleted;
-      InGameGlobalInput.OnPause -= TogglePaused;
+      CursorManager.OnPause -= TogglePaused;
       PauseMenu.OnReturnToGame -= TogglePaused;
     }
 
