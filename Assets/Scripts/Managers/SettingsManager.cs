@@ -12,7 +12,7 @@ namespace CarnivalShooter.Managers {
 
     [SerializeField] private SettingsData m_SettingsData;
     private Dictionary<SettingsMenuType, Action<SettingsMenuAction, SettingsData>> m_MenuActions;
-
+    public SettingsData GetSettingsData() => m_SettingsData;
     private void Awake() {
       if (Instance == null) {
         Instance = this;
