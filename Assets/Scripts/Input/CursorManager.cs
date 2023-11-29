@@ -8,18 +8,17 @@ using UnityEngine.InputSystem;
 namespace CarnivalShooter.Input {
   public class CursorManager : MonoBehaviour {
     public static event Action OnPause;
-    private bool m_IsPaused;
+    private bool m_IsPaused = false;
     private bool m_IsPostRoundStatsActive = false;
 
     private void Awake() {
       GameManager.PauseStateToggled += OnIsPausedToggle;
       CountDownTimer.TimerPostCompleted += EnableCursorForPostRoundStats;
-
     }
+
     private void OnDisable() {
       GameManager.PauseStateToggled -= OnIsPausedToggle;
       CountDownTimer.TimerPostCompleted -= EnableCursorForPostRoundStats;
-
     }
 
     private void EnableCursorForPostRoundStats(string timerType) {

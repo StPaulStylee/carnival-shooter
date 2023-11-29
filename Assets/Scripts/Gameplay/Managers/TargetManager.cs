@@ -23,7 +23,7 @@ namespace CarnivalShooter.Gameplay.Managers {
     }
 
     private Target GetTargetToActivate() {
-      int indexToActivate = UnityEngine.Random.Range(0, m_targetsInScene.Count);
+      int indexToActivate = Random.Range(0, m_targetsInScene.Count);
       Target targetToActivate = m_targetsInScene[indexToActivate];
       if (targetToActivate.IsStanding) {
         print("Recursion! Look for weirdness.");

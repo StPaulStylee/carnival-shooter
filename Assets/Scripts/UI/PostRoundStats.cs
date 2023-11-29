@@ -1,4 +1,5 @@
 using CarnivalShooter.Data;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace CarnivalShooter.UI {
@@ -15,6 +16,8 @@ namespace CarnivalShooter.UI {
     const string k_RoundScoreData = "post-round-stats__round-score-data";
     const string k_RoundBonusData = "post-round-stats__bonus-data";
     const string k_TotalScoreData = "post-round-stats__round-total-score-data";
+    const string k_PlayAgainButton = "post-round-stats__play-again";
+    const string k_ExitToMenuButton = "post-round-stats__exit-to-menu";
 
     private Label m_BullseyeHitDataLabel;
     private Label m_BulleyeScoreDataLabel;
@@ -28,6 +31,8 @@ namespace CarnivalShooter.UI {
     private Label m_RoundScoreDataLabel;
     private Label m_RoundBonusDataLabel;
     private Label m_TotalScoreDataLabel;
+    private Button m_PlayAgainButton;
+    private Button m_ExitToMenuButton;
 
     private void Awake() {
       StatManager.PostRoundStatsCompleted += SetLabels;
@@ -50,7 +55,19 @@ namespace CarnivalShooter.UI {
       m_HitAccuracyDataLabel = m_GameUIElement.Q<Label>(k_HitAccuracyData);
       m_RoundScoreDataLabel = m_GameUIElement.Q<Label>(k_RoundScoreData);
       m_RoundBonusDataLabel = m_GameUIElement.Q<Label>(k_RoundBonusData);
-      m_TotalScoreDataLabel = m_GameUIElement.Q<Label>(k_TotalScoreData); ;
+      m_TotalScoreDataLabel = m_GameUIElement.Q<Label>(k_TotalScoreData);
+      m_PlayAgainButton = m_GameUIElement.Q<Button>(k_PlayAgainButton);
+      m_PlayAgainButton.RegisterCallback<ClickEvent>(OnPlayAgain);
+      m_ExitToMenuButton = m_GameUIElement.Q<Button>(k_ExitToMenuButton);
+      m_ExitToMenuButton.RegisterCallback<ClickEvent>(OnExitToMenu);
+    }
+
+    private void OnPlayAgain(ClickEvent e) {
+      SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void OnExitToMenu(ClickEvent e) {
+      SceneManager.LoadSceneAsync(0);
     }
 
     private void SetLabels(PostRoundStatsData data) {

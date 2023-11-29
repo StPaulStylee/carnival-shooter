@@ -10,7 +10,7 @@ namespace CarnivalShooter.Managers {
 
     [Header("In Scene Dependencies")]
     [SerializeField] private Player m_Player;
-    [SerializeField] private CursorManager m_GameGlobalInput;
+    [SerializeField] private CursorManager m_CursorManager;
     private bool m_GameplayIsActive = false;
 
     private void Awake() {
@@ -44,7 +44,7 @@ namespace CarnivalShooter.Managers {
     private void SetGameplayIsActiveToTrue(GameType _) => m_GameplayIsActive = true;
 
     private void SetupGlobalInputActions() {
-      m_GameGlobalInput.SetupGlobalInputActions(gameControls);
+      m_CursorManager.SetupGlobalInputActions(gameControls);
     }
 
     private void SetupGameplayInputActions(GameType _) {
@@ -52,7 +52,7 @@ namespace CarnivalShooter.Managers {
     }
 
     private void TeardownGlobalInputActions() {
-      m_GameGlobalInput.TeardownGlobalInputActions(gameControls);
+      m_CursorManager.TeardownGlobalInputActions(gameControls);
     }
 
     private void TeardownGameplayInputActions(string timerType) {

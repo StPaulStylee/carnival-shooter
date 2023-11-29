@@ -32,7 +32,6 @@ namespace CarnivalShooter.Gameplay {
       m_IsRunning = true;
       TimerChanged?.Invoke(m_TimerType, m_TimeRemaining.ToString());
       if (m_IsExecutionBlocking) {
-        Debug.Log("ExecutionBlockingEvent");
         TimerBlockingExecution?.Invoke(true);
       }
 

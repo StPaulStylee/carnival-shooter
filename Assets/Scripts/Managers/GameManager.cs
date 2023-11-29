@@ -51,7 +51,6 @@ namespace CarnivalShooter.Managers {
     }
 
     private void OnInitializeRound() {
-      Debug.Log("Initializing Round.");
       OnGameStarted?.Invoke();
       AmmoInitializing?.Invoke(m_StartingAmmo);
       ScoreInitializing?.Invoke(m_InitialScore);
@@ -64,7 +63,6 @@ namespace CarnivalShooter.Managers {
     }
 
     private void SetInitialized(bool isInitialized) {
-      Debug.Log($"m_IsInitialized == {!isInitialized}");
       m_IsInitialized = !isInitialized;
     }
 
@@ -77,7 +75,6 @@ namespace CarnivalShooter.Managers {
       while (m_IsInitialized == false) {
         yield return null;
       }
-      Debug.Log("Initialization Complete.");
       OnInitializationComplete();
     }
 
