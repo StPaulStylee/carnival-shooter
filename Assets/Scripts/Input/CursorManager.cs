@@ -10,6 +10,7 @@ namespace CarnivalShooter.Input {
     public static event Action OnPause;
     private bool m_IsPaused;
     private bool m_IsPostRoundStatsActive = false;
+
     private void Awake() {
       GameManager.PauseStateToggled += OnIsPausedToggle;
       CountDownTimer.TimerPostCompleted += EnableCursorForPostRoundStats;
@@ -25,7 +26,7 @@ namespace CarnivalShooter.Input {
       if (!timerType.Equals(TimerConstants.RoundTimerKey)) {
         return;
       }
-      Cursor.lockState = CursorLockMode.None;
+      Cursor.lockState = CursorLockMode.Confined;
       Cursor.visible = true;
       m_IsPostRoundStatsActive = true;
       return;
@@ -39,7 +40,7 @@ namespace CarnivalShooter.Input {
       }
       if (m_IsPaused) {
         Time.timeScale = 0f;
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
         return;
       }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace CarnivalShooter.Gameplay.Managers {
   public class TargetManager : MonoBehaviour {
-    private List<Target> targetsInScene = new();
+    private List<Target> m_targetsInScene = new();
     private List<Target> m_CurrentActiveTargets = new();
 
     [SerializeField] private float targetStandingTime = 2f;
@@ -14,15 +14,17 @@ namespace CarnivalShooter.Gameplay.Managers {
 
     private void Awake() {
       GameManager.InitializationCompleted += OnInitializationCompleted;
+      GameManager.OnRoundCompleted += OnRoundCompleted;
     }
 
     private void OnDisable() {
       GameManager.InitializationCompleted -= OnInitializationCompleted;
+      GameManager.OnRoundCompleted -= OnRoundCompleted;
     }
 
     private Target GetTargetToActivate() {
-      int indexToActivate = UnityEngine.Random.Range(0, targetsInScene.Count);
-      Target targetToActivate = targetsInScene[indexToActivate];
+      int indexToActivate = UnityEngine.Random.Range(0, m_targetsInScene.Count);
+      Target targetToActivate = m_targetsInScene[indexToActivate];
       if (targetToActivate.IsStanding) {
         print("Recursion! Look for weirdness.");
         GetTargetToActivate();
@@ -39,7 +41,7 @@ namespace CarnivalShooter.Gameplay.Managers {
     private void OnInitializationCompleted(GameType gametype) {
       Target[] targets = FindObjectsOfType<Target>();
       foreach (Target target in targets) {
-        targetsInScene.Add(target);
+        m_targetsInScene.Add(target);
       }
       StartCoroutine(StartGame(gametype));
     }
@@ -70,7 +72,15 @@ namespace CarnivalShooter.Gameplay.Managers {
         }
         yield return new WaitForSeconds(targetStandingTime);
       }
+    }
 
+    private void OnRoundCompleted(bool isRoundCompleted) {
+      if (isRoundCompleted) {
+        m_isRoundActive = false;
+        foreach (Target target in m_targetsInScene) {
+          target.ResetToDefault();
+        }
+      }
     }
   }
 }

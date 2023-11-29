@@ -16,7 +16,7 @@ namespace CarnivalShooter.Managers {
     private void Awake() {
       if (Instance == null) {
         Instance = this;
-        m_SettingsData = new SettingsData();
+        m_SettingsData = LoadSettingsData();
 
         SettingsMenu.SettingValueClicked += SetSettingsData;
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -47,6 +47,40 @@ namespace CarnivalShooter.Managers {
 
     private void SetSettingsData(SettingsMenuAction action, SettingsMenuType type) {
       SetSettingsData(action, type, m_SettingsData);
+      SaveSettingsData();
+    }
+
+    private void SaveSettingsData() {
+      PlayerPrefs.SetInt("IsAudioEnabled", m_SettingsData.IsAudioEnabled ? 1 : 0);
+      PlayerPrefs.SetInt("IsLookInverted", m_SettingsData.IsLookInverted ? 1 : 0);
+      PlayerPrefs.SetInt("LookSensitivity", m_SettingsData.LookSensitivity);
+      PlayerPrefs.SetInt("GameplaySfxVolume", m_SettingsData.GameplaySfxVolume);
+      PlayerPrefs.SetInt("MusicSfxVolume", m_SettingsData.MusicSfxVolume);
+      PlayerPrefs.SetInt("BackgroundSfxVolume", m_SettingsData.BackgroundSfxVolume);
+      PlayerPrefs.SetInt("UiSfxVolume", m_SettingsData.UiSfxVolume);
+      PlayerPrefs.Save();
+    }
+
+    private SettingsData LoadSettingsData() {
+      SettingsData data = new SettingsData();
+      // Check if a single key exists and if it does it's safe to assume all keys exist
+      if (PlayerPrefs.HasKey("IsAudioEnabled")) {
+        bool isAudioEnabled = PlayerPrefs.GetInt("IsAudioEnabled") == 1;
+        bool isLookInverted = PlayerPrefs.GetInt("IsLookInverted") == 1;
+        int lookSensitivity = PlayerPrefs.GetInt("LookSensitivity");
+        int gameplaySfxVolume = PlayerPrefs.GetInt("GameplaySfxVolume");
+        int musicSfxVolume = PlayerPrefs.GetInt("BackgroundSfxVolume");
+        int backgroundSfxVolume = PlayerPrefs.GetInt("BackgroundSfxVolume");
+        int uiSfxVolume = PlayerPrefs.GetInt("UiSfxVolume");
+        data.IsAudioEnabled = isAudioEnabled;
+        data.IsLookInverted = isLookInverted;
+        data.LookSensitivity = lookSensitivity;
+        data.GameplaySfxVolume = gameplaySfxVolume;
+        data.MusicSfxVolume = musicSfxVolume;
+        data.BackgroundSfxVolume = backgroundSfxVolume;
+        data.UiSfxVolume = uiSfxVolume;
+      }
+      return data;
     }
 
     private void SetSettingsData(SettingsMenuAction settingsAction, SettingsMenuType settingsType, SettingsData data) {
