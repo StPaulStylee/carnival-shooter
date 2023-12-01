@@ -63,7 +63,7 @@ namespace CarnivalShooter.UI {
     }
 
     private void OnPlayAgain(ClickEvent e) {
-      SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
 
     private void OnExitToMenu(ClickEvent e) {

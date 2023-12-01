@@ -8,18 +8,22 @@ namespace CarnivalShooter.Gameplay {
     public bool IsStanding => m_isStanding;
     private readonly string TAKE_SHOT_TRIGGER = "Hit";
     private readonly string RESET_TRIGGER = "Reset";
+    public static int DisableCount = 0;
 
-    private bool m_isStanding = false;
+    [SerializeField] private bool m_isStanding = false;
     private MeshCollider[] m_meshColliders;
 
     private void Awake() {
+      m_isStanding = false;
+      m_meshColliders = null; // Do I need this?
+      DisableCount = 0;
       m_Animator = GetComponent<Animator>();
       m_meshColliders = GetComponentsInChildren<MeshCollider>();
-      GameManager.InitializationCompleted += SetRoundStartAnimationState;
+      GameManager.OnSetInitialTargetState += SetRoundStartAnimationState;
     }
 
     private void OnDisable() {
-      GameManager.InitializationCompleted -= SetRoundStartAnimationState;
+      GameManager.OnSetInitialTargetState -= SetRoundStartAnimationState;
     }
 
     public override void PlayTakeShot() {
@@ -35,14 +39,15 @@ namespace CarnivalShooter.Gameplay {
     }
 
     private void DisableMeshColliders() {
-      foreach (var collider in m_meshColliders) {
-        collider.enabled = false;
+      Target.DisableCount++;
+      foreach (var meshCollider in m_meshColliders) {
+        meshCollider.enabled = false;
       }
     }
 
     private void EnableMeshColliders() {
-      foreach (var collider in m_meshColliders) {
-        collider.enabled = true;
+      foreach (MeshCollider meshCollider in m_meshColliders) {
+        meshCollider.enabled = true;
       }
     }
 

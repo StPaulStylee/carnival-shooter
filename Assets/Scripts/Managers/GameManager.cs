@@ -17,6 +17,8 @@ namespace CarnivalShooter.Managers {
     public static event Action<GameType> InitializationCompleted;
     public static event Action<bool> PauseStateToggled;
     public static event Action<bool> OnRoundCompleted;
+    // Initial TargetState 
+    public static event Action<GameType> OnSetInitialTargetState;
     private int m_TotalScore;
     // Right now this is completely controlled by CountdownTimer. This will need to be changed if
     // this value depends on more than just the countdown timer sending its ready event
@@ -55,6 +57,7 @@ namespace CarnivalShooter.Managers {
       AmmoInitializing?.Invoke(m_StartingAmmo);
       ScoreInitializing?.Invoke(m_InitialScore);
       CountdownTimerStarted?.Invoke(TimerConstants.RoundStartCountdownKey);
+      OnSetInitialTargetState?.Invoke(m_GameType);
     }
 
     private void OnInitializationComplete() {
