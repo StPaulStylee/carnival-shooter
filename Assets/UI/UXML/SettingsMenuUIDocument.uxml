@@ -65,6 +65,11 @@
                 <ui:Label tabindex="-1" text="Controls" display-tooltip-when-elided="true" class="font__riffic-free--white menu-text settings-menu-container--header" />
             </ui:VisualElement>
             <ui:VisualElement name="settings-menu-container--controls-container" class="settings-menu-row" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:VisualElement name="VisualElement" class="settings-menu-row--item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 20%; height: 27%; background-image: url(&apos;project://database/Assets/UI/Assets/KEY_Esc.PNG?fileID=2800000&amp;guid=22384dae9137a43999f289ae502865ea&amp;type=3#KEY_Esc&apos;); -unity-background-scale-mode: scale-to-fit; -unity-slice-left: 0; align-self: flex-start;">
+                    <ui:VisualElement name="settings-menu-controls--pause" class="settings-menu-controls--text" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); position: absolute; flex-shrink: 0; left: 56px; top: -20px;">
+                        <ui:Label tabindex="-1" text="Pause" display-tooltip-when-elided="true" class="font__riffic-free--white" style="font-size: 22px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
                 <ui:VisualElement class="settings-menu-row--item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/UI/Assets/mouse.png?fileID=2800000&amp;guid=5dca5e21c4eb91a438ae09a196031757&amp;type=3#mouse&apos;); flex-shrink: 0; width: 50%; -unity-background-scale-mode: scale-to-fit; height: 100%; min-height: 200px;">
                     <ui:VisualElement name="settings-menu-controls--mouse-fire" class="settings-menu-controls--text" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); position: absolute; flex-shrink: 0; left: 100px; top: 0;">
                         <ui:Label tabindex="-1" text="Fire" display-tooltip-when-elided="true" class="font__riffic-free--white" style="font-size: 22px;" />
@@ -73,7 +78,7 @@
                         <ui:Label tabindex="-1" text="Reload" display-tooltip-when-elided="true" class="font__riffic-free--white" style="font-size: 22px;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-shrink: 0; width: 50%; height: 100%; background-image: none; -unity-background-scale-mode: scale-to-fit; flex-direction: column; align-items: center; justify-content: flex-start;">
+                <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-shrink: 1; width: auto; height: 100%; background-image: none; -unity-background-scale-mode: scale-to-fit; flex-direction: column; align-items: center; justify-content: flex-start;">
                     <ui:VisualElement name="VisualElement" class="settings-menu-row" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
                         <ui:VisualElement name="menu-toggle-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: flex-start;">
                             <CarnivalShooter.UI.CustomControls.MenuToggle value="true" label="Look Inversion" name="LookInversionToggle" class="font__riffic-free--white menu-text--item" style="flex-grow: 0; overflow: hidden; opacity: 1;" />
