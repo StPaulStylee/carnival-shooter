@@ -8,6 +8,8 @@
             <ui:Button text="Credits" display-tooltip-when-elided="true" name="main-menu--credits-btn" enable-rich-text="false" style="background-color: rgb(195, 45, 45);" />
             <ui:Button text="Quit to Desktop" display-tooltip-when-elided="true" name="main-menu--quit-btn" style="background-color: rgb(195, 45, 45);" />
         </ui:VisualElement>
-        <ui:VisualElement name="VisualElement" class="main-menu--title-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); position: absolute; right: 0; height: 100%; width: 70%;" />
+        <ui:VisualElement name="VisualElement" class="main-menu--title-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); position: absolute; right: 0; height: 100%; width: 70%;">
+            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/UI/Assets/carnival-sign.png?fileID=2800000&amp;guid=1e86e1e7aafd6054f8b85700a40c56aa&amp;type=3#carnival-sign&apos;); -unity-background-scale-mode: scale-to-fit;" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
