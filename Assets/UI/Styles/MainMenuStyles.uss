@@ -1,5 +1,30 @@
+.main-menu--settings-button-container {
+    align-items: flex-start;
+    margin-bottom: 14px;
+}
+
+.main-menu--settings-btn {
+    border-bottom-color: rgba(255, 255, 255, 0);
+    border-bottom-width: 2px;
+    font-size: 30px;
+    text-shadow: 2px 1px 3.6px rgb(7, 7, 7);
+    transition: border-bottom-color 0.25s;
+}
+
+.main-menu--settings-btn:hover {
+    border-bottom-color: rgb(255, 255, 255);
+}
+
 .main-menu--options-container {
+    align-items: flex-start;
+    justify-content: center;
+    align-self: auto;
+    padding-left: 75px;
 }
 
 .main-menu--title-container {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }

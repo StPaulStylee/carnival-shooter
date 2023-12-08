@@ -1,14 +1,22 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Styles/SharedUIStyles.uss?fileID=7433441132597879392&amp;guid=79ae6c86e88beb84cad959a64ca246fb&amp;type=3#SharedUIStyles" />
     <Style src="project://database/Assets/UI/Styles/MainMenuStyles.uss?fileID=7433441132597879392&amp;guid=f94626c56b169534990aa34c938994c4&amp;type=3#MainMenuStyles" />
-    <ui:VisualElement name="main-menu--root" style="flex-grow: 1; background-color: rgb(192, 190, 190); position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/UI/Assets/MainMenuBackground.png?fileID=2800000&amp;guid=c55dfaec3ffada84a8f830dd131e3965&amp;type=3#MainMenuBackground&apos;); -unity-background-scale-mode: scale-and-crop;">
-        <ui:VisualElement class="main-menu--options-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.35); position: absolute; height: 100%; left: 0; width: 30%;">
-            <ui:Button text="Start" display-tooltip-when-elided="true" name="main-menu--start-btn" style="background-color: rgb(195, 45, 45);" />
-            <ui:Button text="Settings" display-tooltip-when-elided="true" name="main-menu--settings-btn" enable-rich-text="false" style="background-color: rgb(195, 45, 45);" />
-            <ui:Button text="Credits" display-tooltip-when-elided="true" name="main-menu--credits-btn" enable-rich-text="false" style="background-color: rgb(195, 45, 45);" />
-            <ui:Button text="Quit to Desktop" display-tooltip-when-elided="true" name="main-menu--quit-btn" style="background-color: rgb(195, 45, 45);" />
+    <ui:VisualElement name="main-menu--root" style="flex-grow: 1; background-color: rgb(192, 190, 190); position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/UI/Assets/curtain.png?fileID=2800000&amp;guid=c592c1f647bb0224fb796893bcf0ba13&amp;type=3#curtain&apos;); -unity-background-scale-mode: scale-and-crop;">
+        <ui:VisualElement name="VisualElement" class="main-menu--options-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); position: absolute; height: 100%; left: 0; width: 30%; -unity-text-align: upper-left;">
+            <ui:VisualElement class="main-menu--settings-button-container">
+                <ui:Label tabindex="-1" text="Start" display-tooltip-when-elided="true" name="main-menu--start-btn" class="main-menu--settings-btn font__riffic-free--white" />
+            </ui:VisualElement>
+            <ui:VisualElement class="main-menu--settings-button-container">
+                <ui:Label tabindex="-1" text="Settings" display-tooltip-when-elided="true" name="main-menu--settings-btn" class="main-menu--settings-btn font__riffic-free--white" />
+            </ui:VisualElement>
+            <ui:VisualElement class="main-menu--settings-button-container">
+                <ui:Label tabindex="-1" text="Credits" display-tooltip-when-elided="true" name="main-menu--credits-btn" class="main-menu--settings-btn font__riffic-free--white" />
+            </ui:VisualElement>
+            <ui:VisualElement class="main-menu--settings-button-container">
+                <ui:Label tabindex="-1" text="Quit to Desktop" display-tooltip-when-elided="true" name="main-menu--quit-btn" class="main-menu--settings-btn font__riffic-free--white" />
+            </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="VisualElement" class="main-menu--title-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); position: absolute; right: 0; height: 100%; width: 70%;">
+        <ui:VisualElement name="VisualElement" class="main-menu--title-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); position: absolute; right: 0; height: 100%; width: 70%; margin-right: 25px;">
             <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/UI/Assets/carnival-sign.png?fileID=2800000&amp;guid=1e86e1e7aafd6054f8b85700a40c56aa&amp;type=3#carnival-sign&apos;); -unity-background-scale-mode: scale-to-fit;" />
         </ui:VisualElement>
     </ui:VisualElement>
