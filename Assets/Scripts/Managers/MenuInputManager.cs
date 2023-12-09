@@ -8,12 +8,14 @@ namespace CarnivalShooter.UI.Manager {
     private void Awake() {
       SettingsMenu.BackButtonClicked += HideSettingsMenu;
       MainMenu.SettingsMenuOpened += ShowSettingsMenu;
+      MainMenu.CreditsScreenOpened += ShowCreditsScreen;
       // What about the global input that is being used in the game scene. How does that work here?
     }
 
     private void OnDisable() {
       SettingsMenu.BackButtonClicked -= HideSettingsMenu;
       MainMenu.SettingsMenuOpened -= ShowSettingsMenu;
+      MainMenu.CreditsScreenOpened -= ShowCreditsScreen;
     }
 
     private void Start() {
@@ -47,6 +49,11 @@ namespace CarnivalShooter.UI.Manager {
     private void ShowSettingsMenu() {
       GameUIScreen settingsMenu = m_GameUIScreens.Find(screen => screen.GameHudElementName == ScreenNameConstants.SettingsMenu);
       AddActiveMenuScreen(settingsMenu);
+    }
+
+    private void ShowCreditsScreen() {
+      GameUIScreen creditsScreen = m_GameUIScreens.Find(screen => screen.GameHudElementName == ScreenNameConstants.CreditsScreen);
+      AddActiveMenuScreen(creditsScreen);
     }
 
     private void HideSettingsMenu() {

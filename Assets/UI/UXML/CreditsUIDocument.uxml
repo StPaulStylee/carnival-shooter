@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/SharedUIStyles.uss?fileID=7433441132597879392&amp;guid=79ae6c86e88beb84cad959a64ca246fb&amp;type=3#SharedUIStyles" />
+    <Style src="project://database/Assets/UI/Styles/SettingsUIStyles.uss?fileID=7433441132597879392&amp;guid=c79fef2fa01287245887e1e369e51b46&amp;type=3#SettingsUIStyles" />
+    <ui:VisualElement name="credits-screen-overlay" class="screen-overlay" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
+    <ui:VisualElement name="credits-screen-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+        <ui:VisualElement name="credits-screen--header-container" class="settings-menu-row" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0);">
+            <ui:VisualElement name="credits-screen-container-back-button" class="menu-button-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:VisualElement name="credits-screen--back-button" class="menu-button--back" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="credits-screen-container--header" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: center;">
+                <ui:Label tabindex="-1" text="Credits" display-tooltip-when-elided="true" enable-rich-text="false" name="credits-screen-header" class="font__riffic-free--white menu-header" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="credits-screen-container--credits" class="root-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); position: relative;">
+            <ui:Label tabindex="-1" text="Testing" display-tooltip-when-elided="true" name="Label" class="font__riffic-free--white menu-text" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

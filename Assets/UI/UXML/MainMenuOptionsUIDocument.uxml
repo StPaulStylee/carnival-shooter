@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Styles/SharedUIStyles.uss?fileID=7433441132597879392&amp;guid=79ae6c86e88beb84cad959a64ca246fb&amp;type=3#SharedUIStyles" />
     <Style src="project://database/Assets/UI/Styles/MainMenuStyles.uss?fileID=7433441132597879392&amp;guid=f94626c56b169534990aa34c938994c4&amp;type=3#MainMenuStyles" />
-    <ui:VisualElement name="main-menu--root" style="flex-grow: 1; background-color: rgb(192, 190, 190); position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/UI/Assets/curtain.png?fileID=2800000&amp;guid=c592c1f647bb0224fb796893bcf0ba13&amp;type=3#curtain&apos;); -unity-background-scale-mode: scale-and-crop;">
+    <ui:VisualElement name="main-menu--root" style="flex-grow: 1; background-color: rgba(192, 190, 190, 0); position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-image: none; -unity-background-scale-mode: scale-and-crop;">
         <ui:VisualElement name="VisualElement" class="main-menu--options-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); position: absolute; height: 100%; left: 0; width: 30%; -unity-text-align: upper-left;">
             <ui:VisualElement class="main-menu--settings-button-container">
                 <ui:Label tabindex="-1" text="Start" display-tooltip-when-elided="true" name="main-menu--start-btn" class="main-menu--settings-btn font__riffic-free--white" />

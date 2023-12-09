@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 namespace CarnivalShooter.UI {
   public class MainMenu : GameUIScreen {
     public static event Action SettingsMenuOpened;
+    public static event Action CreditsScreenOpened;
 
     const string k_StartButton = "main-menu--start-btn";
     const string k_SettingsButton = "main-menu--settings-btn";
@@ -22,7 +23,7 @@ namespace CarnivalShooter.UI {
       m_QuitButton = m_GameUIElement.Q<Label>(k_QuitButton);
       m_StartButton.RegisterCallback<ClickEvent>(OnStart);
       m_SettingsButton.RegisterCallback<ClickEvent>(OnSettingsButtonClicked);
-      m_SettingsButton.RegisterCallback<ClickEvent>(OnCreditsButtonClicked);
+      m_CreditsButton.RegisterCallback<ClickEvent>(OnCreditsButtonClicked);
       m_QuitButton.RegisterCallback<ClickEvent>(OnQuit);
     }
 
@@ -35,7 +36,7 @@ namespace CarnivalShooter.UI {
     }
 
     private void OnCreditsButtonClicked(ClickEvent e) {
-      Debug.Log("Credits clicked");
+      CreditsScreenOpened?.Invoke();
     }
 
     private void OnQuit(ClickEvent e) {

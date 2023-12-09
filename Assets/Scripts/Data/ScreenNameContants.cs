@@ -5,5 +5,6 @@ namespace CarnivalShooter.Data {
     public const string PauseMenu = "PauseMenuUIDocument";
     public const string SettingsMenu = "SettingsMenuUIDocument";
     public const string MainMenu = "MainMenuOptionsUIDocument";
+    public const string CreditsScreen = "CreditsUIDocument";
   }
 }
