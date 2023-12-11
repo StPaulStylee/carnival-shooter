@@ -50,6 +50,7 @@
     -unity-font: url('project://database/Assets/UI/Assets/Fonts/RifficFree-Bold.ttf?fileID=12800000&guid=50583f47abf99474589ca893d2cb0ce6&type=3#RifficFree-Bold');
     -unity-font-definition: url('project://database/Assets/UI/Assets/Fonts/RifficFree-Bold%20SDF.asset?fileID=11400000&guid=61cd9b27f079c4c4e8ede5c02a746848&type=2#RifficFree-Bold SDF');
     -unity-text-align: upper-left;
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0.76);
 }
 
 .menu-text {
@@ -101,4 +102,11 @@
     -unity-text-align: middle-center;
     margin-right: 5px;
     margin-left: 5px;
+}
+
+.menu-icon {
+    min-width: 35px;
+    min-height: 35px;
+    -unity-background-scale-mode: scale-to-fit;
+    margin-right: 20px;
 }
