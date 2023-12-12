@@ -83,7 +83,7 @@ namespace CarnivalShooter.UI {
       m_MusicSfxValue.text = $"{values.MusicSfxVolume}%";
       m_UiSfxValue.text = $"{values.UiSfxVolume}%";
       m_BackgroundSfxValue.text = $"{values.BackgroundSfxVolume}%";
-      m_LookSensitivityValue.text = $"{values.LookSensitivity}%";
+      m_LookSensitivityValue.text = $"{values.LookSensitivity}";
     }
 
     private void OnBackButtonClicked(ClickEvent e) {

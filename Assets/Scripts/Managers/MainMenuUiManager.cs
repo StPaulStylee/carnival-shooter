@@ -1,12 +1,15 @@
 using CarnivalShooter.Data;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 namespace CarnivalShooter.UI.Manager {
   // Rename this class to MenuUiManager
-  public class MenuInputManager : UIManager, IHasMenu {
+  public class MainMenuUiManager : UIManager, IHasMenu {
     private Stack<GameUIScreen> m_ActiveMenuScreensStack = new Stack<GameUIScreen>();
-
+    private GameControls m_GameControls;
     private void Awake() {
+      m_GameControls = new GameControls();
+      EnableGameControls();
       SettingsMenu.BackButtonClicked += HideActiveScreen;
       MainMenu.SettingsMenuOpened += ShowSettingsMenu;
       MainMenu.CreditsScreenOpened += ShowCreditsScreen;
@@ -14,6 +17,7 @@ namespace CarnivalShooter.UI.Manager {
     }
 
     private void OnDisable() {
+      DisableGameControls();
       SettingsMenu.BackButtonClicked -= HideActiveScreen;
       MainMenu.SettingsMenuOpened -= ShowSettingsMenu;
       MainMenu.CreditsScreenOpened -= ShowCreditsScreen;
@@ -37,7 +41,8 @@ namespace CarnivalShooter.UI.Manager {
     }
 
     public void RemoveActiveMenuScreen() {
-      if (m_ActiveMenuScreensStack.Count == 0) {
+      // Only the MainMenuUi is active
+      if (m_ActiveMenuScreensStack.Count == 1) {
         return;
       }
       GameUIScreen removedScreen = m_ActiveMenuScreensStack.Pop();
@@ -58,9 +63,22 @@ namespace CarnivalShooter.UI.Manager {
       AddActiveMenuScreen(creditsScreen);
     }
 
-
     private void HideActiveScreen() {
       RemoveActiveMenuScreen();
+    }
+
+    private void OnPausePerformed(InputAction.CallbackContext ctx) {
+      RemoveActiveMenuScreen();
+    }
+
+    private void EnableGameControls() {
+      m_GameControls.GameController.Enable();
+      m_GameControls.GameController.Pause.performed += OnPausePerformed;
+    }
+
+    private void DisableGameControls() {
+      m_GameControls.GameController.Pause.performed -= OnPausePerformed;
+      m_GameControls = null;
     }
   }
 }

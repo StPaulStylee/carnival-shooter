@@ -1,3 +1,4 @@
+
 using CarnivalShooter.Data;
 using CarnivalShooter.Managers;
 using CarnivalShooter.Utilities;
@@ -35,7 +36,7 @@ namespace CarnivalShooter.Gameplay {
     }
 
     [Header("Look Configuration")]
-    [Range(0, 1f)] public float LookSensitivity = 0.25f; // mouse look sensitivity
+    [Range(0, 0.25f)] public float LookSensitivity = 0.25f; // mouse look sensitivity
     public float MinLookX = -80f; // Lowest we can look
     public float MaxLookX = 80f; // Highest we can look
     public float MinLookY = -70f;
@@ -65,7 +66,7 @@ namespace CarnivalShooter.Gameplay {
     }
 
     private void SetLookConfiguration(SettingsData values) {
-      LookSensitivity = values.LookSensitivity / 100f;
+      LookSensitivity = values.LookSensitivity / 20f;
       isLookInverted = values.IsLookInverted;
     }
 

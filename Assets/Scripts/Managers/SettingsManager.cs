@@ -91,48 +91,48 @@ namespace CarnivalShooter.Managers {
 
     private void OnGameplaySfxChange(SettingsMenuAction action, SettingsData data) {
       if (action == SettingsMenuAction.INCREMENT) {
-        IncrementValue(ref data.GameplaySfxVolume);
+        IncrementValueByFive(ref data.GameplaySfxVolume);
         OnSettingsChanged?.Invoke(data);
         return;
       }
       if (action == SettingsMenuAction.DECREMENT) {
-        DecrementValue(ref data.GameplaySfxVolume);
+        DecrementValueByFive(ref data.GameplaySfxVolume);
         OnSettingsChanged?.Invoke(data);
       }
     }
 
     private void OnMusicSfxChange(SettingsMenuAction action, SettingsData data) {
       if (action == SettingsMenuAction.INCREMENT) {
-        IncrementValue(ref data.MusicSfxVolume);
+        IncrementValueByFive(ref data.MusicSfxVolume);
         OnSettingsChanged?.Invoke(data);
         return;
       }
       if (action == SettingsMenuAction.DECREMENT) {
-        DecrementValue(ref data.MusicSfxVolume);
+        DecrementValueByFive(ref data.MusicSfxVolume);
         OnSettingsChanged?.Invoke(data);
       }
     }
 
     private void OnBackgroundSfxChange(SettingsMenuAction action, SettingsData data) {
       if (action == SettingsMenuAction.INCREMENT) {
-        IncrementValue(ref data.BackgroundSfxVolume);
+        IncrementValueByFive(ref data.BackgroundSfxVolume);
         OnSettingsChanged?.Invoke(data);
         return;
       }
       if (action == SettingsMenuAction.DECREMENT) {
-        DecrementValue(ref data.BackgroundSfxVolume);
+        DecrementValueByFive(ref data.BackgroundSfxVolume);
         OnSettingsChanged?.Invoke(data);
       }
     }
 
     private void OnUiSfxChange(SettingsMenuAction action, SettingsData data) {
       if (action == SettingsMenuAction.INCREMENT) {
-        IncrementValue(ref data.UiSfxVolume);
+        IncrementValueByFive(ref data.UiSfxVolume);
         OnSettingsChanged?.Invoke(data);
         return;
       }
       if (action == SettingsMenuAction.DECREMENT) {
-        DecrementValue(ref data.UiSfxVolume);
+        DecrementValueByFive(ref data.UiSfxVolume);
         OnSettingsChanged?.Invoke(data);
       }
     }
@@ -149,21 +149,29 @@ namespace CarnivalShooter.Managers {
 
     private void OnLookSensitivityChange(SettingsMenuAction action, SettingsData data) {
       if (action == SettingsMenuAction.INCREMENT) {
-        IncrementValue(ref data.LookSensitivity);
+        IncrementValueByOneLimitFive(ref data.LookSensitivity);
         OnSettingsChanged?.Invoke(data);
         return;
       }
       if (action == SettingsMenuAction.DECREMENT) {
-        DecrementValue(ref data.LookSensitivity);
+        DecrementValueByOneLimitFive(ref data.LookSensitivity);
         OnSettingsChanged?.Invoke(data);
       }
     }
 
-    private void IncrementValue(ref int value) {
+    private void IncrementValueByOneLimitFive(ref int value) {
+      value = Mathf.Clamp(value + 1, 0, 5);
+    }
+
+    private void DecrementValueByOneLimitFive(ref int value) {
+      value = Mathf.Clamp(value - 1, 0, 5);
+    }
+
+    private void IncrementValueByFive(ref int value) {
       value = Mathf.Clamp(value + 5, 0, 100);
     }
 
-    private void DecrementValue(ref int value) {
+    private void DecrementValueByFive(ref int value) {
       value = Mathf.Clamp(value - 5, 0, 100);
     }
   }
