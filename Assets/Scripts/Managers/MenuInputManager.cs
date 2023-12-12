@@ -2,20 +2,22 @@ using CarnivalShooter.Data;
 using System.Collections.Generic;
 
 namespace CarnivalShooter.UI.Manager {
+  // Rename this class to MenuUiManager
   public class MenuInputManager : UIManager, IHasMenu {
     private Stack<GameUIScreen> m_ActiveMenuScreensStack = new Stack<GameUIScreen>();
 
     private void Awake() {
-      SettingsMenu.BackButtonClicked += HideSettingsMenu;
+      SettingsMenu.BackButtonClicked += HideActiveScreen;
       MainMenu.SettingsMenuOpened += ShowSettingsMenu;
       MainMenu.CreditsScreenOpened += ShowCreditsScreen;
-      // What about the global input that is being used in the game scene. How does that work here?
+      CreditsScreen.BackButtonClicked += HideActiveScreen;
     }
 
     private void OnDisable() {
-      SettingsMenu.BackButtonClicked -= HideSettingsMenu;
+      SettingsMenu.BackButtonClicked -= HideActiveScreen;
       MainMenu.SettingsMenuOpened -= ShowSettingsMenu;
       MainMenu.CreditsScreenOpened -= ShowCreditsScreen;
+      CreditsScreen.BackButtonClicked -= HideActiveScreen;
     }
 
     private void Start() {
@@ -56,7 +58,8 @@ namespace CarnivalShooter.UI.Manager {
       AddActiveMenuScreen(creditsScreen);
     }
 
-    private void HideSettingsMenu() {
+
+    private void HideActiveScreen() {
       RemoveActiveMenuScreen();
     }
   }

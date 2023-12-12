@@ -1,6 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Styles/SharedUIStyles.uss?fileID=7433441132597879392&amp;guid=79ae6c86e88beb84cad959a64ca246fb&amp;type=3#SharedUIStyles" />
     <Style src="project://database/Assets/UI/Styles/SettingsUIStyles.uss?fileID=7433441132597879392&amp;guid=c79fef2fa01287245887e1e369e51b46&amp;type=3#SettingsUIStyles" />
+    <Style src="project://database/Assets/UI/Styles/MenuUIStyles.uss?fileID=7433441132597879392&amp;guid=3dd62a4549462f848ad7380199b93edf&amp;type=3#MenuUIStyles" />
     <ui:VisualElement name="credits-screen-overlay" class="screen-overlay" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
     <ui:VisualElement name="credits-screen-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
         <ui:VisualElement name="credits-screen--header-container" class="settings-menu-row" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0);">
@@ -21,6 +22,29 @@
                     <ui:VisualElement name="credits-screen--logo-website" class="menu-icon" style="background-image: url(&apos;project://database/Assets/UI/Assets/internet-white.png?fileID=2800000&amp;guid=fc4aa6db7941bae49afdae27a101e834&amp;type=3#internet-white&apos;); -unity-background-scale-mode: scale-to-fit;" />
                     <ui:VisualElement name="credits-screen--logo-x" class="menu-icon" style="background-image: url(&apos;project://database/Assets/UI/Assets/logo-white.png?fileID=2800000&amp;guid=1c820d64bed59d248abe5d144f4e1e7d&amp;type=3#logo-white&apos;);" />
                     <ui:VisualElement name="credits-screen--logo-instagram" class="menu-icon" style="background-image: url(&apos;project://database/Assets/UI/Assets/Instagram_Glyph_White.png?fileID=2800000&amp;guid=c35632b6bd8b8174f9b00917bd36c8ab&amp;type=3#Instagram_Glyph_White&apos;);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="credits-screen-container--special-thanks" class="root-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); position: relative;">
+            <ui:Label tabindex="-1" text="Special Thanks" display-tooltip-when-elided="true" name="credits-screen-container--special-thanks-header" class="font__riffic-free--white menu-text" />
+            <ui:VisualElement name="credits-screen--attribution-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; margin-top: 15px; margin-bottom: 15px;">
+                <ui:VisualElement name="credits-screen--attribution-name-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                    <ui:Label tabindex="-1" text="Smashicons" display-tooltip-when-elided="true" name="smashicons" class="font__riffic-free--white menu-text--item menu-text--link" />
+                </ui:VisualElement>
+                <ui:VisualElement name="credits-screen--attribution-name-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                    <ui:Label tabindex="-1" text="Abdul-Allib" display-tooltip-when-elided="true" name="abdul-allib" class="font__riffic-free--white menu-text--item menu-text--link" />
+                </ui:VisualElement>
+                <ui:VisualElement name="credits-screen--attribution-name-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                    <ui:Label tabindex="-1" text="Freepik" display-tooltip-when-elided="true" name="freepik" class="font__riffic-free--white menu-text--item menu-text--link" />
+                </ui:VisualElement>
+                <ui:VisualElement name="credits-screen--attribution-name-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                    <ui:Label tabindex="-1" text="Pixel perfect" display-tooltip-when-elided="true" name="pixelperfect" class="font__riffic-free--white menu-text--item menu-text--link" />
+                </ui:VisualElement>
+                <ui:VisualElement name="credits-screen--attribution-name-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                    <ui:Label tabindex="-1" text="Alfan Subekti" display-tooltip-when-elided="true" name="alfan-subekti" class="font__riffic-free--white menu-text--item menu-text--link" />
+                </ui:VisualElement>
+                <ui:VisualElement name="credits-screen--attribution-name-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                    <ui:Label tabindex="-1" text="nawicon" display-tooltip-when-elided="true" name="nawicon" class="font__riffic-free--white menu-text--item menu-text--link" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

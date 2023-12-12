@@ -109,4 +109,19 @@
     min-height: 35px;
     -unity-background-scale-mode: scale-to-fit;
     margin-right: 20px;
+    transition: scale 0.25s;
+}
+
+.menu-icon:hover {
+    scale: 1.1;
+}
+
+.menu-text--link {
+  border-bottom-color: rgba(255, 255, 255, 0);
+  border-bottom-width: 2px;
+  transition: border-bottom-color 0.25s;
+}
+
+.menu-text--link:hover {
+  border-bottom-color: rgb(255, 255, 255);
 }
