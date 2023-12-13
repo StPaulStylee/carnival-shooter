@@ -36,7 +36,7 @@ namespace CarnivalShooter.Gameplay {
     }
 
     [Header("Look Configuration")]
-    [Range(0, 0.25f)] public float LookSensitivity = 0.25f; // mouse look sensitivity
+    [Range(0.5f, 0.25f)] public float LookSensitivity = 0.15f; // mouse look sensitivity
     public float MinLookX = -80f; // Lowest we can look
     public float MaxLookX = 80f; // Highest we can look
     public float MinLookY = -70f;

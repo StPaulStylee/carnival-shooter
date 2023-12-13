@@ -29,6 +29,7 @@ namespace CarnivalShooter.Managers {
           {SettingsMenuType.AUDIO_ENABLE, OnAudioEnabledToggle },
           {SettingsMenuType.LOOK_INVERSION, OnLookInversionEnabledToggle },
           {SettingsMenuType.LOOK_SENSITIVITY, OnLookSensitivityChange },
+          {SettingsMenuType.RESET, OnResetToDefault },
         };
         DontDestroyOnLoad(gameObject);
       } else {
@@ -48,6 +49,12 @@ namespace CarnivalShooter.Managers {
     private void SetSettingsData(SettingsMenuAction action, SettingsMenuType type) {
       SetSettingsData(action, type, m_SettingsData);
       SaveSettingsData();
+    }
+
+    private void SetSettingsData(SettingsMenuAction settingsAction, SettingsMenuType settingsType, SettingsData data) {
+      if (m_MenuActions.TryGetValue(settingsType, out Action<SettingsMenuAction, SettingsData> action)) {
+        action(settingsAction, data);
+      }
     }
 
     private void SaveSettingsData() {
@@ -81,12 +88,6 @@ namespace CarnivalShooter.Managers {
         data.UiSfxVolume = uiSfxVolume;
       }
       return data;
-    }
-
-    private void SetSettingsData(SettingsMenuAction settingsAction, SettingsMenuType settingsType, SettingsData data) {
-      if (m_MenuActions.TryGetValue(settingsType, out Action<SettingsMenuAction, SettingsData> action)) {
-        action(settingsAction, data);
-      }
     }
 
     private void OnGameplaySfxChange(SettingsMenuAction action, SettingsData data) {
@@ -159,12 +160,18 @@ namespace CarnivalShooter.Managers {
       }
     }
 
+    private void OnResetToDefault(SettingsMenuAction action, SettingsData data) {
+      data = new SettingsData();
+      m_SettingsData = data;
+      OnSettingsChanged?.Invoke(data);
+    }
+
     private void IncrementValueByOneLimitFive(ref int value) {
-      value = Mathf.Clamp(value + 1, 0, 5);
+      value = Mathf.Clamp(value + 1, 1, 5);
     }
 
     private void DecrementValueByOneLimitFive(ref int value) {
-      value = Mathf.Clamp(value - 1, 0, 5);
+      value = Mathf.Clamp(value - 1, 1, 5);
     }
 
     private void IncrementValueByFive(ref int value) {

@@ -11,6 +11,9 @@
             <ui:VisualElement name="settings-menu-container--header" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: center;">
                 <ui:Label tabindex="-1" text="Settings" display-tooltip-when-elided="true" name="settings-menu-header" class="font__riffic-free--white menu-header" />
             </ui:VisualElement>
+            <ui:VisualElement name="settings-menu-container--reset-button" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: center; position: absolute; right: 5%; bottom: auto;">
+                <ui:Label tabindex="-1" text="Reset to Defaults" display-tooltip-when-elided="true" name="menu-button--reset" class="font__riffic-free--white menu-button--reset" />
+            </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="settings-menu-container--sounds" class="root-container" style="height: auto; position: relative; top: auto; background-color: rgba(31, 31, 31, 0);">
             <ui:VisualElement name="settings-menu-container--sounds-header" class="settings-menu-container--header" style="background-color: rgba(0, 0, 0, 0);">

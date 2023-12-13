@@ -51,6 +51,9 @@ namespace CarnivalShooter.UI.Audio {
         }
         return;
       }
+      if (action == SettingsMenuAction.RESET) {
+        return;
+      }
       Debug.LogWarning($"PlaySettingChanged in {this.name} is being a called with data that has not been configured.");
     }
 

@@ -55,6 +55,8 @@
 
 .menu-text {
     font-size: 41px;
+    align-items: auto;
+    align-self: auto;
 }
 
 .menu-button--back {
@@ -71,9 +73,15 @@
     transition-duration: 0.25s;
 }
 
-.menu-button--back:hover {
+.menu-button--reset {
+    transition-property: scale, -unity-background-image-tint-color;
+    transition-duration: 0.25s;
+}
+
+.menu-button--back:hover, .menu-button--reset:hover {
     scale: 1.1;
     -unity-background-image-tint-color: rgb(255, 222, 20);
+    color: rgb(255, 222, 20);
 }
 
 .menu-button-container {
@@ -117,11 +125,11 @@
 }
 
 .menu-text--link {
-  border-bottom-color: rgba(255, 255, 255, 0);
-  border-bottom-width: 2px;
-  transition: border-bottom-color 0.25s;
+    border-bottom-color: rgba(255, 255, 255, 0);
+    border-bottom-width: 2px;
+    transition: border-bottom-color 0.25s;
 }
 
 .menu-text--link:hover {
-  border-bottom-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
 }

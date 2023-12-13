@@ -10,6 +10,7 @@ namespace CarnivalShooter.UI {
     public static event Action<SettingsMenuAction, SettingsMenuType> SettingValueClicked;
 
     const string k_BackButton = "settings-menu--back-button";
+    const string k_ResetToDefaultButton = "settings-menu-container--reset-button";
     const string k_DecrementGameplaySfx = "settings-menu__gameplay-sfx--decrement";
     const string k_IncrementGameplaySfx = "settings-menu__gameplay-sfx--increment";
     const string k_DecrementMusicSfx = "settings-menu__music--decrement";
@@ -28,7 +29,7 @@ namespace CarnivalShooter.UI {
     const string k_LookSensitivityValue = "settings-menu__look-sensitivity--value";
     const string k_LookInversionValue = "LookInversionToggle";
 
-    private VisualElement m_BackButton, m_DecrementGameplaySfxBtn, m_IncrementGameplaySfxBtn, m_DecrementMusicSfxBtn, m_IncrementMusicSfxBtn, m_DecrementUiSfxBtn, m_IncrementUiSfxBtn, m_DecrementBackgroundSfxBtn, m_IncrementBackgroundSfxBtn, m_IncrementLookSensitivityBtn, m_DecrementLookSensitivityBtn;
+    private VisualElement m_BackButton, m_ResetToDefaultButton, m_DecrementGameplaySfxBtn, m_IncrementGameplaySfxBtn, m_DecrementMusicSfxBtn, m_IncrementMusicSfxBtn, m_DecrementUiSfxBtn, m_IncrementUiSfxBtn, m_DecrementBackgroundSfxBtn, m_IncrementBackgroundSfxBtn, m_IncrementLookSensitivityBtn, m_DecrementLookSensitivityBtn;
     private Label m_GameplaySfxValue, m_MusicSfxValue, m_UiSfxValue, m_BackgroundSfxValue, m_LookSensitivityValue;
     private MenuToggle m_AudioEnabledValue, m_LookInversionValue;
 
@@ -41,6 +42,7 @@ namespace CarnivalShooter.UI {
     private void OnEnable() {
       base.SetGameUIElements();
       m_BackButton = m_GameUIElement.Q(k_BackButton);
+      m_ResetToDefaultButton = m_GameUIElement.Q(k_ResetToDefaultButton);
       m_DecrementGameplaySfxBtn = m_GameUIElement.Q(k_DecrementGameplaySfx);
       m_IncrementGameplaySfxBtn = m_GameUIElement.Q(k_IncrementGameplaySfx);
       m_DecrementMusicSfxBtn = m_GameUIElement.Q(k_DecrementMusicSfx);
@@ -60,6 +62,7 @@ namespace CarnivalShooter.UI {
       m_LookSensitivityValue = m_GameUIElement.Q<Label>(k_LookSensitivityValue);
 
       m_BackButton.RegisterCallback<ClickEvent>(OnBackButtonClicked);
+      m_ResetToDefaultButton.RegisterCallback<ClickEvent>(OnResetButtonClicked);
       m_DecrementGameplaySfxBtn.RegisterCallback<ClickEvent>(OnDecrementGameplaySfx);
       m_IncrementGameplaySfxBtn.RegisterCallback<ClickEvent>(OnIncrementGameplaySfx);
       m_DecrementMusicSfxBtn.RegisterCallback<ClickEvent>(OnDecrementMusicSfx);
@@ -88,6 +91,10 @@ namespace CarnivalShooter.UI {
 
     private void OnBackButtonClicked(ClickEvent e) {
       BackButtonClicked?.Invoke();
+    }
+
+    private void OnResetButtonClicked(ClickEvent e) {
+      SettingValueClicked?.Invoke(SettingsMenuAction.RESET, SettingsMenuType.RESET);
     }
 
     private void OnDecrementGameplaySfx(ClickEvent e) {

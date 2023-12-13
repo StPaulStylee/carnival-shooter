@@ -1,6 +1,6 @@
 namespace CarnivalShooter.Data {
   public enum SettingsMenuAction {
-    INCREMENT, DECREMENT, TOGGLE
+    INCREMENT, DECREMENT, TOGGLE, RESET
   }
 
   public enum SettingsMenuType {
@@ -10,7 +10,8 @@ namespace CarnivalShooter.Data {
     UI_SFX,
     AUDIO_ENABLE,
     LOOK_INVERSION,
-    LOOK_SENSITIVITY
+    LOOK_SENSITIVITY,
+    RESET
   }
 
 }
