@@ -14,7 +14,8 @@ namespace CarnivalShooter.EditorExtensions {
       {
         ScoreConstants.BullseyeLabel,
         ScoreConstants.OuterZoneLabel,
-        ScoreConstants.InnerZoneLabel
+        ScoreConstants.InnerZoneLabel,
+        ScoreConstants.StuffieLabel,
       };
 
       string[] options = new string[values.Length];

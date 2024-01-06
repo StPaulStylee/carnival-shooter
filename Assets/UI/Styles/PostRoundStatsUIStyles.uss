@@ -1,5 +1,5 @@
 .post-round-stats-text {
-    font-size: 41px;
+    font-size: 35px;
     color: rgb(255, 255, 255);
 }
 
@@ -96,4 +96,7 @@
 }
 
 .post-round-stats__root-container {
+}
+
+.post-round-stats__total-container {
 }

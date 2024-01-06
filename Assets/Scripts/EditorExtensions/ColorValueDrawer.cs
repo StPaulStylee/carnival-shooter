@@ -14,13 +14,15 @@ namespace CarnivalShooter.EditorExtensions {
       {
         ScoreConstants.Green,
         ScoreConstants.Yellow,
-        ScoreConstants.Orange
+        ScoreConstants.Orange,
+        ScoreConstants.White
       };
 
       string[] options = new string[] {
         nameof(ScoreConstants.Green),
         nameof(ScoreConstants.Yellow),
         nameof(ScoreConstants.Orange),
+        nameof(ScoreConstants.White),
       };
 
       // Find the index of the currently selected value

@@ -71,6 +71,22 @@
         </ui:VisualElement>
         <ui:VisualElement name="post-round-stats__stat-container" class="post-round-stats-container" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; -unity-background-image-tint-color: rgba(255, 255, 255, 0); align-items: stretch; justify-content: space-around;">
             <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container post-round-stats__content-container-first-item">
+                <ui:Label tabindex="-1" text="Stuffies" display-tooltip-when-elided="true" name="post-round-stats__stuffies-label" class="post-round-stats-text" />
+            </ui:VisualElement>
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container post-round-stats-__content-container-middle-item" style="align-items: stretch;">
+                <ui:VisualElement name="post-round-stats__icon-container" class="post-round-stats__icon-container" style="align-items: stretch; background-image: none; justify-content: center;">
+                    <ui:VisualElement class="post-round-stats__icon" style="background-image: url(&apos;project://database/Assets/UI/Assets/teddy-bear-silloutte.png?fileID=2800000&amp;guid=db59d047f1abac242997e774e400a39a&amp;type=3#teddy-bear-silloutte&apos;); -unity-background-image-tint-color: rgb(178, 2, 2);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="VisualElement" class="post-round-stats__content-container-middle-item-text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                    <ui:Label tabindex="-1" text="100" display-tooltip-when-elided="true" name="post-round-stats__stuffies-hit-data" class="post-round-stats-text" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container text-flex-end post-round-stats__content-container-last-item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:Label tabindex="-1" text="1164" display-tooltip-when-elided="true" name="post-round-stats__stuffies-score-data" class="post-round-stats-text" style="color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="post-round-stats__stat-container" class="post-round-stats-container" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; -unity-background-image-tint-color: rgba(255, 255, 255, 0); align-items: stretch; justify-content: space-around;">
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container post-round-stats__content-container-first-item">
                 <ui:Label tabindex="-1" text="Accuracy" display-tooltip-when-elided="true" name="post-round-stats__shots-fired-label" class="post-round-stats-text" />
             </ui:VisualElement>
             <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container post-round-stats-__content-container-middle-item" style="align-items: stretch;">

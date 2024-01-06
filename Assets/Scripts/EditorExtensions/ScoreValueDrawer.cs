@@ -12,6 +12,7 @@ namespace CarnivalShooter.EditorExtensions {
       // Get the integer values from ScoreConstants
       int[] values = new int[]
       {
+        ScoreConstants.One,
         ScoreConstants.Three,
         ScoreConstants.Five,
         ScoreConstants.Seven,

@@ -32,6 +32,8 @@ public class StatManager : MonoBehaviour {
   private int m_TotalInnerZonePoints = 0;
   private float m_TotalBullseyeHits = 0;
   private int m_TotalBullseyePoints = 0;
+  private int m_TotalStuffieHits = 0;
+  private int m_TotalStuffiePoints = 0;
   private int m_RoundBonus = 0;
   private int m_TotalScore = 0;
 
@@ -63,6 +65,7 @@ public class StatManager : MonoBehaviour {
         totalInnerZoneScore: m_TotalInnerZonePoints,
         totalOuterZoneHits: (int)m_TotalOuterZoneHits,
         totalOuterZoneScore: m_TotalOutzonePoints,
+        totalStuffieScore: m_TotalStuffiePoints,
         totalShotsFired: m_TotalShotsFired,
         totalHits: (int)m_TotalShotsHit,
         accuracy: getShotAccuracyPercentage(),
@@ -74,7 +77,7 @@ public class StatManager : MonoBehaviour {
     }
   }
 
-  private void OnScoreableHit(int points, string scoreableLabel) {
+  private void OnScoreableHit(int points, string scoreableLabel, int eventId) {
     switch (scoreableLabel) {
       case ScoreConstants.OuterZoneLabel: {
           m_TotalOutzonePoints += points;
@@ -95,6 +98,13 @@ public class StatManager : MonoBehaviour {
           m_TotalScore += points;
           ScoreUpdated?.Invoke(m_TotalScore);
           m_TotalBullseyeHits++;
+          break;
+        }
+      case ScoreConstants.StuffieLabel: {
+          m_TotalStuffiePoints += points;
+          m_TotalScore += points;
+          ScoreUpdated?.Invoke(m_TotalScore);
+          m_TotalStuffieHits++;
           break;
         }
       default: break;

@@ -22,7 +22,7 @@ namespace CarnivalShooter.Gameplay.Behavior {
       hitEffect.GetComponent<ParticleSystem>().Play();
       AudioClip audioClip = m_hitSfxClips[UnityEngine.Random.Range(0, m_hitSfxClips.Length)];
       m_hitSfxSource.PlayOneShot(audioClip, m_hitSfxVolume);
-      shotAnimatable.PlayTakeShot();
+      if (shotAnimatable != null) shotAnimatable.PlayTakeShot();
       Destroy(hitEffect.gameObject, 5f);
     }
 
