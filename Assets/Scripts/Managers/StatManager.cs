@@ -77,7 +77,7 @@ public class StatManager : MonoBehaviour {
     }
   }
 
-  private void OnScoreableHit(int points, string scoreableLabel, int eventId) {
+  private void OnScoreableHit(int points, string scoreableLabel) {
     switch (scoreableLabel) {
       case ScoreConstants.OuterZoneLabel: {
           m_TotalOutzonePoints += points;

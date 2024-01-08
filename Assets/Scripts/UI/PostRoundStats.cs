@@ -10,7 +10,7 @@ namespace CarnivalShooter.UI {
     const string k_InnerZoneScoreData = "post-round-stats__inner-zone-score-data";
     const string k_OuterZoneHitData = "post-round-stats__outer-zone-hit-data";
     const string k_OuterZoneScoreData = "post-round-stats__outer-zone-score-data";
-    const string k_StuffiesScoreData = "post-round-stats__stuffies-hit-data";
+    const string k_StuffiesScoreData = "post-round-stats__stuffies-score-data";
     const string k_ShotsHitData = "post-round-stats__shots-hit-data";
     const string k_ShotsFiredData = "post-round-stats__shots-fired-data";
     const string k_HitAccuracyData = "post-round-stats__hit-accuracy-data";
