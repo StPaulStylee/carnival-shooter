@@ -76,7 +76,7 @@ namespace CarnivalShooter.Managers {
         bool isLookInverted = PlayerPrefs.GetInt("IsLookInverted") == 1;
         int lookSensitivity = PlayerPrefs.GetInt("LookSensitivity");
         int gameplaySfxVolume = PlayerPrefs.GetInt("GameplaySfxVolume");
-        int musicSfxVolume = PlayerPrefs.GetInt("BackgroundSfxVolume");
+        int musicSfxVolume = PlayerPrefs.GetInt("MusicSfxVolume");
         int backgroundSfxVolume = PlayerPrefs.GetInt("BackgroundSfxVolume");
         int uiSfxVolume = PlayerPrefs.GetInt("UiSfxVolume");
         data.IsAudioEnabled = isAudioEnabled;

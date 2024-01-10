@@ -78,7 +78,13 @@
     transition-duration: 0.25s;
 }
 
-.menu-button--back:hover, .menu-button--reset:hover {
+.menu-button--back:hover {
+    scale: 1.1;
+    -unity-background-image-tint-color: rgb(255, 222, 20);
+    color: rgb(255, 222, 20);
+}
+
+.menu-button--reset:hover {
     scale: 1.1;
     -unity-background-image-tint-color: rgb(255, 222, 20);
     color: rgb(255, 222, 20);
@@ -132,4 +138,7 @@
 
 .menu-text--link:hover {
     border-bottom-color: rgb(255, 255, 255);
+}
+
+.pause-menu-button-container--settings {
 }

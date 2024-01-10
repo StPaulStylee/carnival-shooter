@@ -27,7 +27,7 @@ namespace CarnivalShooter.Gameplay {
     }
 
     public override void PlayTakeShot() {
-      DisableMeshColliders();
+      //DisableMeshColliders();
       m_isStanding = false;
       m_Animator.SetTrigger(TAKE_SHOT_TRIGGER);
     }
@@ -38,7 +38,7 @@ namespace CarnivalShooter.Gameplay {
       m_Animator.SetTrigger(RESET_TRIGGER);
     }
 
-    private void DisableMeshColliders() {
+    public void DisableMeshColliders() {
       Target.DisableCount++;
       foreach (var meshCollider in m_meshColliders) {
         meshCollider.enabled = false;

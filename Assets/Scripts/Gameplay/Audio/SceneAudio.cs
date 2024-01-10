@@ -72,6 +72,7 @@ namespace CarnivalShooter.Gameplay.Audio {
       m_MusicSfxVolume = data.MusicSfxVolume;
       m_BackgroundSfxVolume = data.BackgroundSfxVolume;
       m_InGameMusicSource.volume = m_MusicSfxVolume;
+      m_MainMenuMusicAudioSource.volume = m_MusicSfxVolume;
       m_InGameBackgroundAudioSource.volume = m_BackgroundSfxVolume;
     }
 

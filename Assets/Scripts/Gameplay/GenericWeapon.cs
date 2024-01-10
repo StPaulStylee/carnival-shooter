@@ -42,11 +42,18 @@ namespace CarnivalShooter.Gameplay {
     private void Shoot() {
       m_CurrentWeapon.HandleRemainingAmmoDuringShot();
       m_CurrentWeapon.OnShoot();
+      Target target = null;
       bool hasHit = Physics.Raycast(m_povCamera.transform.position, m_povCamera.transform.forward, out RaycastHit hit, m_CurrentWeapon.ShotDistance);
       if (hasHit && hit.transform.TryGetComponent(out Scoreable scoreable)) {
         hit.transform.GetComponent<Shootable>().TakeShot(hit);
         scoreable.OnPointsScored(hit.transform.position);
-        return;
+        target = hit.transform.GetComponentInParent<Target>();
+      }
+      if (target != null) {
+        // I have to do this here because I need to be able to disable all the targets
+        // colliders as soon as it is shot and I haven't built this in a way that allows
+        // for that in a simple manner. So, I have to put it here :(
+        target.DisableMeshColliders();
       }
     }
 

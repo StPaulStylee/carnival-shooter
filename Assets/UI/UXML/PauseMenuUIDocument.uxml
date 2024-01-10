@@ -19,6 +19,12 @@
                 </ui:Button>
                 <ui:Label tabindex="-1" text="Settings" display-tooltip-when-elided="true" name="pause-menu-item-label" class="font__riffic-free--white" />
             </ui:VisualElement>
+            <ui:VisualElement name="pause-menu__button-container" class="pause-menu-button-container pause-menu-button-container--restart" style="background-color: rgba(0, 0, 0, 0); flex-shrink: 0;">
+                <ui:Button display-tooltip-when-elided="true" name="pause-menu__button" class="pause-menu-button" style="align-items: stretch; justify-content: flex-start; background-image: none; -unity-background-scale-mode: scale-to-fit;">
+                    <ui:VisualElement name="pause-menu__button-icon" class="pause-menu__button--icon" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/UI/Assets/replay.png?fileID=21300000&amp;guid=504c9c6a4721c444bad9d04e6804ebda&amp;type=3#replay&apos;);" />
+                </ui:Button>
+                <ui:Label tabindex="-1" text="Restart" display-tooltip-when-elided="true" name="pause-menu-item-label" class="font__riffic-free--white" />
+            </ui:VisualElement>
             <ui:VisualElement name="pause-menu__button-container" class="pause-menu-button-container pause-menu-button-container--exit-to-menu" style="background-color: rgba(0, 0, 0, 0); flex-shrink: 0;">
                 <ui:Button display-tooltip-when-elided="true" name="pause-menu__button" class="pause-menu-button">
                     <ui:VisualElement name="pause-menu__button-icon" class="pause-menu__button--icon" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/UI/Assets/logout.png?fileID=21300000&amp;guid=27d6a08e67fc7a74c8249da45ce6e934&amp;type=3#logout&apos;);" />

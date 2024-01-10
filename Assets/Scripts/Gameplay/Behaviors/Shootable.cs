@@ -19,7 +19,7 @@ namespace CarnivalShooter.Gameplay.Behavior {
       m_Id = gameObject.GetInstanceID();
       shotAnimatable = GetComponentInParent<ShotAnimatable>();
       if (shotAnimatable == null) {
-        Debug.LogError($"No Animatable component found in {name}'s parent");
+        Debug.LogWarning($"No Animatable component found in {name}'s parent");
       }
     }
     public virtual void TakeShot(RaycastHit hitInfo) {

@@ -16,7 +16,7 @@ public class StatManager : MonoBehaviour {
 
   private int m_TotalShotsFired = 0;
   private float m_TotalShotsHit {
-    get { return m_TotalOuterZoneHits + m_TotalInnerZoneHits + m_TotalBullseyeHits; }
+    get { return m_TotalOuterZoneHits + m_TotalInnerZoneHits + m_TotalBullseyeHits + m_TotalStuffieHits; }
   }
   private float m_ShotAccuracy {
     get { return (m_TotalShotsHit / m_TotalShotsFired) * 100f; }
