@@ -150,6 +150,9 @@
             <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container text-flex-end post-round-stats__content-container-last-item" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
                 <ui:Label tabindex="-1" text="300" display-tooltip-when-elided="true" name="post-round-stats__round-total-score-data" class="post-round-stats-text text-lg" style="color: rgb(255, 255, 255);" />
             </ui:VisualElement>
+            <ui:VisualElement name="post-round-stats__content-container" class="post-round-stats__content-container text-flex-end post-round-stats__high-score-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); rotate: 40deg; position: absolute; right: -78px; bottom: 33px;">
+                <ui:Label tabindex="-1" text="HIGH&#10;SCORE!!" display-tooltip-when-elided="true" name="post-round-stats__new-high-score" class="post-round-stats-text" style="color: rgb(178, 2, 2); align-items: auto; -unity-text-align: upper-center; font-size: 22px; rotate: 0; position: relative; left: auto;" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

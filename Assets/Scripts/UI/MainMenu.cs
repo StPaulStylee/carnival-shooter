@@ -1,5 +1,4 @@
 using System;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -40,10 +39,10 @@ namespace CarnivalShooter.UI {
     }
 
     private void OnQuit(ClickEvent e) {
-      if (EditorApplication.isPlaying) {
-        EditorApplication.isPlaying = false;
-        return;
-      }
+      //if (EditorApplication.isPlaying) {
+      //  EditorApplication.isPlaying = false;
+      //  return;
+      //}
       Application.Quit();
     }
   }

@@ -8,6 +8,7 @@ using UnityEngine;
 public class StatManager : MonoBehaviour {
   public static event Action<int> ScoreUpdated;
   public static event Action<PostRoundStatsData> PostRoundStatsCompleted;
+  public static event Action<int> HighScoreInitialized;
 
   public float OuterZoneBonusWeight = 0.08f;
   public float InnerZoneBonusWeight = 0.02f;
@@ -37,12 +38,15 @@ public class StatManager : MonoBehaviour {
   private int m_RoundBonus = 0;
   private int m_TotalScore = 0;
 
+  private int m_CurrentHighScore { get; set; } = 0;
+
   private void Awake() {
     Scoreable.PointsScored += OnScoreableHit;
     CountDownTimer.TimerCompleted += OnRoundCompleted;
     CurrentWeapon.AmmoChanged += OnWeaponShot;
     GameManager.ScoreInitializing += OnScoreInitialized;
     OverallAccuracyBonusWeight = 1f - (OuterZoneBonusWeight + InnerZoneBonusWeight);
+    LoadHighScoreData();
   }
 
   private void OnDisable() {
@@ -50,6 +54,20 @@ public class StatManager : MonoBehaviour {
     CountDownTimer.TimerCompleted -= OnRoundCompleted;
     CurrentWeapon.AmmoChanged -= OnWeaponShot;
     GameManager.ScoreInitializing -= OnScoreInitialized;
+  }
+
+  private void LoadHighScoreData() {
+    if (PlayerPrefs.HasKey("HighScore")) {
+      m_CurrentHighScore = PlayerPrefs.GetInt("HighScore");
+      HighScoreInitialized?.Invoke(m_CurrentHighScore);
+      return;
+    }
+    m_CurrentHighScore = 0;
+    HighScoreInitialized?.Invoke(m_CurrentHighScore);
+  }
+
+  private void SetHighScoreData(int score) {
+    PlayerPrefs.SetInt("HighScore", score);
   }
 
   private void OnScoreInitialized(int score) {
@@ -71,8 +89,12 @@ public class StatManager : MonoBehaviour {
         accuracy: getShotAccuracyPercentage(),
         roundBonus: GetRoundBonus(),
         roundScore: m_TotalScore, // Remember that m_TotalScore actually represents the round score without bonuses applied
-        totalScore: m_TotalScore + m_RoundBonus
+        totalScore: m_TotalScore + m_RoundBonus,
+        isHighScore: m_TotalScore + m_RoundBonus > m_CurrentHighScore
       );
+      if (stats.IsHighScore) {
+        SetHighScoreData(stats.TotalScore);
+      }
       PostRoundStatsCompleted?.Invoke(stats);
     }
   }

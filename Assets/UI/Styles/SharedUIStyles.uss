@@ -1,6 +1,6 @@
 .root-container {
     flex-grow: 1;
-    background-color: rgb(31, 31, 31);
+    background-color: rgba(31, 31, 31, 0.7);
     -unity-font: url('project://database/Assets/UI/Assets/Fonts/RifficFree-Bold.ttf?fileID=12800000&guid=50583f47abf99474589ca893d2cb0ce6&type=3#RifficFree-Bold');
     -unity-font-definition: url('project://database/Assets/UI/Assets/Fonts/RifficFree-Bold%20SDF.asset?fileID=11400000&guid=61cd9b27f079c4c4e8ede5c02a746848&type=2#RifficFree-Bold SDF');
     font-size: 58px;

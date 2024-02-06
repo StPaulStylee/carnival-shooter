@@ -47,3 +47,9 @@
     left: 0;
     bottom: 0;
 }
+
+.hud-text {
+    -unity-text-outline-width: 0;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    text-shadow: 2px 1px 2.5px rgb(0, 0, 0);
+}

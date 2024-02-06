@@ -13,7 +13,8 @@ namespace CarnivalShooter.Data {
     public int RoundBonus;
     public int RoundScore;
     public int TotalScore;
-    public PostRoundStatsData(int totalBullseyeHits, int totalBullseyeScore, int totalInnerZoneHits, int totalInnerZoneScore, int totalOuterZoneHits, int totalOuterZoneScore, int totalStuffieScore, int totalShotsFired, int totalHits, float accuracy, int roundBonus, int roundScore, int totalScore) {
+    public bool IsHighScore;
+    public PostRoundStatsData(int totalBullseyeHits, int totalBullseyeScore, int totalInnerZoneHits, int totalInnerZoneScore, int totalOuterZoneHits, int totalOuterZoneScore, int totalStuffieScore, int totalShotsFired, int totalHits, float accuracy, int roundBonus, int roundScore, int totalScore, bool isHighScore) {
       TotalBullseyeHits = totalBullseyeHits;
       TotalBullseyeScore = totalBullseyeScore;
       TotalInnerZoneHits = totalInnerZoneHits;
@@ -27,6 +28,7 @@ namespace CarnivalShooter.Data {
       RoundBonus = roundBonus;
       RoundScore = roundScore;
       TotalScore = totalScore;
+      IsHighScore = isHighScore;
     }
   }
 }

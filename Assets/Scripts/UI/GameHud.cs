@@ -12,6 +12,7 @@ namespace CarnivalShooter.UI {
     const string k_ammoEnabledClassName = "ammo-enabled";
     const string k_ammoDisabledClassName = "ammo-disabled";
     const string k_scoreLabelName = "game-hud__score-text";
+    const string k_highScoreLabelName = "game-hud__high-score-text";
     const string k_roundDurationTimerLabelName = "game-hud__game-timer-text";
     const string k_roundStartDurationTimerLabelName = "game-hud__round-start-timer-text";
 
@@ -22,6 +23,7 @@ namespace CarnivalShooter.UI {
     private Label m_ScoreLabel;
     private Label m_RoundDurationLabel;
     private Label m_RoundStartDurationLabel;
+    private Label m_HighScoreLabel;
 
     private Stack<VisualElement> m_EnabledAmmoIcons = new();
     private Stack<VisualElement> m_DisabledAmmoIcons = new();
@@ -33,6 +35,7 @@ namespace CarnivalShooter.UI {
       CurrentWeapon.AmmoReloaded += SetAmmoIcons;
       GameManager.ScoreInitializing += SetScoreLabel;
       StatManager.ScoreUpdated += SetScoreLabel;
+      StatManager.HighScoreInitialized += SetHighScoreLabel;
     }
 
     private void OnDisable() {
@@ -43,6 +46,7 @@ namespace CarnivalShooter.UI {
       CurrentWeapon.AmmoReloaded -= SetAmmoIcons;
       GameManager.ScoreInitializing -= SetScoreLabel;
       StatManager.ScoreUpdated -= SetScoreLabel;
+      StatManager.HighScoreInitialized -= SetHighScoreLabel;
     }
 
     private void OnEnable() {
@@ -51,6 +55,7 @@ namespace CarnivalShooter.UI {
       m_ScoreLabel = m_GameUIElement.Query<Label>(k_scoreLabelName);
       m_RoundDurationLabel = m_GameUIElement.Query<Label>(k_roundDurationTimerLabelName);
       m_RoundStartDurationLabel = m_GameUIElement.Query<Label>(k_roundStartDurationTimerLabelName);
+      m_HighScoreLabel = m_GameUIElement.Query<Label>(k_highScoreLabelName);
     }
 
     private void Start() {
@@ -90,6 +95,10 @@ namespace CarnivalShooter.UI {
         return;
       }
       m_RoundStartDurationLabel.text = label;
+    }
+
+    private void SetHighScoreLabel(int highScore) {
+      m_HighScoreLabel.text = highScore.ToString();
     }
 
     private void ShowTimerLabel(string timerType) {

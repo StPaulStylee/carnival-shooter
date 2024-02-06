@@ -66,7 +66,7 @@ namespace CarnivalShooter.Gameplay.Managers {
         }
         float standingTimeRemaining = targetStandingTime;
         m_CurrentActiveTargets.Clear();
-        GetTargetsToActivate(5);
+        GetTargetsToActivate(3);
         foreach (Target target in m_CurrentActiveTargets) {
           target.ResetToDefault();
         }
